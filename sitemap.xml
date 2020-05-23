@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
-	<sitemap>
-	   	<loc>/en/sitemap.xml</loc>
-		
-	   	<lastmod>2020-05-23T16:56:03+08:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>/zh-cn/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>/fr/sitemap.xml</loc>
-		
-	</sitemap>
-	
-</sitemapindex>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>/categories/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/posts/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/%E5%8F%A4%E8%AF%97%E8%AF%8D/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/%E5%8F%A4%E8%AF%97%E8%AF%8D/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/gushici/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/linux/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/windows/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/windows-environment/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/mathematics/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/rational-number-denumerable/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/gpu/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/categories/gpu/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/gpu-basic/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/about/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/</loc><lastmod>2020-05-23T16:56:03&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
