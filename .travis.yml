@@ -29,4 +29,4 @@ deploy:
   token: $GITHUB_TOKEN # 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis
   keep_history: true # 是否保持target-branch分支的提交记录
   on:
-    branch: hugo # 博客源码的分支
+    branch: sources # 博客源码的分支
