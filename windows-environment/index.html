@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Windows10 &#43; Linux开发环境探索 - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Windows10 &#43; Linux开发环境探索" />
+<meta property="og:description" content="为什么要Windows &#43; Linux 其实主要是因为N卡和CUDA，不然直接macOS就行了 (x) 探索经历 Arch &#43; i3wm &#43; kvm 众所周知，Arch是最好的发行版(x)，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/windows-environment/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2020-03-07T01:39:24+08:00" />
+<meta property="article:modified_time" content="2020-05-23T16:56:03+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Windows10 &#43; Linux开发环境探索"/>
+<meta name="twitter:description" content="为什么要Windows &#43; Linux 其实主要是因为N卡和CUDA，不然直接macOS就行了 (x) 探索经历 Arch &#43; i3wm &#43; kvm 众所周知，Arch是最好的发行版(x)，"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/windows-environment/" /><link rel="prev" href="/rational-number-denumerable/" /><link rel="next" href="/gushici/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows10 + Linux开发环境探索",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/windows-environment\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","wordcount":  2205 ,
+        "url": "\/windows-environment\/","datePublished": "2020-03-07T01:39:24+08:00","dateModified": "2020-05-23T16:56:03+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Windows10 &#43; Linux开发环境探索</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/windows/"><i class="far fa-folder fa-fw"></i>Windows</a>&nbsp;<a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-07">2020-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2205 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;<span id="/windows-environment/" class="leancloud_visitors" data-flag-title="Windows10 &#43; Linux开发环境探索">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要windows--linux">为什么要Windows + Linux</a></li>
+    <li><a href="#探索经历">探索经历</a>
+      <ul>
+        <li><a href="#arch--i3wm--kvm">Arch + i3wm + kvm</a></li>
+        <li><a href="#windows10--hyper-v">Windows10 + Hyper-v</a>
+          <ul>
+            <li><a href="#hyper-v安装arch">Hyper-v安装Arch</a></li>
+            <li><a href="#arch安装hyper-v-integration-service">Arch安装Hyper-v Integration Service</a></li>
+            <li><a href="#windows-terminal的配置">Windows Terminal的配置</a></li>
+            <li><a href="#共享文件夹">共享文件夹</a></li>
+            <li><a href="#在hosts中自动更新arch的ip">在hosts中自动更新Arch的IP</a></li>
+            <li><a href="#在arch中获取windows的ip">在Arch中获取Windows的IP</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="为什么要windows--linux">为什么要Windows + Linux</h2>
+<p>其实主要是因为N卡和CUDA，不然直接macOS就行了 (x)</p>
+<h2 id="探索经历">探索经历</h2>
+<h3 id="arch--i3wm--kvm">Arch + i3wm + kvm</h3>
+<p>众所周知，Arch是最好的发行版(x)，配上i3wm的便捷操作，效率确实能提高不少，但是最终还是放弃了这个方案。放弃的原因并不是因为软件的问题，主要还是因为硬件的问题，一是主板不支持vt-d，不能直通显卡给KVM，而windows和macOS都是比较吃显卡的，二是新换的Intel AX200在Linux固件上还有点问题，不过这个问题是personally。</p>
+<h3 id="windows10--hyper-v">Windows10 + Hyper-v</h3>
+<p>最终还是选择了这个方案，主要是因为Linux可以不吃显卡，有图形化的需求可以直接在Windows上跑一个X Server。</p>
+<h4 id="hyper-v安装arch">Hyper-v安装Arch</h4>
+<p>安装过程都是傻瓜式的，因为我笔记本上刚好有两块SSD，索性就直接把Arch装在256G的PM961上了，然后Switch用的就是默认的Switch。</p>
+<h4 id="arch安装hyper-v-integration-service">Arch安装Hyper-v Integration Service</h4>
+<p>微软提供了一套服务来让宿主机和Hyper-v VM交互，包括文件传输、状态监控、获取IP等等，只需要安装<code>hyperv</code>这个包就行了，然后开启如下三个daemon:</p>
+<ul>
+<li>hv_kvp_daemon</li>
+<li>hv_vss_daemon</li>
+<li>hv_fcopy_daemon</li>
+</ul>
+<p>不过启动这3个service后再重启VM，马上就会发现问题：这3个Service启动时有很大的可能会失败。然后看了一下Service的内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>Unit<span class="o">]</span>
+xxx
+<span class="nv">ConditionPathExists</span><span class="o">=</span>/dev/vmbus/hv_xxx
+</code></pre></td></tr></table>
+</div>
+</div><p>失败的原因是ConditionPathExists不满足，但是奇怪的是重启登录后这个设备是存在的，手动启动是可以成功的，于是开始Google(期间因为网络问题错过了标准答案，还好后来archlinuxcn群里有人帮忙找到了答案)。在Redhat的论坛里有一篇15年的<a href="https://bugzilla.redhat.com/show_bug.cgi?id=1195029" target="_blank" rel="noopener noreffer">帖子</a>讨论 了这个问题，然后我看了一下日志发现现在2020年了，hyper-v的这个设计还是一样毫无变化。主要的原因就是hyper-v的这个vmbus是通过netlink挂载上去的，而网络传输是存在延迟的，所以就会导致在Integration Service启动的时候vmbus还没有挂载上，不过解决的办法也很简单，就是自己添加一个udev的rule，在vmbus成功挂载时再次启动相应的service：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&#34;misc&#34;</span>,KERNEL<span class="o">==</span><span class="s2">&#34;vmbus/hv_kvp&#34;</span>,TAG+<span class="o">=</span><span class="s2">&#34;systemd&#34;</span>,ENV<span class="o">{</span>SYSTEMD_WANTS<span class="o">}</span>+<span class="o">=</span><span class="s2">&#34;hv_kvp_daemon.service&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么Integration Service启动失败的问题就差不多解决了(期间因为把<code>==</code>写成了<code>=</code>，找了好几个小时 TwT)。</p>
+<h4 id="windows-terminal的配置">Windows Terminal的配置</h4>
+<p>Windows Terminal是微软官方发布的一款terminator，目前还在preview，不过已经0.9了，估计可能20H1就要发布正式版了。</p>
+<p>第一步当然是要先换字体和配色，字体很简单，用<code>fontFace</code>配置就行了，然后配色，刚好自带了<a href="https://ethanschoonover.com/solarized/" target="_blank" rel="noopener noreffer">Solarized</a>(目前最喜欢的配色)，不过如果是Powershell最好换用其他颜色，因为PS的语法亮尚会和Solarized冲突。(感谢这些愿意无私奉献的艺术家们)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/posts/windows-environment/solarized-yinyang.png"
+        data-srcset="/posts/windows-environment/solarized-yinyang.png, /posts/windows-environment/solarized-yinyang.png 1.5x, /posts/windows-environment/solarized-yinyang.png 2x"
+        data-sizes="auto"
+        alt="Solarized"
+        title="Solarized" /></p>
+<p>接下来就是配置ssh登录Arch，因为Default Switch的IP range是dynamic的(为什么不用Static IP?因为之前试过几次都不稳定，不是突然变了就是突然连不了Internet了)，所以需要动态获取Arch的IP，好在Powershell提供了很多操作命令，实现起来很简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="k">function</span> <span class="n">arch_addr</span> <span class="p">{</span>
+    <span class="nv">$addr</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-VMNetworkAdapter</span> <span class="n">Arch</span><span class="p">).</span><span class="n">ipaddresses</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nv">$addr</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>同时为了支持转发X，需要配置端口转发，因为Windows Terminal中直连貌似不行，完整的代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$arch_switch</span><span class="p">=</span><span class="s2">&#34;Default Switch&#34;</span>
+
+<span class="k">function</span> <span class="n">arch_addr</span> <span class="p">{</span>
+    <span class="nv">$addr</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-VMNetworkAdapter</span> <span class="n">Arch</span><span class="p">).</span><span class="n">ipaddresses</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nv">$addr</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="n">arch_switch_addr</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">Get-NetIPAddress</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">InterfaceAlias</span> <span class="o">-like</span> <span class="s2">&#34;*($arch_switch)*&#34;</span> <span class="o">-and</span> <span class="nv">$_</span><span class="p">.</span><span class="n">AddressFamily</span> <span class="o">-eq</span> <span class="s2">&#34;IPv4&#34;</span><span class="p">}).</span><span class="n">ipaddress</span>    
+<span class="p">}</span>
+<span class="k">function</span>    <span class="n">arch</span> <span class="p">{</span>
+    <span class="nv">$addr</span> <span class="p">=</span> <span class="n">arch_addr</span>
+    <span class="nv">$switch_addr</span> <span class="p">=</span> <span class="n">arch_switch_addr</span>
+    <span class="nv">$x_port</span> <span class="p">=</span> <span class="n">6000</span>
+    <span class="n">ssh</span> <span class="n">-R</span> <span class="nv">$switch_addr</span><span class="p">`</span><span class="err">:</span><span class="nv">$x_port</span><span class="p">`</span><span class="err">:</span><span class="n">localhost</span><span class="p">`</span><span class="err">:</span><span class="nv">$x_port</span>  <span class="n">mt</span><span class="p">@</span><span class="nv">$addr</span> <span class="n">-i</span> <span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">RMT</span><span class="p">\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">arch</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>同时需要手动在Arch中设置<code>DISPLAY</code>，然后就可以转发X了，Windows10用的是VCXSRV。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/posts/windows-environment/wt.png"
+        data-srcset="/posts/windows-environment/wt.png, /posts/windows-environment/wt.png 1.5x, /posts/windows-environment/wt.png 2x"
+        data-sizes="auto"
+        alt="配置完成的windows terminal"
+        title="配置完成的windows terminal" /></p>
+<h4 id="共享文件夹">共享文件夹</h4>
+<p>共享文件夹直接使用CIFS就行了，首先安装<code>cifs-utils</code>，然后在Windows10中配置一个共享文件夹，然后直接<a href="https://wiki.archlinux.org/index.php/Hyper-V#Shared_directories" target="_blank" rel="noopener noreffer">挂载</a>即可，不过要注意在Arch中登录Windows10时，使用的是你微软账户的密码而不是本地的PIN。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mount -t cifs //PC/share /mnt/Hyper-V -o <span class="nv">credentials</span><span class="o">=</span>~/.credentials,ip<span class="o">=</span>xxx
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="在hosts中自动更新arch的ip">在hosts中自动更新Arch的IP</h4>
+<p>因为Arch的IP是动态的，如果想在CLION等工具是使用Arch上的toolchain，那每次都要更改一次设置还是挺麻烦的，索性就用脚本在每次开机的时候自动更新hosts，把Arch的ip加进去：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$arch_switch</span><span class="p">=</span><span class="s2">&#34;Default Switch&#34;</span>
+
+<span class="k">function</span> <span class="n">arch_addr</span> <span class="p">{</span>
+    <span class="nv">$addr</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-VMNetworkAdapter</span> <span class="n">Arch</span><span class="p">).</span><span class="n">ipaddresses</span><span class="p">[</span><span class="n">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nv">$addr</span>
+<span class="p">}</span>
+
+<span class="nv">$path_hosts</span> <span class="p">=</span> <span class="s2">&#34;C:\\Windows\\System32\\drivers\\etc\\hosts&#34;</span>
+<span class="nv">$host_content</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="nv">$path_hosts</span>
+
+<span class="nv">$arch_host_name</span> <span class="p">=</span> <span class="s2">&#34;Arch&#34;</span>
+
+<span class="nv">$arch_addr</span> <span class="p">=</span> <span class="n">arch_addr</span>
+<span class="nv">$flag</span> <span class="p">=</span> <span class="n">0</span>
+<span class="nv">$line</span> <span class="p">=</span> <span class="n">0</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$msg</span> <span class="k">in</span> <span class="nv">$host_content</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$msg</span> <span class="o">-like</span> <span class="s2">&#34;*$arch_host_name*&#34;</span><span class="p">){</span>
+        <span class="nv">$flag</span> <span class="p">=</span> <span class="n">1</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+    <span class="nv">$line</span><span class="p">++</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nv">$flag</span> <span class="o">-eq</span> <span class="n">1</span><span class="p">){</span>
+    <span class="nv">$host_content</span><span class="p">[</span><span class="nv">$line</span><span class="p">]</span> <span class="p">=</span> <span class="s2">&#34;$arch_addr Arch&#34;</span>
+    <span class="nb">Out-File</span> <span class="n">-FilePath</span> <span class="nv">$path_hosts</span> <span class="n">-Encoding</span> <span class="n">ASCII</span> <span class="n">-InputObject</span> <span class="nv">$host_content</span>
+<span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+    <span class="nb">Out-File</span> <span class="n">-FilePath</span> <span class="nv">$path_hosts</span> <span class="n">-Append</span> <span class="n">-Encoding</span> <span class="n">ASCII</span> <span class="n">-InputObject</span> <span class="s2">&#34;$arch_addr Arch&#34;</span>
+<span class="p">}</span>
+
+<span class="n">ipconfig</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">flushdns</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>之后就可以在任何地方直接用Arch来代替ip 了。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/posts/windows-environment/clion.png"
+        data-srcset="/posts/windows-environment/clion.png, /posts/windows-environment/clion.png 1.5x, /posts/windows-environment/clion.png 2x"
+        data-sizes="auto"
+        alt="CLION的remote配置"
+        title="CLION的remote配置" /></p>
+<h4 id="在arch中获取windows的ip">在Arch中获取Windows的IP</h4>
+<p>因为Default Switch用的是NAT，所以可以直接用<code>ip n</code>查看Default Switch的ip，通过这个ip便可以访问Windows宿主机，比如使用宿主机中的代理：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">win_addr</span><span class="o">=</span><span class="k">$(</span>ip n <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span><span class="s2">&#34;http://</span><span class="nv">$win_addr</span><span class="s2">:port&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<p>看了下Hyper-v的交互性其实挺强的，还有很多可以扩展的空间，感觉完全可以手动实现一个WSL?比如如果想在Windows10上直接启动Arch里面的App，可以自己写一个powershell脚本:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh -X -R xxx:xxx:xx:xx xx@xx <span class="s2">&#34;code&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后新建一个快捷方式，执行命令<code>powershell xx.ps1</code></p>
+<p>然后就是在Arch中调用Windows10的程序，之前看了一下X410这个东西，Hyper-v可以和Windows宿主机建立一个VSOCK，那么两边分别运行一个监听程序，来处理相互的调用感觉是可行，等有时间了可以试试。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-05-23&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/4efc4fa9e5450b1d28064e8a3b913e98e584f125" target="_blank" title="commit by RMT(d.rong@outlook.com) 4efc4fa9e5450b1d28064e8a3b913e98e584f125: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>4efc4fa</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/windows-environment/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/windows-environment/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.12.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/windows-environment/" data-title="Windows10 &#43; Linux开发环境探索"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/rational-number-denumerable/" class="prev" rel="prev" title="有理数的可数性"><i class="fas fa-angle-left fa-fw"></i>有理数的可数性</a>
+            <a href="/gushici/" class="next" rel="next" title="古诗词日常收藏">古诗词日常收藏<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.71.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.9"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

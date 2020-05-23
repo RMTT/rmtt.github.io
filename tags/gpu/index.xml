@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>GPU - Tag - RMT&#39;s Blog</title>
+        <link>/tags/gpu/</link>
+        <description>GPU - Tag - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 11 Feb 2020 22:19:39 &#43;0800</lastBuildDate><atom:link href="/tags/gpu/" rel="self" type="application/rss+xml" /><item>
+    <title>GPU 基础知识</title>
+    <link>/gpu-basic/</link>
+    <pubDate>Tue, 11 Feb 2020 22:19:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/gpu-basic/</guid>
+    <description><![CDATA[因为最近要写一篇GPU方面的论文，所以找了一些资料慢慢看 参考：GPU Technology Trends and Future Requirements 虽然是多年前的文章，不过讲得很细～ GPU的发展 GPU的基本功能]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Mathematics - Category - RMT&#39;s Blog</title>
+        <link>/categories/mathematics/</link>
+        <description>Mathematics - Category - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 29 Feb 2020 21:12:19 &#43;0800</lastBuildDate><atom:link href="/categories/mathematics/" rel="self" type="application/rss+xml" /><item>
+    <title>有理数的可数性</title>
+    <link>/rational-number-denumerable/</link>
+    <pubDate>Sat, 29 Feb 2020 21:12:19 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/rational-number-denumerable/</guid>
+    <description><![CDATA[虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，]]></description>
+</item></channel>
+</rss>
