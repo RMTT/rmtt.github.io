@@ -1,0 +1,81 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>LoveIt</title>
+        <link>/</link>
+        <description>About LoveIt Theme</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 09 Feb 2020 02:36:03 &#43;0800</lastBuildDate>
+            <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>古诗词日常收藏</title>
+    <link>/gushici/</link>
+    <pubDate>Sat, 23 May 2020 11:45:34 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/gushici/</guid>
+    <description><![CDATA[题龙阳县青草湖 [作者] 唐温如 [朝代] 元
+西风吹老洞庭波，一夜湘君白发多。
+醉后不知天在水，满船清梦压星河。
+ 无题 [出自] 风云
+倚楼听风雨,淡看江湖路.
+但见泪痕湿,不知心恨谁!
+ 春夜喜雨 [作者] 杜甫 [朝代] 唐
+好雨知时节，当春乃发生。
+随风潜入夜，润物细无声。
+野径云俱黑，江船火独明。
+晓看红湿处，花重锦官城。
+ 和董传留别 [作者] 苏轼 [朝代] 宋
+粗缯大布裹生涯，腹有诗书气自华。
+厌伴老儒烹瓠叶，强随举子踏槐花。
+囊空不办寻春马，眼乱行看择婿车。
+得意犹堪夸世俗，诏黄新湿字如鸦。
+ 大德歌·冬景 [作者] 关汉卿 [朝代] 元
+雪粉华，舞梨花，再不见烟村四五家。
+密洒堪图画，看疏林噪晚鸦。
+黄芦掩映清江下，斜缆着钓鱼艖。
+ 清平乐·春归何处 [作者] 黄庭坚 [朝代] 宋
+春归何处？寂寞无行路。
+若有人知春去处，唤取归来同住。
+春无踪迹谁知？除非问取黄鹂。
+百啭无人能解，因风飞过蔷薇。]]></description>
+</item><item>
+    <title>Windows10 &#43; Linux开发环境探索</title>
+    <link>/windows-environment/</link>
+    <pubDate>Sat, 07 Mar 2020 01:39:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/windows-environment/</guid>
+    <description><![CDATA[为什么要Windows + Linux 其实主要是因为N卡和CUDA，不然直接macOS就行了 (x)
+探索经历 Arch + i3wm + kvm 众所周知，Arch是最好的发行版(x)，配上i3wm的便捷操作，效率确实能提高不少，但是最终还是放弃了这个方案。放弃的原因并不是因为软件的问题，主要还是因为硬件的问题，一是主板不支持vt-d，不能直通显卡给KVM，而windows和macOS都是比较吃显卡的，二是新换的Intel AX200在Linux固件上还有点问题，不过这个问题是personally。
+Windows10 + Hyper-v 最终还是选择了这个方案，主要是因为Linux可以不吃显卡，有图形化的需求可以直接在Windows上跑一个X Server。
+Hyper-v安装Arch 安装过程都是傻瓜式的，因为我笔记本上刚好有两块SSD，索性就直接把Arch装在256G的PM961上了，然后Switch用的就是默认的Switch。
+Arch安装Hyper-v Integration Service 微软提供了一套服务来让宿主机和Hyper-v VM交互，包括文件传输、状态监控、获取IP等等，只需要安装hyperv这个包就行了，然后开启如下三个daemon:
+ hv_kvp_daemon hv_vss_daemon hv_fcopy_daemon  不过启动这3个service后再重启VM，马上就会发现问题：这3个Service启动时有很大的可能会失败。然后看了一下Service的内容:
+1 2 3  [Unit] xxx ConditionPathExists=/dev/vmbus/hv_xxx   失败的原因是ConditionPathExists不满足，但是奇怪的是重启登录后这个设备是存在的，手动启动是可以成功的，于是开始Google(期间因为网络问题错过了标准答案，还好后来archlinuxcn群里有人帮忙找到了答案)。在Redhat的论坛里有一篇15年的帖子讨论 了这个问题，然后我看了一下日志发现现在2020年了，hyper-v的这个设计还是一样毫无变化。主要的原因就是hyper-v的这个vmbus是通过netlink挂载上去的，而网络传输是存在延迟的，所以就会导致在Integration Service启动的时候vmbus还没有挂载上，不过解决的办法也很简单，就是自己添加一个udev的rule，在vmbus成功挂载时再次启动相应的service：
+1  SUBSYSTEM==&#34;misc&#34;,KERNEL==&#34;vmbus/hv_kvp&#34;,TAG+=&#34;systemd&#34;,ENV{SYSTEMD_WANTS}+=&#34;hv_kvp_daemon.service&#34;   那么Integration Service启动失败的问题就差不多解决了(期间因为把==写成了=，找了好几个小时 TwT)。
+Windows Terminal的配置 Windows Terminal是微软官方发布的一款terminator，目前还在preview，不过已经0.9了，估计可能20H1就要发布正式版了。
+第一步当然是要先换字体和配色，字体很简单，用fontFace配置就行了，然后配色，刚好自带了Solarized(目前最喜欢的配色)，不过如果是Powershell最好换用其他颜色，因为PS的语法亮尚会和Solarized冲突。(感谢这些愿意无私奉献的艺术家们)
+接下来就是配置ssh登录Arch，因为Default Switch的IP range是dynamic的(为什么不用Static IP?因为之前试过几次都不稳定，不是突然变了就是突然连不了Internet了)，所以需要动态获取Arch的IP，好在Powershell提供了很多操作命令，实现起来很简单：
+1 2 3 4  function arch_addr { $addr = (Get-VMNetworkAdapter Arch).]]></description>
+</item><item>
+    <title>有理数的可数性</title>
+    <link>/rational-number-denumerable/</link>
+    <pubDate>Sat, 29 Feb 2020 21:12:19 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/rational-number-denumerable/</guid>
+    <description><![CDATA[虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，所以记录一下。
+有理数的可数性证明 众所周知，有理数都可以写成$ \frac{p}{q} $的形式，其中p和q都是自然数。对于一个大于1的正整数x，将x表示为$x=p + q$共有$x-1$种表示 方式。对于所有的$x=2,3,4,\dots$，我们将p和q构造成分数$\frac{p}{q}$，并按照p从小到大排列，则可以得到如下序列(忽略p和q有大于1的公因数的情况)：
+$$\frac{1}{1},\frac{1}{2},\frac{2}{1},\frac{3}{1},\frac{1}{3},\frac{1}{4},\frac{2}{3},\frac{3}{2},\frac{4}{1},\frac{1}{5},\frac{5}{1},\frac{1}{6},\frac{2}{5}\dots$$
+或许从这里还看不出这个序列已经包含了所有大于0的有理数，那么可以看如下的规律：
+对于$p=1,2,3,4,\dots$，其分母都包括了所有的自然数。对于负有理数，vice versa.]]></description>
+</item><item>
+    <title>GPU 基础知识</title>
+    <link>/gpu-basic/</link>
+    <pubDate>Tue, 11 Feb 2020 22:19:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/gpu-basic/</guid>
+    <description><![CDATA[因为最近要写一篇GPU方面的论文，所以找了一些资料慢慢看
+参考：GPU Technology Trends and Future Requirements
+虽然是多年前的文章，不过讲得很细～
+ GPU的发展 GPU的基本功能是处理图形，从最初单一的pipeline发展到现在，已经能够完成很多通用的计算任务，而且拥有远超CPU的并行计算能力。
+GPU基本知识 GPU接受的数据应该是一系列的Vertex(保存坐标信息)和Attributes(保存颜色、亮度等信息)，Vertex由专门的vertex shader处理，Attribute由pixel shader处理，shader就是GPU中的一个子程序。经过一系列的shaer处理后，最初的几何数据便会成功最终的像素合并到Frame Buffer中。
+GPU基础架构 从架构图可以比较容易看出，基本的工作方式就是通过BUS传输数据，然后GPU中一些shader讲计算任务分发给各个TPC。至于其中各个组件的作用，见下面的MindMap。]]></description>
+</item></channel>
+</rss>
