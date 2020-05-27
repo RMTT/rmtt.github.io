@@ -14,7 +14,7 @@ branches:
 #   - go get github.com/spf13/hugo 
 install:
     - uname -a
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.71.0/hugo_0.71.0_Linux-64bit.deb
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.71.1/hugo_0.71.1_Linux-64bit.deb
     - sudo dpkg -i hugo*.deb
 
 script:
