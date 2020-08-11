@@ -1,7 +1,7 @@
 language: go
 
 go:
-  - "1.8"  # 指定Golang 1.8
+  - "1.14"  
 
 # Specify which branches to build using a safelist
 # 分支白名单限制: 只有hugo分支的提交才会触发构建
@@ -14,7 +14,7 @@ branches:
 #   - go get github.com/spf13/hugo 
 install:
     - uname -a
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.71.1/hugo_0.71.1_Linux-64bit.deb
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
     - sudo dpkg -i hugo*.deb
 
 script:
@@ -22,11 +22,11 @@ script:
   - hugo -e production
 
 deploy:
-  provider: pages # 重要，指定这是一份github pages的部署配置
-  skip_cleanup: true # 重要，不能省略
-  local_dir: public # 静态站点文件所在目录
-  target_branch: master # 要将静态站点文件发布到哪个分支
-  token: $GITHUB_TOKEN # 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis
-  keep_history: true # 是否保持target-branch分支的提交记录
+  provider: pages 
+  skip_cleanup: true 
+  local_dir: public 
+  target_branch: master
+  token: $GITHUB_TOKEN 
+  keep_history: true 
   on:
-    branch: sources # 博客源码的分支
+    branch: sources 
