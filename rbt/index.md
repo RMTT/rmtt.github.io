@@ -36,13 +36,14 @@ enum Color {
     RED, BLACK
 };
 
+template<typename T>
 class Node {
 public:
     Node *parent, *left, *right;
-    int key;
+    T key;
     Color color;
 
-    Node(int key, Color color = RED) : key(key), color(color) {
+    Node(T key, Color color = RED) : key(key), color(color) {
         parent = nullptr;
         left = nullptr;
         right = nullptr;
@@ -53,18 +54,19 @@ public:
     }
 };
 
+template<typename T>
 class RBT {
 private:
-    Node *nil;
-    Node *root;
+    Node<T> *nil;
+    Node<T> *root;
 public:
     RBT() {
-        nil = new Node(0, BLACK);
+        nil = new Node<T>(0, BLACK);
         root = nil;
     }
 
-    void leftRotate(Node *x) {
-        Node *y = x->right;
+    void leftRotate(Node<T> *x) {
+        Node<T> *y = x->right;
         x->right = y->left;
 
         if (y->left != nil) {
@@ -85,8 +87,8 @@ public:
         x->parent = y;
     }
 
-    void rightRotate(Node *y) {
-        Node *x = y->left;
+    void rightRotate(Node<T> *y) {
+        Node<T> *x = y->left;
         y->left = x->right;
 
         if (y->left != nil) {
@@ -107,9 +109,9 @@ public:
         y->parent = x;
     }
 
-    void insert(Node *z) {
-        Node *y = nil;
-        Node *x = root;
+    void insert(Node<T> *z) {
+        Node<T> *y = nil;
+        Node<T> *x = root;
 
         while (x != nil) {
             y = x;
@@ -134,10 +136,10 @@ public:
         insert_fixup(z);
     }
 
-    void insert_fixup(Node *z) {
+    void insert_fixup(Node<T> *z) {
         while (z->parent->color == RED) {
             if (z->parent == z->parent->parent->left) {
-                Node *y = z->parent->parent->right;
+                Node<T> *y = z->parent->parent->right;
                 if (y->color == RED) {
                     z->parent->color = BLACK;
                     y->color = BLACK;
@@ -154,7 +156,7 @@ public:
                 }
 
             } else {
-                Node *y = z->parent->parent->left;
+                Node<T> *y = z->parent->parent->left;
                 if (y->color == RED) {
                     z->parent->color = BLACK;
                     y->color = BLACK;
@@ -174,7 +176,7 @@ public:
         root->color = BLACK;
     }
 
-    void transplant(Node *u, Node *v) {
+    void transplant(Node<T> *u, Node<T> *v) {
         if (u->parent == nil)
             root = v;
         else if (u->parent->left == u)
@@ -184,14 +186,14 @@ public:
         v->parent = u->parent;
     }
 
-    Node *minimum(Node *u) {
+    Node<T> *minimum(Node<T> *u) {
         while (u != nil && u->left != nil)
             u = u->left;
         return u;
     }
 
-    void remove(Node *z) {
-        Node *y = z, *x;
+    void remove(Node<T> *z) {
+        Node<T> *y = z, *x;
         Color origin_y = y->color;
 
         if (z->left == nil) {
@@ -223,10 +225,10 @@ public:
         }
     }
 
-    void remove_fixup(Node *x) {
+    void remove_fixup(Node<T> *x) {
         while (x != root && x->color == BLACK) {
             if (x == x->parent->left) {
-                Node *w = x->parent->right;
+                Node<T> *w = x->parent->right;
 
                 if (w->color == RED) {
                     w->color = BLACK;
@@ -252,7 +254,7 @@ public:
                     x = root;
                 }
             } else {
-                Node *w = x->parent->left;
+                Node<T> *w = x->parent->left;
 
                 if (w->color == RED) {
                     w->color = BLACK;
@@ -286,10 +288,10 @@ public:
 
 // test for number 1-100
 int main() {
-    Node *nodes = new Node[100];
+    auto *nodes = new Node<int>[100];
     for (int i = 0; i < 100; ++i)
         (nodes + i)->key = i + 1;
-    RBT T;
+    RBT<int> T;
     for (int i = 0; i < 100; ++i) {
         T.insert(nodes + i);
     }
