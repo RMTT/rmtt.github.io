@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 23 Jul 2020 21:46:23 &#43;0800</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 08 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title></title>
+    <link>/rbt/</link>
+    <pubDate>Sun, 08 Nov 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/rbt/</guid>
+    <description><![CDATA[红黑树(C++) 红黑树性质 每个节点只能是红色或者黑色 根节点是黑色 叶子节点是黑色 红色节点的子节点必须是黑色 任一节点到其子树叶子节点的所有简单路]]></description>
+</item><item>
     <title>异世RPG 初步构思</title>
     <link>/yishi_rpg/</link>
     <pubDate>Thu, 23 Jul 2020 21:46:23 &#43;0800</pubDate>
