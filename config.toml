@@ -80,7 +80,7 @@ enableEmoji = true
         pre = ""
         post = ""
         name = "Links"
-        url = "/Links/"
+        url = "/links"
         title = ""
         weight = 6
       [[languages.en.menu.main]]
