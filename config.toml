@@ -81,7 +81,7 @@ enableEmoji = true
         post = ""
         name = "Links"
         url = "/links"
-        title = "Links"
+        title = ""
         weight = 6
       [[languages.en.menu.main]]
         identifier = "github"
