@@ -75,6 +75,14 @@ enableEmoji = true
         url = "/about/"
         title = ""
         weight = 5
+       [[languages.en.menu.main]]
+        identifier = "about"
+        pre = ""
+        post = ""
+        name = "Links"
+        url = "/Links/"
+        title = ""
+        weight = 6
       [[languages.en.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -82,7 +90,7 @@ enableEmoji = true
         name = ""
         url = "https://github.com/RMTT"
         title = "GitHub"
-        weight = 6
+        weight = 7
     [languages.en.params]
       # site description
       description = "RMT's Blog"
