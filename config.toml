@@ -74,7 +74,7 @@ enableEmoji = true
         name = "About"
         url = "/about/"
         title = ""
-        weight = 5
+        weight = 4
        [[languages.en.menu.main]]
         identifier = "links"
         pre = ""
@@ -82,7 +82,7 @@ enableEmoji = true
         name = "Links"
         url = "/links/"
         title = ""
-        weight = 6
+        weight = 5
       [[languages.en.menu.main]]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
@@ -90,12 +90,12 @@ enableEmoji = true
         name = ""
         url = "https://github.com/RMTT"
         title = "GitHub"
-        weight = 7
+        weight = 6
     [languages.en.params]
       # site description
       description = "RMT's Blog"
       # site keywords
-      keywords = ["Computer Science", "Blog"]
+      keywords = ["Computer Science", "Blog", "Programming"]
       # App icon config
       [languages.en.params.app]
         # optional site title override for the app when added to an iOS home screen or Android launcher
