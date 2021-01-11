@@ -78,6 +78,15 @@ let user = new User;
 console.log(User.prototype == user.__proto__);
 ```
 
+### Class
 
+Class是JS为OOP设计的一个结构，跟其他OOP语言一样有成员、方法，可以继承，有静态变量和方法，但是如下特性还只在最近的浏览器版本中部分实现：
 
++ 静态成员
++ 私有成员或函数(#)
 
+JS的Class本质上也是一个Function, 只不过把`constructor`体现的更明显，其中`super`关键字也可以在普通Object中使用。
+
+## 参考
+
++ [The Modern JavaScript Tutorial](https://javascript.info/)
