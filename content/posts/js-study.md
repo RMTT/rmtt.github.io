@@ -2,7 +2,7 @@
 categories:
 - Programming
 - JavaScript
-data: "2021-01-11"
+date: "2021-01-11"
 description: JS study conclude
 tags:
 - javascript
