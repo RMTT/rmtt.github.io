@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Programming - Category - RMT&#39;s Blog</title>
+        <link>/categories/programming/</link>
+        <description>Programming - Category - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="/categories/programming/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript学习总结</title>
+    <link>/js-study/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/js-study/</guid>
+    <description><![CDATA[JavaScript学习总结 基础语法 js基础的语法和C/C++等众多语言类似，有8种基本类型： string number boolean null undefined object symbol bigint 以及流程控制和循环语句等： if switch]]></description>
+</item></channel>
+</rss>

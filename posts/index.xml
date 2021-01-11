@@ -46,5 +46,12 @@
     <author>Author</author>
     <guid>/gpu-basic/</guid>
     <description><![CDATA[因为最近要写一篇GPU方面的论文，所以找了一些资料慢慢看 参考：GPU Technology Trends and Future Requirements 虽然是多年前的文章，不过讲得很细～ GPU的发展 GPU的基本功能]]></description>
+</item><item>
+    <title>JavaScript学习总结</title>
+    <link>/js-study/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/js-study/</guid>
+    <description><![CDATA[JavaScript学习总结 基础语法 js基础的语法和C/C++等众多语言类似，有8种基本类型： string number boolean null undefined object symbol bigint 以及流程控制和循环语句等： if switch]]></description>
 </item></channel>
 </rss>
