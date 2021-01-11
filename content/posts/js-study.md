@@ -69,3 +69,22 @@ let b = a();
 
 当如上代码执行时，会先创建一个`a`的Environment，然后再创建被返回的那个匿名函数的Environment，因为匿名函数被`b`引用，而a的Environment会被匿名函数引用，便形成了一个闭包。
 
+### Prototype
+
+JS中的`prototype`是`Object`的一个特殊的属性，当访问`Object`的属性或者函数时，如果没有找到相应的，则会去`prototype`中寻找，因此我们可以用`prototype`来实现继承关系。因为`prototype`本身也是一个`Object`，所以可以有很多层的继承。实例的`__proto__`属性是真正的`prototype`的一个setter/getter，对于真正的prototype，一般用`[[Prototype]]`表示。
+
+在函数和Class中，有一个`prototype`的属性，注意这个属性并不是上面所讲的`prototype`。函数和Class的`prototype`属性是用来给实例的`__proto__`或者说`[[Prototype]]`赋值的，需要使用`new`操作符。比如：
+
+```javascript
+function User(){
+    this.name = "John";
+}
+User.prototype = {
+    name: "IIa"
+}
+let user = new User;
+console.log(User.prototype == user.__proto__);
+```
+
+
+
