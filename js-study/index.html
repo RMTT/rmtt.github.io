@@ -11,7 +11,7 @@
 <meta property="og:url" content="/js-study/" />
 <meta property="og:image" content="/logo.png"/>
 <meta property="article:published_time" content="2021-01-11T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-01-11T12:36:36+08:00" />
+<meta property="article:modified_time" content="2021-01-11T13:17:07+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/js-study\/"
-        },"genre": "posts","keywords": "javascript","wordcount":  786 ,
-        "url": "\/js-study\/","datePublished": "2021-01-11T00:00:00+00:00","dateModified": "2021-01-11T12:36:36+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "javascript","wordcount":  1147 ,
+        "url": "\/js-study\/","datePublished": "2021-01-11T00:00:00+00:00","dateModified": "2021-01-11T13:17:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">JavaScript学习总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/programming/"><i class="far fa-folder fa-fw"></i>Programming</a>&nbsp;<a href="/categories/javascript/"><i class="far fa-folder fa-fw"></i>JavaScript</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-11">2021-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;786 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-11">2021-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1147 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -125,6 +125,7 @@
             <li><a href="#closure">Closure</a></li>
           </ul>
         </li>
+        <li><a href="#prototype">Prototype</a></li>
       </ul>
     </li>
   </ul>
@@ -193,12 +194,37 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>当如上代码执行时，会先创建一个<code>a</code>的Environment，然后再创建被返回的那个匿名函数的Environment，因为匿名函数被<code>b</code>引用，而a的Environment会被匿名函数引用，便形成了一个闭包。</p>
-</div><div class="post-footer" id="post-footer">
+<h3 id="prototype">Prototype</h3>
+<p>JS中的<code>prototype</code>是<code>Object</code>的一个特殊的属性，当访问<code>Object</code>的属性或者函数时，如果没有找到相应的，则会去<code>prototype</code>中寻找，因此我们可以用<code>prototype</code>来实现继承关系。因为<code>prototype</code>本身也是一个<code>Object</code>，所以可以有很多层的继承。实例的<code>__proto__</code>属性是真正的<code>prototype</code>的一个setter/getter，对于真正的prototype，一般用<code>[[Prototype]]</code>表示。</p>
+<p>在函数和Class中，有一个<code>prototype</code>的属性，注意这个属性并不是上面所讲的<code>prototype</code>。函数和Class的<code>prototype</code>属性是用来给实例的<code>__proto__</code>或者说<code>[[Prototype]]</code>赋值的，需要使用<code>new</code>操作符。比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">User</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&#34;John&#34;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;IIa&#34;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">==</span> <span class="nx">user</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-01-11&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/18971ea6e426edceea2b89ad13d3e61e1d10c15b" target="_blank" title="commit by RMT(d.rong@outlook.com) 18971ea6e426edceea2b89ad13d3e61e1d10c15b: update js-study">
-                                    <i class="fas fa-hashtag fa-fw"></i>18971ea</a></span>
+                <span>Updated on 2021-01-11&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/41167b58dbcba3153c75f7ba6982616e1a836e66" target="_blank" title="commit by RMT(d.rong@outlook.com) 41167b58dbcba3153c75f7ba6982616e1a836e66: update js-study">
+                                    <i class="fas fa-hashtag fa-fw"></i>41167b5</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
