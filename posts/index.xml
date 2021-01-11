@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 08 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 11 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript学习总结</title>
+    <link>/js-study/</link>
+    <pubDate>Mon, 11 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/js-study/</guid>
+    <description><![CDATA[JavaScript学习总结 基础语法 js基础的语法和C/C++等众多语言类似，有8种基本类型： string number boolean null undefined object symbol bigint 以及流程控制和循环语句等： if switch]]></description>
+</item><item>
     <title>红黑树(C&#43;&#43;)</title>
     <link>/rbt/</link>
     <pubDate>Sun, 08 Nov 2020 00:00:00 &#43;0000</pubDate>
@@ -46,12 +53,5 @@
     <author>Author</author>
     <guid>/gpu-basic/</guid>
     <description><![CDATA[因为最近要写一篇GPU方面的论文，所以找了一些资料慢慢看 参考：GPU Technology Trends and Future Requirements 虽然是多年前的文章，不过讲得很细～ GPU的发展 GPU的基本功能]]></description>
-</item><item>
-    <title>JavaScript学习总结</title>
-    <link>/js-study/</link>
-    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/js-study/</guid>
-    <description><![CDATA[JavaScript学习总结 基础语法 js基础的语法和C/C++等众多语言类似，有8种基本类型： string number boolean null undefined object symbol bigint 以及流程控制和循环语句等： if switch]]></description>
 </item></channel>
 </rss>
