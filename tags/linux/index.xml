@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - Tag - RMT&#39;s Blog</title>
+        <link>/tags/linux/</link>
+        <description>Linux - Tag - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 19 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux日常使用 应用推荐</title>
+    <link>/applications-recommand/</link>
+    <pubDate>Tue, 19 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/applications-recommand/</guid>
+    <description><![CDATA[Linux日常使用 应用推荐 阅读+笔记 Masterpdfeditor 全平台的PDF编辑器，日常阅读+标注可以满足需求，完整版需付费。 XMind 思维导图软件，全平台，简单好用。 Zotero 文]]></description>
+</item></channel>
+</rss>
