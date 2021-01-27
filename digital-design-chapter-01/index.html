@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>有理数的可数性 - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="有理数的可数性" />
-<meta property="og:description" content="虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，" />
+        <title>数电设计和计算机结构：从0到1 - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="数电设计和计算机结构：从0到1" />
+<meta property="og:description" content="数电设计和计算机结构：从0到1（第一章） 计算机的抽象结构 Application Software: Programs Operating Systems: Device Drivers Architecture: Instructions Registers Microarchitecture: Datapaths Controllers Logic: Adders Memories Digital Circuits: AND Gates/NOT Gates Analog Circuits: Amplifiers Filters Devices: Transistors Diodes Physics: Electrons 二进制 信息量 N种状态需要" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/rational-number-denumerable/" />
+<meta property="og:url" content="/digital-design-chapter-01/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2020-02-29T21:12:19+08:00" />
-<meta property="article:modified_time" content="2020-06-02T16:32:02+08:00" />
+<meta property="article:published_time" content="2021-01-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-27T22:52:38+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="有理数的可数性"/>
-<meta name="twitter:description" content="虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，"/>
+<meta name="twitter:title" content="数电设计和计算机结构：从0到1"/>
+<meta name="twitter:description" content="数电设计和计算机结构：从0到1（第一章） 计算机的抽象结构 Application Software: Programs Operating Systems: Device Drivers Architecture: Instructions Registers Microarchitecture: Datapaths Controllers Logic: Adders Memories Digital Circuits: AND Gates/NOT Gates Analog Circuits: Amplifiers Filters Devices: Transistors Diodes Physics: Electrons 二进制 信息量 N种状态需要"/>
 <meta name="application-name" content="RMT&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/rational-number-denumerable/" /><link rel="prev" href="/gpu-basic/" /><link rel="next" href="/windows-environment/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/digital-design-chapter-01/" /><link rel="prev" href="/applications-recommand/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "有理数的可数性",
+        "headline": "数电设计和计算机结构：从0到1",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/rational-number-denumerable\/"
-        },"genre": "posts","wordcount":  326 ,
-        "url": "\/rational-number-denumerable\/","datePublished": "2020-02-29T21:12:19+08:00","dateModified": "2020-06-02T16:32:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "\/digital-design-chapter-01\/"
+        },"genre": "posts","wordcount":  815 ,
+        "url": "\/digital-design-chapter-01\/","datePublished": "2021-01-27T00:00:00+00:00","dateModified": "2021-01-27T22:52:38+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">有理数的可数性</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mathematics/"><i class="far fa-folder fa-fw"></i>Mathematics</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-02-29">2020-02-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;326 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">数电设计和计算机结构：从0到1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-27">2021-01-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;815 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -115,42 +115,107 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#计算机的抽象结构">计算机的抽象结构</a></li>
+    <li><a href="#二进制">二进制</a>
       <ul>
-        <li><a href="#有理数的可数性证明">有理数的可数性证明</a></li>
+        <li><a href="#信息量">信息量</a></li>
+        <li><a href="#补码">补码</a></li>
+      </ul>
+    </li>
+    <li><a href="#逻辑门">逻辑门</a>
+      <ul>
+        <li><a href="#基本的一些门电路">基本的一些门电路</a></li>
+        <li><a href="#logical-level">Logical level</a>
+          <ul>
+            <li><a href="#逻辑门的输入输出电压">逻辑门的输入输出电压</a></li>
+            <li><a href="#如何选择v_olv_oh等">如何选择$V_{OL}$、$V_{OH}$等</a></li>
+            <li><a href="#一些标准">一些标准</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，所以记录一下。</p>
-<h3 id="有理数的可数性证明">有理数的可数性证明</h3>
-<p>众所周知，有理数都可以写成$ \frac{p}{q} $的形式，其中p和q都是自然数。对于一个大于1的正整数x，将x表示为$x=p + q$共有$x-1$种表示 方式。对于所有的$x=2,3,4,\dots$，我们将p和q构造成分数$\frac{p}{q}$，并按照p从小到大排列，则可以得到如下序列(忽略p和q有大于1的公因数的情况)：</p>
-<p>$$\frac{1}{1},\frac{1}{2},\frac{2}{1},\frac{3}{1},\frac{1}{3},\frac{1}{4},\frac{2}{3},\frac{3}{2},\frac{4}{1},\frac{1}{5},\frac{5}{1},\frac{1}{6},\frac{2}{5}\dots$$</p>
-<p>或许从这里还看不出这个序列已经包含了所有大于0的有理数，那么可以看如下的规律：</p>
+            </div><div class="content" id="content"><h1 id="数电设计和计算机结构从0到1第一章">数电设计和计算机结构：从0到1（第一章）</h1>
+<h2 id="计算机的抽象结构">计算机的抽象结构</h2>
+<ul>
+<li>Application Software: Programs</li>
+<li>Operating Systems: Device Drivers</li>
+<li>Architecture: Instructions Registers</li>
+<li>Microarchitecture: Datapaths Controllers</li>
+<li>Logic: Adders Memories</li>
+<li>Digital Circuits: AND Gates/NOT Gates</li>
+<li>Analog Circuits: Amplifiers Filters</li>
+<li>Devices: Transistors Diodes</li>
+<li>Physics: Electrons</li>
+</ul>
+<h2 id="二进制">二进制</h2>
+<h3 id="信息量">信息量</h3>
+<p>N种状态需要$ log_2{N} $个Bit</p>
+<h3 id="补码">补码</h3>
+<p>我们一般学习补码都是分正数和负数，正数不变，负数将对应的绝对值按位取反再加1。不过在这本书中学到了一个新的角度：将MSB(二进制最高位)的全值当成$  -2^{N-1}$即可，这样看补码的话也更直观一些。</p>
+<h2 id="逻辑门">逻辑门</h2>
+<h3 id="基本的一些门电路">基本的一些门电路</h3>
+<ul>
+<li>AND</li>
+<li>OR</li>
+<li>NOT</li>
+<li>NAND</li>
+<li>XOR</li>
+<li>NOR</li>
+<li>Buffer</li>
+</ul>
+<h3 id="logical-level">Logical level</h3>
+<p>数字电路处理的是离散量，比如电压只有高电平和低电平（一般用1和0表示），但实际上电路中的电压是连续变化的，那么怎么把连续的量转化为离散的量呢？</p>
+<h4 id="逻辑门的输入输出电压">逻辑门的输入输出电压</h4>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/rational-number-denumerable/1.png"
-        data-srcset="/posts/rational-number-denumerable/1.png, /posts/rational-number-denumerable/1.png 1.5x, /posts/rational-number-denumerable/1.png 2x"
+        data-src="/posts/digital-design-chapter-01/1.png"
+        data-srcset="/posts/digital-design-chapter-01/1.png, /posts/digital-design-chapter-01/1.png 1.5x, /posts/digital-design-chapter-01/1.png 2x"
         data-sizes="auto"
-        alt="/posts/rational-number-denumerable/1.png"
-        title="正有理数的可数性" /></p>
-<p>对于$p=1,2,3,4,\dots$，其分母都包括了所有的自然数。对于负有理数，vice versa.</p>
+        alt="/posts/digital-design-chapter-01/1.png"
+        title="逻辑门的输入输出" /></p>
+<p>逻辑门的输入输出中，所用的高电平和低电平的范围可能会不相同。对于输出，高电平一般是在$V_{OH} - V_{DD}$之间，而低电平是在$GND - V_{OL}$之间。而当门电路读取输入时，低电平一般是在$GND-V_{IL}$之间，高电平是在$V_{IH} - V_{DD}$之间，这样的话，在一套逻辑电路内，必须要有:</p>
+<p>$$ V_{OL} \leq V_{IL} $$</p>
+<p>$$ V_{OH} \leq V_{IH} $$</p>
+<p>而他们的差值就是能容忍的噪声。</p>
+<h4 id="如何选择v_olv_oh等">如何选择$V_{OL}$、$V_{OH}$等</h4>
+<p>对于理想的逻辑电路，低电平就是0，高电平就是$V_{DD}$，所以$V_{OL} = V_{IL} = 0$，$V_{OH} = V_{IH} = V_{DD}$。</p>
+<p>但在实际中，电压是连续变化的，如下图所示（该图是一个NOT逻辑门的电压变化图，V(A)是输入，V(Y)是输出）：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="2.png"
+        data-srcset="2.png, 2.png 1.5x, 2.png 2x"
+        data-sizes="auto"
+        alt="2.png"
+        title="NOT的输入电压与输入电压" /></p>
+<p>一种选择是将斜率为1和-1的点选为临界点，这些点被成为Unity Gain Points。对于在$V_{IL}$和$V_{IH}$之间的区域，被称为禁止区，如果输入的电压在禁止区内，那门电路的行为是无法判断的。</p>
+<h4 id="一些标准">一些标准</h4>
+<p>逻辑门的电压临界值原理上是可以由设计者自己决定，但为了方便不同零件的组合，工业上也有一些常用的标准：</p>
+<ul>
+<li>TTL</li>
+<li>CMOS</li>
+<li>LVTTL</li>
+<li>LVCMOS</li>
+</ul>
+<p>上述标准都有自己的$V_{OL}$、$V_{OH}$、$V_{IL}$、$V_{IH}$等等，不一定能兼容。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-06-02&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/dc7331b9f808275adf80b6cb4943127f9e0a7851" target="_blank" title="commit by RMT(d.rong@outlook.com) dc7331b9f808275adf80b6cb4943127f9e0a7851: update gushici">
-                                    <i class="fas fa-hashtag fa-fw"></i>dc7331b</a></span>
+                <span>Updated on 2021-01-27&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/3128bcac999e2fee553cbf89563c066bb7f68328" target="_blank" title="commit by RMT(d.rong@outlook.com) 3128bcac999e2fee553cbf89563c066bb7f68328: add digital design chapter 01">
+                                    <i class="fas fa-hashtag fa-fw"></i>3128bca</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/rational-number-denumerable/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/digital-design-chapter-01/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/rational-number-denumerable/" data-title="有理数的可数性"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/rational-number-denumerable/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/rational-number-denumerable/" data-title="有理数的可数性" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/rational-number-denumerable/" data-title="有理数的可数性"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/rational-number-denumerable/" data-title="有理数的可数性"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/rational-number-denumerable/" data-title="有理数的可数性" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/rational-number-denumerable/" data-title="有理数的可数性" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/rational-number-denumerable/" data-title="有理数的可数性"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/digital-design-chapter-01/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/digital-design-chapter-01/" data-title="数电设计和计算机结构：从0到1"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -162,8 +227,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/gpu-basic/" class="prev" rel="prev" title="GPU 基础知识"><i class="fas fa-angle-left fa-fw"></i>GPU 基础知识</a>
-            <a href="/windows-environment/" class="next" rel="next" title="Windows10 &#43; Linux开发环境探索">Windows10 &#43; Linux开发环境探索<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/applications-recommand/" class="prev" rel="prev" title="Linux日常使用 应用推荐"><i class="fas fa-angle-left fa-fw"></i>Linux日常使用 应用推荐</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
