@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Distributed System - Tag - RMT&#39;s Blog</title>
+        <link>/tags/distributed-system/</link>
+        <description>Distributed System - Tag - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/distributed-system/" rel="self" type="application/rss+xml" /><item>
+    <title>MIT 6.824 Lec1 分布式：MapReduce</title>
+    <link>/ds-lec1/</link>
+    <pubDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/ds-lec1/</guid>
+    <description><![CDATA[Introduction paper url: http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf Why need distributed parallelism fault tolerance physical security or isolated Basic challenges concurrency partial failture performence Map Reduce 个人理解 MapReduce是一个比较直观而且可以分布式的编程框架，主要过程就是将数据（输入）分发]]></description>
+</item></channel>
+</rss>
