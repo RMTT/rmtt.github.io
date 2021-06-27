@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Algorithm - Category - RMT&#39;s Blog</title>
+        <link>/categories/algorithm/</link>
+        <description>Algorithm - Category - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 27 Jun 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/algorithm/" rel="self" type="application/rss+xml" /><item>
+    <title>算法导论 Chapter1&amp;2</title>
+    <link>/introduction_to_algorithm_chapter12/</link>
+    <pubDate>Sun, 27 Jun 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/introduction_to_algorithm_chapter12/</guid>
+    <description><![CDATA[算法 什么是算法 形式上的定义 Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output. 个人理解 算法是CS中很多技术的基础，也应该是CS的核心所在]]></description>
+</item></channel>
+</rss>

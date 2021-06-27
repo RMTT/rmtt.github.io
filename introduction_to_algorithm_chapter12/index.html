@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>MIT 6.824 Lec1 分布式：MapReduce - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="MIT 6.824 Lec1 分布式：MapReduce" />
-<meta property="og:description" content="Introduction paper url: http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf Why need distributed parallelism fault tolerance physical security or isolated Basic challenges concurrency partial failture performence Map Reduce 个人理解 MapReduce是一个比较直观而且可以分布式的编程框架，主要过程就是将数据（输入）分发" />
+        <title>算法导论 Chapter1&amp;2 - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="算法导论 Chapter1&amp;2" />
+<meta property="og:description" content="算法 什么是算法 形式上的定义 Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output. 个人理解 算法是CS中很多技术的基础，也应该是CS的核心所在" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/ds-lec1/" />
+<meta property="og:url" content="/introduction_to_algorithm_chapter12/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2021-06-19T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-06-19T17:46:48+08:00" />
+<meta property="article:published_time" content="2021-06-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-27T22:09:58+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="MIT 6.824 Lec1 分布式：MapReduce"/>
-<meta name="twitter:description" content="Introduction paper url: http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf Why need distributed parallelism fault tolerance physical security or isolated Basic challenges concurrency partial failture performence Map Reduce 个人理解 MapReduce是一个比较直观而且可以分布式的编程框架，主要过程就是将数据（输入）分发"/>
+<meta name="twitter:title" content="算法导论 Chapter1&amp;2"/>
+<meta name="twitter:description" content="算法 什么是算法 形式上的定义 Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output. 个人理解 算法是CS中很多技术的基础，也应该是CS的核心所在"/>
 <meta name="application-name" content="RMT&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/ds-lec1/" /><link rel="prev" href="/digital-design-chapter-01/" /><link rel="next" href="/introduction_to_algorithm_chapter12/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/introduction_to_algorithm_chapter12/" /><link rel="prev" href="/ds-lec1/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "MIT 6.824 Lec1 分布式：MapReduce",
+        "headline": "算法导论 Chapter1\u00262",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/ds-lec1\/"
-        },"genre": "posts","keywords": "Distributed System","wordcount":  840 ,
-        "url": "\/ds-lec1\/","datePublished": "2021-06-19T00:00:00+00:00","dateModified": "2021-06-19T17:46:48+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "\/introduction_to_algorithm_chapter12\/"
+        },"genre": "posts","keywords": "Algorithm","wordcount":  435 ,
+        "url": "\/introduction_to_algorithm_chapter12\/","datePublished": "2021-06-27T00:00:00+00:00","dateModified": "2021-06-27T22:09:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">MIT 6.824 Lec1 分布式：MapReduce</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/distributed-system/"><i class="far fa-folder fa-fw"></i>Distributed System</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-19">2021-06-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;840 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">算法导论 Chapter1&amp;2</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>Algorithm</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-27">2021-06-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;435 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -115,90 +115,69 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#why-need-distributed">Why need distributed</a></li>
-    <li><a href="#basic-challenges">Basic challenges</a></li>
-    <li><a href="#map-reduce">Map Reduce</a>
+    <li><a href="#什么是算法">什么是算法</a>
       <ul>
+        <li><a href="#形式上的定义">形式上的定义</a></li>
         <li><a href="#个人理解">个人理解</a></li>
-        <li><a href="#关键点">关键点</a>
-          <ul>
-            <li><a href="#容错">容错</a>
-              <ul>
-                <li><a href="#worker容错">Worker容错</a></li>
-                <li><a href="#master容错">Master容错</a></li>
-              </ul>
-            </li>
-            <li><a href="#任务备份">任务备份</a></li>
-          </ul>
-        </li>
-        <li><a href="#personal-idea">personal idea</a></li>
+      </ul>
+    </li>
+    <li><a href="#排序问题">排序问题</a>
+      <ul>
+        <li><a href="#插入排序">插入排序</a></li>
+        <li><a href="#归并排序">归并排序</a></li>
+        <li><a href="#归并插入">归并+插入</a></li>
+      </ul>
+    </li>
+    <li><a href="#延伸问题">延伸问题</a>
+      <ul>
+        <li><a href="#逆序对">逆序对</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="introduction">Introduction</h1>
-<blockquote>
-<p>paper url: <a href="http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf">http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf</a></p>
-</blockquote>
-<h2 id="why-need-distributed">Why need distributed</h2>
-<ul>
-<li>parallelism</li>
-<li>fault tolerance</li>
-<li>physical</li>
-<li>security or isolated</li>
-</ul>
-<h2 id="basic-challenges">Basic challenges</h2>
-<ul>
-<li>concurrency</li>
-<li>partial failture</li>
-<li>performence</li>
-</ul>
-<h2 id="map-reduce">Map Reduce</h2>
+            </div><div class="content" id="content"><h1 id="算法">算法</h1>
+<h2 id="什么是算法">什么是算法</h2>
+<h3 id="形式上的定义">形式上的定义</h3>
+<p>Informally, an <strong>algorithm</strong> is any well-defined computational procedure that takes some value, or set of values, as <strong>input</strong> and produces some value, or set of values, as <strong>output</strong>.</p>
 <h3 id="个人理解">个人理解</h3>
-<p>MapReduce是一个比较直观而且可以分布式的编程框架，主要过程就是将数据（输入）分发到不同的task（map过程），然后将所有task的输出收集起来shuffle一下，然后分发给另外的task（reduce过程）。从目前（2021年）来看，这个编程模型的瓶颈应该是中间的shuffle过程，因为数据量非常大的时候，shuffle过程的网络IO量也非常大。</p>
-<h3 id="关键点">关键点</h3>
-<p>MapReduce的编程模型很简单，但Google的论文中最有价值的部分是应该是关于容错和任务备份。</p>
-<h4 id="容错">容错</h4>
-<h5 id="worker容错">Worker容错</h5>
-<p>每个Task可以分为三个状态，<code>idle</code>/<code>in-progress</code>/<code>completed</code>，当task被分配给worker后，会由<code>idle</code>变为<code>in-progress</code>状态，当worker正常完成task时，会由<code>in-progress</code>变为<code>completed</code>。
-当worker因意外或其他原因变得<code>inavaible</code>时，Task将会变成<code>idle</code>状态，然后master就可以将其重新分配给其他worker去完成。</p>
-<h5 id="master容错">Master容错</h5>
-<p>Master的错误比较暴力，直接做几个<code>mirror</code>就行了，如果没有<code>mirror</code>，那么当master出错时，整个系统就会宕机。</p>
-<h4 id="任务备份">任务备份</h4>
-<p>个人觉得是论文里一个不错的点，任务备份是当一个MapReduce操作（个人理解就是map和reduce)完成时，将当前<code>in-progress</code>的Task备份，然后当有空闲的worker时再将备份中的task分配过去执行。这样的好处是可以明显减少因为<code>straggler</code>的存在而导致的性能下降。</p>
-<blockquote>
-<p>straggler指因为磁盘、网络等原因而造成性能下降的Worker</p>
-</blockquote>
-<h3 id="personal-idea">personal idea</h3>
-<p>因为在实际情况中，每个Worker都会因为各种因素而产生性能上的差距。同时，Master中也记录了每个task的完成时间，感觉可以用完成时间的平均值（或者之类的）来将worker放到一颗平衡树里面，然后优先用效率高的worker去完成task。</p>
+<p>算法是CS中很多技术的基础，也应该是CS的核心所在。</p>
+<h2 id="排序问题">排序问题</h2>
+<h3 id="插入排序">插入排序</h3>
+<p>插入排序的过程跟打扑克时起牌的过程差不多，对于位置<code>i</code>的元素，在其前面找到应该插入的位置插入即可，复杂度是$\theta(n^2)$。</p>
+<h3 id="归并排序">归并排序</h3>
+<p>归并排序就是将原序列递归分成多个小序列，然后合并的时候发现每个元素只需要$O(1)$的时间就可以确定其位置，比较次数较插入排序少了很多，所以复杂度比插入排序小，为$\theta(nlogn)$。</p>
+<h3 id="归并插入">归并+插入</h3>
+<p>考虑到算法复杂度的常数，在数据规模较小时，插入排序可能会比归并更优，所以在归并排序中，当子序列规模小于<code>k</code>时，可采用插入排序来完成。</p>
+<h2 id="延伸问题">延伸问题</h2>
+<h3 id="逆序对">逆序对</h3>
+<p>序列中，数值和位置的大小关系不匹配便可以称为一个逆序。思考一下，可以发现插入排序中，元素的比较次数就是序列中逆序对的个数，而归并排序中同样也能推算出所有的比较次数，故可以在$\theta(nlogn)$的复杂度下解决该问题。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-06-19&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/81a6a10e3a6eb3eb95a2cabc5bfa69dd47dd21ed" target="_blank" title="commit by RMT(d.rong@outlook.com) 81a6a10e3a6eb3eb95a2cabc5bfa69dd47dd21ed: add distributed system lec 1">
-                                    <i class="fas fa-hashtag fa-fw"></i>81a6a10</a></span>
+                <span>Updated on 2021-06-27&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/61886cc927f6c7b8d8bc06026d6f7fe256be582a" target="_blank" title="commit by RMT(d.rong@outlook.com) 61886cc927f6c7b8d8bc06026d6f7fe256be582a: add introduction to algorithm chapter1&amp;2">
+                                    <i class="fas fa-hashtag fa-fw"></i>61886cc</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/ds-lec1/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/introduction_to_algorithm_chapter12/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce" data-hashtags="Distributed System"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/ds-lec1/" data-hashtag="Distributed System"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/ds-lec1/" data-title="MIT 6.824 Lec1 分布式：MapReduce"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2" data-hashtags="Algorithm"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/introduction_to_algorithm_chapter12/" data-hashtag="Algorithm"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/introduction_to_algorithm_chapter12/" data-title="算法导论 Chapter1&amp;2"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/distributed-system/">Distributed System</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">Algorithm</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/digital-design-chapter-01/" class="prev" rel="prev" title="数电设计和计算机结构：从0到1"><i class="fas fa-angle-left fa-fw"></i>数电设计和计算机结构：从0到1</a>
-            <a href="/introduction_to_algorithm_chapter12/" class="next" rel="next" title="算法导论 Chapter1&amp;2">算法导论 Chapter1&amp;2<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/ds-lec1/" class="prev" rel="prev" title="MIT 6.824 Lec1 分布式：MapReduce"><i class="fas fa-angle-left fa-fw"></i>MIT 6.824 Lec1 分布式：MapReduce</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
