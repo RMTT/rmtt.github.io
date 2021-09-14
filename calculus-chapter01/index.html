@@ -11,7 +11,7 @@
 <meta property="og:url" content="/calculus-chapter01/" />
 <meta property="og:image" content="/logo.png"/>
 <meta property="article:published_time" content="2021-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-14T23:50:00+08:00" />
+<meta property="article:modified_time" content="2021-09-14T23:55:51+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/calculus-chapter01\/"
-        },"genre": "posts","keywords": "calculus","wordcount":  1160 ,
-        "url": "\/calculus-chapter01\/","datePublished": "2021-09-14T00:00:00+00:00","dateModified": "2021-09-14T23:50:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "calculus","wordcount":  1151 ,
+        "url": "\/calculus-chapter01\/","datePublished": "2021-09-14T00:00:00+00:00","dateModified": "2021-09-14T23:55:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Chapter01-Introduction to Calculus and Analysis Volume I</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mathematics/"><i class="far fa-folder fa-fw"></i>mathematics</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-14">2021-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1160 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-14">2021-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1151 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -127,6 +127,7 @@
         </li>
       </ul>
     </li>
+    <li><a href="#函数的概念">函数的概念</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="introduction-to-basic-conception">Introduction to basic conception</h1>
@@ -138,7 +139,8 @@
 <p>我们已经知道有理数可以用两个整数p和q的商$\frac{p}{q}$来定义，那该如何用已知的有理数或者自然数来定义无理数呢？数学中常用的一种做法是渐进，即找一个无限接近目标的序列，其项数越多，误差就越小。为了取得无理数x的渐进值，我们需要从两边同时靠近它(只考虑一边的话便没有终止条件)，即在其他左右两边各取一个有理数，比如$a_1$和$b_1$, 且$a_1 &lt; x$,$b_1 &gt; x$, 这样，就选取了一个包含x的区间$[a_1, b_1]$。然后，将$[a_1, b_1]$对半分，取其中包含x的区间$[a_2, b_2]$，则$a_1 \le a_2 &lt; x$, $x &lt; b_2 \le b_1$。同样的，我们可以继续二分$[a_2, b_2]$，并不断重复下去，则可以得到任意个包含x的区间，且$[a_n, b_n]$包含于$[a_{n+1}, b_{n+1}]$，我们称这样一个区间序列为**嵌套区间**。很显然，每个区间与x的误差不超过$|b_n - a_n|$。</p>
 <h3 id="小数">小数</h3>
 <p>在前面的嵌套区间中，$a_n &lt; x &lt; b_n$。现在将数轴按以1为单位标记，然后将每个单位长度区间10等分。假设$0 \le x \le 1$，且x肯定在$[0, 1]$区间10等分后的某个小区间中，假设为$[\frac{a_1}{10},\frac{b_1}{10}]$，则$\frac{a_1}{10} \le x \le \frac{b_1}{10}$。接下来将$[\frac{a_1}{10}, \frac{b_1}{10}]$继续10等分，则会有</p>
-<p>$$\frac{a_1}{10} + \frac{a_2}{100} \le x \le \frac{b_1}{10} + \frac{b_2}{100}$，如此一直重复下去，则有$\frac{a_1}{10} + \frac{a_2}{100} + \dots + \frac{a_n}{10^n} \le x \le \frac{b_1}{10} + \frac{b_2}{100} + \dots + \frac{b_n}{10^n}$$</p>
+<p>$\frac{a_1}{10} + \frac{a_2}{100} \le x \le \frac{b_1}{10} + \frac{b_2}{100}$，如此一直重复下去，则有</p>
+<p>$$\frac{a_1}{10} + \frac{a_2}{100} + \dots + \frac{a_n}{10^n} \le x \le \frac{b_1}{10} + \frac{b_2}{100} + \dots + \frac{b_n}{10^n}$$</p>
 <p>为了方便，我们将其表示为$0.a_1a_2&hellip;a_n \le x \le 0.b_1b_2&hellip;b_n$，这种形式成为小数。</p>
 <h3 id="不等式">不等式</h3>
 <h4 id="三角不等式">三角不等式</h4>
@@ -146,12 +148,13 @@
 <p>$$|a+b| \le |a| + |b|$$</p>
 <h4 id="cauchy-schwarz不等式">Cauchy-Schwarz不等式</h4>
 <p>$$(a_1b_1 + a_2b_2 + \dots + a_nb_n)^2 \le (a_1^2 + a_2^2 + \dots + a_n^2)(b_1^2 + b_2^2 + \dots + b_n^2)$$</p>
+<h2 id="函数的概念">函数的概念</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-09-14&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/6b922101f361c2d141dbbf9599b666d44af6de3b" target="_blank" title="commit by RMT(d.rong@outlook.com) 6b922101f361c2d141dbbf9599b666d44af6de3b: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>6b92210</a></span>
+                <span>Updated on 2021-09-14&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/3853ad97e70d42d2cba6030096e221c654cce0d4" target="_blank" title="commit by RMT(d.rong@outlook.com) 3853ad97e70d42d2cba6030096e221c654cce0d4: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>3853ad9</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
