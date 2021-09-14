@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>calculus - Tag - RMT&#39;s Blog</title>
+        <link>/tags/calculus/</link>
+        <description>calculus - Tag - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/calculus/" rel="self" type="application/rss+xml" /><item>
+    <title>Chapter01-Introduction to Calculus and Analysis Volume I</title>
+    <link>/calculus-chapter01/</link>
+    <pubDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/calculus-chapter01/</guid>
+    <description><![CDATA[Introduction to basic conception The Continuum of Numbers 首先，自然数可以认为是与生俱来的，但是普通的四则运算所产生的结果却不一定是自然运算，比如$1 - 1 = 0$ , $1 - 2 = -1$ , $1\div2 =\fr]]></description>
+</item></channel>
+</rss>

@@ -4,9 +4,16 @@
         <link>/</link>
         <description>RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 27 Jun 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Chapter01-Introduction to Calculus and Analysis Volume I</title>
+    <link>/calculus-chapter01/</link>
+    <pubDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/calculus-chapter01/</guid>
+    <description><![CDATA[Introduction to basic conception The Continuum of Numbers 首先，自然数可以认为是与生俱来的，但是普通的四则运算所产生的结果却不一定是自然运算，比如$1 - 1 = 0$ , $1 - 2 = -1$ , $1\div2 =\fr]]></description>
+</item><item>
     <title>算法导论 Chapter1&amp;2</title>
     <link>/introduction_to_algorithm_chapter12/</link>
     <pubDate>Sun, 27 Jun 2021 00:00:00 &#43;0000</pubDate>
@@ -69,12 +76,5 @@
     <author>Author</author>
     <guid>/windows-environment/</guid>
     <description><![CDATA[为什么要Windows + Linux 其实主要是因为N卡和CUDA，不然直接macOS就行了 (x) 探索经历 Arch + i3wm + kvm 众所周知，Arch是最好的发行版(x)，]]></description>
-</item><item>
-    <title>有理数的可数性</title>
-    <link>/rational-number-denumerable/</link>
-    <pubDate>Sat, 29 Feb 2020 21:12:19 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>/rational-number-denumerable/</guid>
-    <description><![CDATA[虽然知道了有理数集是可数的，但一直都不知道该如何定义一个有理数序列，使得每个有理数都在其中出现至少一次。今天看书的时候了解到了一种构造方法，]]></description>
 </item></channel>
 </rss>
