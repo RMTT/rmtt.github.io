@@ -11,7 +11,7 @@
 <meta property="og:url" content="/calculus-chapter01/" />
 <meta property="og:image" content="/logo.png"/>
 <meta property="article:published_time" content="2021-09-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-09-14T23:55:51+08:00" />
+<meta property="article:modified_time" content="2021-09-15T22:16:52+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/calculus-chapter01\/"
-        },"genre": "posts","keywords": "calculus","wordcount":  1151 ,
-        "url": "\/calculus-chapter01\/","datePublished": "2021-09-14T00:00:00+00:00","dateModified": "2021-09-14T23:55:51+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"genre": "posts","keywords": "calculus","wordcount":  2158 ,
+        "url": "\/calculus-chapter01\/","datePublished": "2021-09-14T00:00:00+00:00","dateModified": "2021-09-15T22:16:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Chapter01-Introduction to Calculus and Analysis Volume I</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mathematics/"><i class="far fa-folder fa-fw"></i>mathematics</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-14">2021-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1151 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-14">2021-09-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2158 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -127,7 +127,32 @@
         </li>
       </ul>
     </li>
-    <li><a href="#函数的概念">函数的概念</a></li>
+    <li><a href="#函数的概念">函数的概念</a>
+      <ul>
+        <li><a href="#定义域值域和连续变量的函数">定义域、值域和连续变量的函数</a></li>
+        <li><a href="#连续">连续</a>
+          <ul>
+            <li><a href="#一致连续">一致连续</a></li>
+            <li><a href="#lispchitz连续">Lispchitz连续</a></li>
+            <li><a href="#holder连续">Holder连续</a></li>
+          </ul>
+        </li>
+        <li><a href="#中值定理">中值定理</a></li>
+      </ul>
+    </li>
+    <li><a href="#初等函数">初等函数</a></li>
+    <li><a href="#数学推导">数学推导</a></li>
+    <li><a href="#序列的极限">序列的极限</a>
+      <ul>
+        <li><a href="#几何级数">几何级数</a></li>
+      </ul>
+    </li>
+    <li><a href="#极限的深入讨论">极限的深入讨论</a>
+      <ul>
+        <li><a href="#极限的有理运算">极限的有理运算</a></li>
+      </ul>
+    </li>
+    <li><a href="#连续变量函数的极限">连续变量函数的极限</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="introduction-to-basic-conception">Introduction to basic conception</h1>
@@ -136,7 +161,7 @@
 <p>有理数的引入使得四则运算的适用范围更广，但有理数是否就能表示生活中所有能见到的物体的度量呢？答案是否定的，比如两个直角边都为1的直角三角形，根据毕达哥拉斯定理，其斜边的平方为$c^2 = 1^2 + 1^2$，但我们无法找到一个有理数，使得其平方为$2$，所以，有理数并不能满足所有的计算。</p>
 <h3 id="real-number-and-nested-interval">Real Number and Nested Interval</h3>
 <p>现在我们用数轴上的点来当作Continuum of Numbers的基本元素，其中每个点都对应一个实数x, 实数之间的大小关系就是其在数轴上的位置关系，比如x在y左边则$x &lt; y$.</p>
-<p>我们已经知道有理数可以用两个整数p和q的商$\frac{p}{q}$来定义，那该如何用已知的有理数或者自然数来定义无理数呢？数学中常用的一种做法是渐进，即找一个无限接近目标的序列，其项数越多，误差就越小。为了取得无理数x的渐进值，我们需要从两边同时靠近它(只考虑一边的话便没有终止条件)，即在其他左右两边各取一个有理数，比如$a_1$和$b_1$, 且$a_1 &lt; x$,$b_1 &gt; x$, 这样，就选取了一个包含x的区间$[a_1, b_1]$。然后，将$[a_1, b_1]$对半分，取其中包含x的区间$[a_2, b_2]$，则$a_1 \le a_2 &lt; x$, $x &lt; b_2 \le b_1$。同样的，我们可以继续二分$[a_2, b_2]$，并不断重复下去，则可以得到任意个包含x的区间，且$[a_n, b_n]$包含于$[a_{n+1}, b_{n+1}]$，我们称这样一个区间序列为**嵌套区间**。很显然，每个区间与x的误差不超过$|b_n - a_n|$。</p>
+<p>我们已经知道有理数可以用两个整数p和q的商$\frac{p}{q}$来定义，那该如何用已知的有理数或者自然数来定义无理数呢？数学中常用的一种做法是渐进，即找一个无限接近目标的序列，其项数越多，误差就越小。为了取得无理数x的渐进值，我们需要从两边同时靠近它(只考虑一边的话便没有终止条件)，即在其他左右两边各取一个有理数，比如$a_1$和$b_1$, 且$a_1 &lt; x$,$b_1 &gt; x$, 这样，就选取了一个包含x的区间$[a_1, b_1]$。然后，将$[a_1, b_1]$对半分，取其中包含x的区间$[a_2, b_2]$，则$a_1 \le a_2 &lt; x$, $x &lt; b_2 \le b_1$。同样的，我们可以继续二分$[a_2, b_2]$，并不断重复下去，则可以得到任意个包含x的区间，且$[a_n, b_n]$包含于$[a_{n+1}, b_{n+1}]$，我们称这样一个区间序列为**嵌套区间** 。很显然，每个区间与x的误差不超过$|b_n - a_n|$。</p>
 <h3 id="小数">小数</h3>
 <p>在前面的嵌套区间中，$a_n &lt; x &lt; b_n$。现在将数轴按以1为单位标记，然后将每个单位长度区间10等分。假设$0 \le x \le 1$，且x肯定在$[0, 1]$区间10等分后的某个小区间中，假设为$[\frac{a_1}{10},\frac{b_1}{10}]$，则$\frac{a_1}{10} \le x \le \frac{b_1}{10}$。接下来将$[\frac{a_1}{10}, \frac{b_1}{10}]$继续10等分，则会有</p>
 <p>$\frac{a_1}{10} + \frac{a_2}{100} \le x \le \frac{b_1}{10} + \frac{b_2}{100}$，如此一直重复下去，则有</p>
@@ -149,12 +174,62 @@
 <h4 id="cauchy-schwarz不等式">Cauchy-Schwarz不等式</h4>
 <p>$$(a_1b_1 + a_2b_2 + \dots + a_nb_n)^2 \le (a_1^2 + a_2^2 + \dots + a_n^2)(b_1^2 + b_2^2 + \dots + b_n^2)$$</p>
 <h2 id="函数的概念">函数的概念</h2>
+<p>函数即为两个集合之间的映射。广义的函数，其集合可以是任何元素，但在本书中，我们只关心由实数组成的各种集合。</p>
+<h3 id="定义域值域和连续变量的函数">定义域、值域和连续变量的函数</h3>
+<ul>
+<li>定义域(Domain)：自变量的集合</li>
+<li>值域(Range)：因变量的集合</li>
+</ul>
+<p>当函数的定义域是由一个或多个interval组成的时候，就成这个函数是连续变量的函数。</p>
+<h3 id="连续">连续</h3>
+<p>函数的连续性，从直观上来看，就是当自变量x有很微小的变化时，对应的因变量$f(x)$也只有微小的变化，不会出现断点。用更形式化的语言来描述的话，就是：</p>
+<p>如果函数f在$x_0$出连续，则对于任意的正实数$\epsilon &gt; 0$，都能找到相应的$\delta &gt; 0$，使得当$|x - x_0| &lt; \delta$时，都有$|f(x) - f(x_0)| &lt; \epsilon$</p>
+<p>当然，认可上面的定义的前提是接受<strong>无穷小</strong>这个概念。</p>
+<h4 id="一致连续">一致连续</h4>
+<p>在连续的形式化证明中，对于任意的$\epsilon &gt; 0$，如果能找到$\delta = \delta(\epsilon)$，即$\delta$的选取与$x_0$无关，则称$f$为一致连续。不难得知，连续函数在闭区间上肯定是一致连续的。</p>
+<h4 id="lispchitz连续">Lispchitz连续</h4>
+<p>在一致连续的前提下，如果$\delta$ 与$\epsilon$成线性关系，就是Lispchitz连续</p>
+<h4 id="holder连续">Holder连续</h4>
+<p>在一致连续的前提下，如果$\delta$与$\epsilon^a$, $0 &lt; a \le 1$成线性关系，则为Holder连续</p>
+<h3 id="中值定理">中值定理</h3>
+<p>假设$f$在某一区间中连续，a,b是区间中的两点，且$a &lt; b $，则对于任一$\eta$，其值在$f(a)$和$f(b)$之间，那么有$a &lt; \xi &lt; b$，使得$f(\xi) = \eta$</p>
+<h2 id="初等函数">初等函数</h2>
+<p>初等函数包含一系列简单的函数和几个常见的超越函数：</p>
+<ul>
+<li>有理函数</li>
+<li>代数函数</li>
+<li>三角函数</li>
+<li>指数函数</li>
+<li>对数函数</li>
+<li>复合函数</li>
+</ul>
+<h2 id="数学推导">数学推导</h2>
+<p>数学推导法来自于自然数，即这样一个概念：</p>
+<p>对于集合$S$, 有如下几个条件：</p>
+<ul>
+<li>1 存在与$S$中</li>
+<li>如果 正整数$x$存在于$S$中，则$x+1$也存在于$S$中</li>
+</ul>
+<p>则$S$包含了所有的自然数</p>
+<h2 id="序列的极限">序列的极限</h2>
+<h3 id="几何级数">几何级数</h3>
+<p>即等比数列的和</p>
+<h2 id="极限的深入讨论">极限的深入讨论</h2>
+<ul>
+<li>发散：即极限趋于无穷大</li>
+<li>收敛：即极限趋于某一个固定的值$X$，或者将序列中的元素减去$X$后，趋于无穷</li>
+</ul>
+<h3 id="极限的有理运算">极限的有理运算</h3>
+<p>对于有理数的四则运算，极限也同样适用。</p>
+<h2 id="连续变量函数的极限">连续变量函数的极限</h2>
+<p>对于连续函数$f$在$x_0$处的极限，可以当作是在$f$的定义域中，任意以$x_0$为极限的序列，如$x_1,x_2,\dots,x_n,\dots$，有如下关系：</p>
+<p>$$\lim_{x \to x_0} f(x) = \lim_{i \to \infty} f(x_i)$$</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-09-14&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/3853ad97e70d42d2cba6030096e221c654cce0d4" target="_blank" title="commit by RMT(d.rong@outlook.com) 3853ad97e70d42d2cba6030096e221c654cce0d4: update">
-                                    <i class="fas fa-hashtag fa-fw"></i>3853ad9</a></span>
+                <span>Updated on 2021-09-15&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/cab0df8b52e3d83b0f77f17a62bb2326c84e1302" target="_blank" title="commit by RMT(d.rong@outlook.com) cab0df8b52e3d83b0f77f17a62bb2326c84e1302: update">
+                                    <i class="fas fa-hashtag fa-fw"></i>cab0df8</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
