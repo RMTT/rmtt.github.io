@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Sep 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Basic of information</title>
+    <link>/computation-structure-01/</link>
+    <pubDate>Sun, 19 Sep 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-01/</guid>
+    <description><![CDATA[Basic of Information 信息是什么 信息是我们接收到的关于确实某个特定事件或者情况的数据。 量化信息 对于随机变量$X_i$，其发生的概率为$p_i$，则其传达的信]]></description>
+</item><item>
     <title>Chapter01-Introduction to Calculus and Analysis Volume I</title>
     <link>/calculus-chapter01/</link>
     <pubDate>Tue, 14 Sep 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/gushici/</guid>
     <description><![CDATA[题龙阳县青草湖 [作者] 唐温如 [朝代] 元 西风吹老洞庭波，一夜湘君白发多。 醉后不知天在水，满船清梦压星河。 无题 [出自] 风云 倚楼听风雨,淡看江湖路]]></description>
-</item><item>
-    <title>Windows10 &#43; Linux开发环境探索</title>
-    <link>/windows-environment/</link>
-    <pubDate>Sat, 07 Mar 2020 01:39:24 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>/windows-environment/</guid>
-    <description><![CDATA[为什么要Windows + Linux 其实主要是因为N卡和CUDA，不然直接macOS就行了 (x) 探索经历 Arch + i3wm + kvm 众所周知，Arch是最好的发行版(x)，]]></description>
 </item></channel>
 </rss>
