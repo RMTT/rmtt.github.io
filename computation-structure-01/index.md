@@ -75,3 +75,7 @@ Hamming distance H等于两个二进制编码中，不同的位数。
 
 假设数据传输中，合法的数据集合为$S$，且$S$中元素的Hamming distance为E, 则该编码系统能检测$\lfloor{\frac{E}{2}}\rfloor$Bits的错误，能纠正$\lfloor\frac{E - 1}{2}\rfloor$Bits的错误。
 
+## Summary
+
+![img](/posts/computation-structure/Slide28.png)
+

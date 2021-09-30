@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Basic of information - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Basic of information" />
-<meta property="og:description" content="Basic of Information 信息是什么 信息是我们接收到的关于确实某个特定事件或者情况的数据。 量化信息 对于随机变量$X_i$，其发生的概率为$p_i$，则其传达的信" />
+        <title>The Digital Abstraction - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="The Digital Abstraction" />
+<meta property="og:description" content="The Digital Abstraction 信息编码 信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/computation-structure-01/" />
+<meta property="og:url" content="/computation-structure-02/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2021-09-19T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-09-30T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-09-30T12:44:37+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="Basic of information"/>
-<meta name="twitter:description" content="Basic of Information 信息是什么 信息是我们接收到的关于确实某个特定事件或者情况的数据。 量化信息 对于随机变量$X_i$，其发生的概率为$p_i$，则其传达的信"/>
+<meta name="twitter:title" content="The Digital Abstraction"/>
+<meta name="twitter:description" content="The Digital Abstraction 信息编码 信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据"/>
 <meta name="application-name" content="RMT&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-01/" /><link rel="prev" href="/calculus-chapter01/" /><link rel="next" href="/computation-structure-02/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-02/" /><link rel="prev" href="/computation-structure-01/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Basic of information",
+        "headline": "The Digital Abstraction",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/computation-structure-01\/"
-        },"genre": "posts","keywords": "MIT Course","wordcount":  600 ,
-        "url": "\/computation-structure-01\/","datePublished": "2021-09-19T00:00:00+00:00","dateModified": "2021-09-30T12:44:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "\/computation-structure-02\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  509 ,
+        "url": "\/computation-structure-02\/","datePublished": "2021-09-30T00:00:00+00:00","dateModified": "2021-09-30T12:44:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -104,9 +104,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Basic of information</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-19">2021-09-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;600 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animated flipInX">The Digital Abstraction</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit6.004/"><i class="far fa-folder fa-fw"></i>MIT6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-30">2021-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;509 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -115,109 +115,43 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#信息是什么">信息是什么</a></li>
-    <li><a href="#量化信息">量化信息</a></li>
-    <li><a href="#数据中的信息">数据中的信息</a></li>
-    <li><a href="#entropy">Entropy</a></li>
-    <li><a href="#meaning-of-entropy">Meaning of Entropy</a></li>
-    <li><a href="#编码">编码</a>
-      <ul>
-        <li><a href="#二叉树编码">二叉树编码</a></li>
-        <li><a href="#定长编码">定长编码</a></li>
-        <li><a href="#2的补码">2的补码</a></li>
-        <li><a href="#变长编码">变长编码</a></li>
-      </ul>
-    </li>
-    <li><a href="#错误检测">错误检测</a>
-      <ul>
-        <li><a href="#hamming-distance">Hamming distance</a></li>
-      </ul>
-    </li>
+    <li><a href="#信息编码">信息编码</a></li>
+    <li><a href="#电压">电压</a></li>
+    <li><a href="#vtc和容错">VTC和容错</a></li>
     <li><a href="#summary">Summary</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="basic-of-information">Basic of Information</h1>
-<h2 id="信息是什么">信息是什么</h2>
-<p>信息是我们接收到的关于确实某个特定事件或者情况的数据。</p>
-<h2 id="量化信息">量化信息</h2>
-<p>对于随机变量$X_i$，其发生的概率为$p_i$，则其传达的信息量为:</p>
-<p>$$I(x_i) = \log_2(\frac{1}{p_i})$$</p>
-<h2 id="数据中的信息">数据中的信息</h2>
-<p>假设收到data的概率$p_{data}$，则</p>
-<p>$$I(data) = \log_2(\frac{1}{p_{data}})$$</p>
-<h2 id="entropy">Entropy</h2>
-<p>信息论中的entropy：</p>
-<p>$$H(X) = \sum_{i=1}^{N}p_i\log_2(\frac{1}{p_i})$$</p>
-<p>其中$X$为随机变量。</p>
-<p>物理中的entropy：</p>
-<p>$$ S = k\ln\Omega $$</p>
-<p>其中，$k$为玻尔兹曼常数</p>
-<h2 id="meaning-of-entropy">Meaning of Entropy</h2>
-<p>为了描述某一个随机变量$X$，需要传输一系列的数据，Entropy就是确定$X_i$发生与否的平均位数，即传输量。</p>
-<h2 id="编码">编码</h2>
-<p>编码就是把一个数据集合映射为一系列二进制字符串。常见的编码是把英文字母用二进制来表示，比如如下表格：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">ABBC的编码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">00</td>
-<td style="text-align:center">01</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">00 01 01 00</td>
-</tr>
-<tr>
-<td style="text-align:center">01</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">000</td>
-<td style="text-align:center">001</td>
-<td style="text-align:center">01 1 1 01</td>
-</tr>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">0 1 1 0（无法确定）</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>编码不能有二义性</p>
-</blockquote>
-<h3 id="二叉树编码">二叉树编码</h3>
-<p>用二叉树的边当作0和1,叶子节点当作编码的值，可以去除二义性。</p>
-<h3 id="定长编码">定长编码</h3>
-<p>所有值的编码长度都相等。</p>
-<h3 id="2的补码">2的补码</h3>
-<p>即将二进制最高位的全值定为$-2^{N-1}$</p>
-<blockquote>
-<p>负数的补码，按位取反再加1,因为$-A = -1 - A + 1$</p>
-</blockquote>
-<h3 id="变长编码">变长编码</h3>
+            </div><div class="content" id="content"><h1 id="the-digital-abstraction">The Digital Abstraction</h1>
+<h2 id="信息编码">信息编码</h2>
+<p>信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据都是二进制，我们也需要一个物理介质来表达和存储这些二进制信息。</p>
+<h2 id="电压">电压</h2>
+<p>目前用来存储和表达二进制信息的物理介质绝大部分都是使用电压，高电平表示1, 低电平表示0。</p>
+<h2 id="vtc和容错">VTC和容错</h2>
+<p>VTC(voltage transfer characteristics)是用来表示一个电子原件的输入和输出电压关系的图，如下是一个<em>Buffer</em>的VTC：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/Slide17.png"
+        data-srcset="/posts/computation-structure/Slide17.png, /posts/computation-structure/Slide17.png 1.5x, /posts/computation-structure/Slide17.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/Slide17.png"
+        title="img" /></p>
+<p>其中$V_{IL},V_{IH},V_{OL},V_{OH}$是一个电子元件最重要的参数，解释如下（这里假设最高电压为1）：</p>
 <ul>
-<li>哈夫曼编码</li>
+<li>$V_{IL}$是低电平的输入有效范围，即如果输入电压为$[0,V_{IL}]$，就会被元件当成0处理。</li>
+<li>$V_{IH}$是高电平的输入有效范围，即如果输入电压为$[V_{IH}, 1]$，就会被元件当成1处理。</li>
+<li>$V_{OL}$是低电平的输出电压，即如果元件想输出0，则其输出电压应该为$[0, V_{OL}]$。</li>
+<li>$V_{OH}$是高电平的输出电压，即如果元件想输出1，则其输出电压应该为$[V_{OH},1]$。</li>
 </ul>
-<h2 id="错误检测">错误检测</h2>
-<h3 id="hamming-distance">Hamming distance</h3>
-<p>Hamming distance H等于两个二进制编码中，不同的位数。</p>
-<p>假设数据传输中，合法的数据集合为$S$，且$S$中元素的Hamming distance为E, 则该编码系统能检测$\lfloor{\frac{E}{2}}\rfloor$Bits的错误，能纠正$\lfloor\frac{E - 1}{2}\rfloor$Bits的错误。</p>
+<p>其中, $min(|V_{OL} - V_{IL}|, |V_{OH} - V_{IH}|)$即为该元件能容忍的噪声范围。</p>
 <h2 id="summary">Summary</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/Slide28.png"
-        data-srcset="/posts/computation-structure/Slide28.png, /posts/computation-structure/Slide28.png 1.5x, /posts/computation-structure/Slide28.png 2x"
+        data-src="/posts/computation-structure/Slide20.png"
+        data-srcset="/posts/computation-structure/Slide20.png, /posts/computation-structure/Slide20.png 1.5x, /posts/computation-structure/Slide20.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/Slide28.png"
+        alt="/posts/computation-structure/Slide20.png"
         title="img" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -230,10 +164,10 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/computation-structure-01/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/computation-structure-02/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-01/" data-title="Basic of information" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-01/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-01/" data-title="Basic of information" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-01/" data-title="Basic of information"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-01/" data-title="Basic of information"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-01/" data-title="Basic of information" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-01/" data-title="Basic of information" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-01/" data-title="Basic of information"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-02/" data-title="The Digital Abstraction" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-02/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-02/" data-title="The Digital Abstraction" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-02/" data-title="The Digital Abstraction"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-02/" data-title="The Digital Abstraction"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-02/" data-title="The Digital Abstraction" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-02/" data-title="The Digital Abstraction" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-02/" data-title="The Digital Abstraction"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -245,8 +179,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/calculus-chapter01/" class="prev" rel="prev" title="Chapter01-Introduction to Calculus and Analysis Volume I"><i class="fas fa-angle-left fa-fw"></i>Chapter01-Introduction to Calculus and Analysis Volume I</a>
-            <a href="/computation-structure-02/" class="next" rel="next" title="The Digital Abstraction">The Digital Abstraction<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/computation-structure-01/" class="prev" rel="prev" title="Basic of information"><i class="fas fa-angle-left fa-fw"></i>Basic of information</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.

@@ -4,7 +4,14 @@
         <link>/tags/mit-course/</link>
         <description>MIT Course - Tag - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 19 Sep 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 30 Sep 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+    <title>The Digital Abstraction</title>
+    <link>/computation-structure-02/</link>
+    <pubDate>Thu, 30 Sep 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-02/</guid>
+    <description><![CDATA[The Digital Abstraction 信息编码 信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据]]></description>
+</item><item>
     <title>Basic of information</title>
     <link>/computation-structure-01/</link>
     <pubDate>Sun, 19 Sep 2021 00:00:00 &#43;0000</pubDate>
