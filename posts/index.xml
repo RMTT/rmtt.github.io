@@ -4,7 +4,15 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 09 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 25 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>CMOS</title>
+    <link>/computation-structure-03/</link>
+    <pubDate>Mon, 25 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-03/</guid>
+    <description><![CDATA[CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
+Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary ]]></description>
+</item><item>
     <title>唐宋诗词1-上官体</title>
     <link>/tangsong01/</link>
     <pubDate>Sat, 09 Oct 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +75,5 @@
     <author>Author</author>
     <guid>/js-study/</guid>
     <description><![CDATA[JavaScript学习总结 基础语法 js基础的语法和C/C++等众多语言类似，有8种基本类型： string number boolean null undefined object symbol bigint 以及流程控制和循环语句等： if switch]]></description>
-</item><item>
-    <title>红黑树(C&#43;&#43;)</title>
-    <link>/rbt/</link>
-    <pubDate>Sun, 08 Nov 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/rbt/</guid>
-    <description><![CDATA[红黑树(C++) 红黑树性质 每个节点只能是红色或者黑色 根节点是黑色 叶子节点是黑色 红色节点的子节点必须是黑色 任一节点到其子树叶子节点的所有简单路]]></description>
 </item></channel>
 </rss>
