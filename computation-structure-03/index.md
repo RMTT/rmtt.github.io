@@ -15,7 +15,7 @@
 
 ### Two Flavors
 
-![](/static/posts/computation-structure/nchannel-two-flavors.png)
+![](/posts/computation-structure/nchannel-two-flavors.png)
 
 ## CMOS 
 
@@ -23,11 +23,11 @@ CMOS is *Complementary Metal Oxide Semiconductor*
 
 ### Two switches
 
-![](/static/posts/computation-structure/cmos-two-switches.png)
+![](/posts/computation-structure/cmos-two-switches.png)
 
 ### Inverter
 
-![](/static/posts/computation-structure/cmos-inverter-vtc.png)
+![](/posts/computation-structure/cmos-inverter-vtc.png)
 
 ### Basic usage of CMOS
 
@@ -39,12 +39,12 @@ CMOS is *Complementary Metal Oxide Semiconductor*
 
 #### Propagation Delay
 
-![](/static/posts/computation-structure/cmos-propagation-delay.png)
+![](/posts/computation-structure/cmos-propagation-delay.png)
 
 #### Contamination Delay
 
-![](/static/posts/computation-structure/contamination-delay.png)
+![](/posts/computation-structure/contamination-delay.png)
 
 ## Summary
 
-![](/static/posts/computation-structure/cmos-summary.png)
+![](/posts/computation-structure/cmos-summary.png)
