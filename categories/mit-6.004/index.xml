@@ -4,7 +4,14 @@
         <link>/categories/mit-6.004/</link>
         <description>MIT 6.004 - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 25 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/mit-6.004/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/mit-6.004/" rel="self" type="application/rss+xml" /><item>
+    <title>Combinational Logic</title>
+    <link>/computation-structure-04/</link>
+    <pubDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-04/</guid>
+    <description><![CDATA[Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表]]></description>
+</item><item>
     <title>CMOS</title>
     <link>/computation-structure-03/</link>
     <pubDate>Mon, 25 Oct 2021 00:00:00 &#43;0000</pubDate>
