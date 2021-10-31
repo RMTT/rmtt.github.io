@@ -1,7 +1,7 @@
 ---
 title: Combinational Logic
 date: 2021-10-31
-catergories:
+categories:
   - Computation Structure
   - MIT 6.004
 tags:
