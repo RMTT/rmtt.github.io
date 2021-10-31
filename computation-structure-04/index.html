@@ -5,34 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>CMOS - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="CMOS" />
-<meta property="og:description" content="CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
-Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary " />
+        <title>Combinational Logic - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Combinational Logic" />
+<meta property="og:description" content="Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/computation-structure-03/" />
+<meta property="og:url" content="/computation-structure-04/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2021-10-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-10-25T13:18:56+08:00" />
+<meta property="article:published_time" content="2021-10-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-31T18:05:42+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="CMOS"/>
-<meta name="twitter:description" content="CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
-Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary "/>
+<meta name="twitter:title" content="Combinational Logic"/>
+<meta name="twitter:description" content="Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表"/>
 <meta name="application-name" content="RMT&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-03/" /><link rel="prev" href="/tangsong01/" /><link rel="next" href="/computation-structure-04/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-04/" /><link rel="prev" href="/computation-structure-03/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "CMOS",
+        "headline": "Combinational Logic",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/computation-structure-03\/"
-        },"genre": "posts","keywords": "MIT Course","wordcount":  27 ,
-        "url": "\/computation-structure-03\/","datePublished": "2021-10-25T00:00:00+00:00","dateModified": "2021-10-25T13:18:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "\/computation-structure-04\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  289 ,
+        "url": "\/computation-structure-04\/","datePublished": "2021-10-31T00:00:00+00:00","dateModified": "2021-10-31T18:05:42+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -106,9 +104,9 @@ Two switches Inverter Basic usage of CMOS Timing specifications Propagation Dela
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">CMOS</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a>&nbsp;<a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-25">2021-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;27 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animated flipInX">Combinational Logic</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-31">2021-10-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;289 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -117,138 +115,176 @@ Two switches Inverter Basic usage of CMOS Timing specifications Propagation Dela
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#mosfet">MOSFET</a>
+    <li><a href="#如何描述电子元件的功能">如何描述电子元件的功能</a></li>
+    <li><a href="#设计数字电路的步骤">设计数字电路的步骤</a></li>
+    <li><a href="#sum-of-products">Sum of products</a>
       <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#characters">Characters</a></li>
-        <li><a href="#two-flavors">Two Flavors</a></li>
-      </ul>
-    </li>
-    <li><a href="#cmos-1">CMOS</a>
-      <ul>
-        <li><a href="#two-switches">Two switches</a></li>
-        <li><a href="#inverter">Inverter</a></li>
-        <li><a href="#basic-usage-of-cmos">Basic usage of CMOS</a></li>
-        <li><a href="#timing-specifications">Timing specifications</a>
+        <li><a href="#卡诺图">卡诺图</a>
           <ul>
-            <li><a href="#propagation-delay">Propagation Delay</a></li>
-            <li><a href="#contamination-delay">Contamination Delay</a></li>
+            <li><a href="#卡诺图化简步骤">卡诺图化简步骤</a></li>
           </ul>
         </li>
       </ul>
     </li>
+    <li><a href="#mux">Mux</a></li>
+    <li><a href="#decoder">Decoder</a></li>
+    <li><a href="#rom">ROM</a></li>
     <li><a href="#summary">Summary</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="cmos">CMOS</h1>
-<h2 id="mosfet">MOSFET</h2>
-<h3 id="overview">Overview</h3>
+            </div><div class="content" id="content"><h1 id="combinational-logic">Combinational Logic</h1>
+<h2 id="如何描述电子元件的功能">如何描述电子元件的功能</h2>
+<ul>
+<li>真值表</li>
+<li>逻辑表达式</li>
+</ul>
+<p>在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。</p>
+<h2 id="设计数字电路的步骤">设计数字电路的步骤</h2>
+<ol>
+<li>写出真值表</li>
+<li>写出逻辑表达式</li>
+<li>用AND/OR/NOT三种基本逻辑门实现，或者用NAND/NOR/NOT三种逻辑门实现</li>
+</ol>
+<p>因为CMOS本身就是Inverting的，所以实际中NAND/NOR更加通用。</p>
+<h2 id="sum-of-products">Sum of products</h2>
+<p>将真值表中为1的项用<em>OR</em>连接起来就得到了相应的逻辑表达式。</p>
+<p>在功能不变的情况下，为了减少逻辑门的数量，也就是减小$t_{pd}$和$t_{cd}$，就需要将逻辑表达式中的项数最小化。</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/nchannel-mosfet.png"
-        data-srcset="/posts/computation-structure/nchannel-mosfet.png, /posts/computation-structure/nchannel-mosfet.png 1.5x, /posts/computation-structure/nchannel-mosfet.png 2x"
+        data-src="/posts/computation-structure/sum-of-products-implementation.png"
+        data-srcset="/posts/computation-structure/sum-of-products-implementation.png, /posts/computation-structure/sum-of-products-implementation.png 1.5x, /posts/computation-structure/sum-of-products-implementation.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/nchannel-mosfet.png"
-        title="N-channel MOSFET" /></p>
-<h3 id="characters">Characters</h3>
+        alt="/posts/computation-structure/sum-of-products-implementation.png"
+        title="/posts/computation-structure/sum-of-products-implementation.png" /></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/nchannel-mosfet-characters.png"
-        data-srcset="/posts/computation-structure/nchannel-mosfet-characters.png, /posts/computation-structure/nchannel-mosfet-characters.png 1.5x, /posts/computation-structure/nchannel-mosfet-characters.png 2x"
+        data-src="/posts/computation-structure/boolean-identities.png"
+        data-srcset="/posts/computation-structure/boolean-identities.png, /posts/computation-structure/boolean-identities.png 1.5x, /posts/computation-structure/boolean-identities.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/nchannel-mosfet-characters.png"
-        title="/posts/computation-structure/nchannel-mosfet-characters.png" /></p>
-<h3 id="two-flavors">Two Flavors</h3>
+        alt="/posts/computation-structure/boolean-identities.png"
+        title="/posts/computation-structure/boolean-identities.png" /></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/nchannel-two-flavors.png"
-        data-srcset="/posts/computation-structure/nchannel-two-flavors.png, /posts/computation-structure/nchannel-two-flavors.png 1.5x, /posts/computation-structure/nchannel-two-flavors.png 2x"
+        data-src="/posts/computation-structure/boolean-minimization.png"
+        data-srcset="/posts/computation-structure/boolean-minimization.png, /posts/computation-structure/boolean-minimization.png 1.5x, /posts/computation-structure/boolean-minimization.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/nchannel-two-flavors.png"
-        title="/posts/computation-structure/nchannel-two-flavors.png" /></p>
-<h2 id="cmos-1">CMOS</h2>
-<p>CMOS is <em>Complementary Metal Oxide Semiconductor</em></p>
-<h3 id="two-switches">Two switches</h3>
+        alt="/posts/computation-structure/boolean-minimization.png"
+        title="/posts/computation-structure/boolean-minimization.png" /></p>
+<h3 id="卡诺图">卡诺图</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/cmos-two-switches.png"
-        data-srcset="/posts/computation-structure/cmos-two-switches.png, /posts/computation-structure/cmos-two-switches.png 1.5x, /posts/computation-structure/cmos-two-switches.png 2x"
+        data-src="/posts/computation-structure/karnaugh-map.png"
+        data-srcset="/posts/computation-structure/karnaugh-map.png, /posts/computation-structure/karnaugh-map.png 1.5x, /posts/computation-structure/karnaugh-map.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/cmos-two-switches.png"
-        title="/posts/computation-structure/cmos-two-switches.png" /></p>
-<h3 id="inverter">Inverter</h3>
+        alt="/posts/computation-structure/karnaugh-map.png"
+        title="Karnaugh-map" /></p>
+<h4 id="卡诺图化简步骤">卡诺图化简步骤</h4>
+<ol>
+<li>
+<p>找出Implicants</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/cmos-inverter-vtc.png"
-        data-srcset="/posts/computation-structure/cmos-inverter-vtc.png, /posts/computation-structure/cmos-inverter-vtc.png 1.5x, /posts/computation-structure/cmos-inverter-vtc.png 2x"
+        data-src="/posts/computation-structure/finding-implicants.png"
+        data-srcset="/posts/computation-structure/finding-implicants.png, /posts/computation-structure/finding-implicants.png 1.5x, /posts/computation-structure/finding-implicants.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/cmos-inverter-vtc.png"
-        title="/posts/computation-structure/cmos-inverter-vtc.png" /></p>
-<h3 id="basic-usage-of-cmos">Basic usage of CMOS</h3>
+        alt="/posts/computation-structure/finding-implicants.png"
+        title="/posts/computation-structure/finding-implicants.png" /></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/basic-usage-of-cmos.png"
-        data-srcset="/posts/computation-structure/basic-usage-of-cmos.png, /posts/computation-structure/basic-usage-of-cmos.png 1.5x, /posts/computation-structure/basic-usage-of-cmos.png 2x"
+        data-src="/posts/computation-structure/finding-prime-implicants.png"
+        data-srcset="/posts/computation-structure/finding-prime-implicants.png, /posts/computation-structure/finding-prime-implicants.png 1.5x, /posts/computation-structure/finding-prime-implicants.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/basic-usage-of-cmos.png"
-        title="/posts/computation-structure/basic-usage-of-cmos.png" /></p>
-<h3 id="timing-specifications">Timing specifications</h3>
+        alt="/posts/computation-structure/finding-prime-implicants.png"
+        title="/posts/computation-structure/finding-prime-implicants.png" /></p>
+</li>
+<li>
+<p>合并</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/cmos-timing-specifications.png"
-        data-srcset="/posts/computation-structure/cmos-timing-specifications.png, /posts/computation-structure/cmos-timing-specifications.png 1.5x, /posts/computation-structure/cmos-timing-specifications.png 2x"
+        data-src="/posts/computation-structure/writing-down-equation.png"
+        data-srcset="/posts/computation-structure/writing-down-equation.png, /posts/computation-structure/writing-down-equation.png 1.5x, /posts/computation-structure/writing-down-equation.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/cmos-timing-specifications.png"
-        title="/posts/computation-structure/cmos-timing-specifications.png" /></p>
-<h4 id="propagation-delay">Propagation Delay</h4>
+        alt="/posts/computation-structure/writing-down-equation.png"
+        title="/posts/computation-structure/writing-down-equation.png" /></p>
+</li>
+<li>
+<p>处理lenient</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/cmos-propagation-delay.png"
-        data-srcset="/posts/computation-structure/cmos-propagation-delay.png, /posts/computation-structure/cmos-propagation-delay.png 1.5x, /posts/computation-structure/cmos-propagation-delay.png 2x"
+        data-src="/static/posts/computation-structure/lenient.png"
+        data-srcset="/static/posts/computation-structure/lenient.png, /static/posts/computation-structure/lenient.png 1.5x, /static/posts/computation-structure/lenient.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/cmos-propagation-delay.png"
-        title="/posts/computation-structure/cmos-propagation-delay.png" /></p>
-<h4 id="contamination-delay">Contamination Delay</h4>
+        alt="/static/posts/computation-structure/lenient.png"
+        title="/static/posts/computation-structure/lenient.png" /></p>
+</li>
+</ol>
+<h2 id="mux">Mux</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/contamination-delay.png"
-        data-srcset="/posts/computation-structure/contamination-delay.png, /posts/computation-structure/contamination-delay.png 1.5x, /posts/computation-structure/contamination-delay.png 2x"
+        data-src="/posts/computation-structure/mux.png"
+        data-srcset="/posts/computation-structure/mux.png, /posts/computation-structure/mux.png 1.5x, /posts/computation-structure/mux.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/contamination-delay.png"
-        title="/posts/computation-structure/contamination-delay.png" /></p>
+        alt="/posts/computation-structure/mux.png"
+        title="/posts/computation-structure/mux.png" /></p>
+<h2 id="decoder">Decoder</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/decoder.png"
+        data-srcset="/posts/computation-structure/decoder.png, /posts/computation-structure/decoder.png 1.5x, /posts/computation-structure/decoder.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/decoder.png"
+        title="/posts/computation-structure/decoder.png" /></p>
+<h2 id="rom">ROM</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/ROM1.png"
+        data-srcset="/posts/computation-structure/ROM1.png, /posts/computation-structure/ROM1.png 1.5x, /posts/computation-structure/ROM1.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/ROM1.png"
+        title="/posts/computation-structure/ROM1.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/ROM2.png"
+        data-srcset="/posts/computation-structure/ROM2.png, /posts/computation-structure/ROM2.png 1.5x, /posts/computation-structure/ROM2.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/ROM2.png"
+        title="/posts/computation-structure/ROM2.png" /></p>
 <h2 id="summary">Summary</h2>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/cmos-summary.png"
-        data-srcset="/posts/computation-structure/cmos-summary.png, /posts/computation-structure/cmos-summary.png 1.5x, /posts/computation-structure/cmos-summary.png 2x"
+        data-src="/posts/computation-structure/summary.png"
+        data-srcset="/posts/computation-structure/summary.png, /posts/computation-structure/summary.png 1.5x, /posts/computation-structure/summary.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/cmos-summary.png"
-        title="/posts/computation-structure/cmos-summary.png" /></p>
+        alt="/posts/computation-structure/summary.png"
+        title="/posts/computation-structure/summary.png" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-10-25&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/b8b2cc78cbdf8b7b97ea27e120bbd10ed818bff8" target="_blank" title="commit by RMT(d.rong@outlook.com) b8b2cc78cbdf8b7b97ea27e120bbd10ed818bff8: update Computation-structure-03">
-                                    <i class="fas fa-hashtag fa-fw"></i>b8b2cc7</a></span>
+                <span>Updated on 2021-10-31&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/2ee3b3f73ad162ba08bc1e1f4765b2008b91823c" target="_blank" title="commit by RMT(d.rong@outlook.com) 2ee3b3f73ad162ba08bc1e1f4765b2008b91823c: update computation-structure-04">
+                                    <i class="fas fa-hashtag fa-fw"></i>2ee3b3f</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/computation-structure-03/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/computation-structure-04/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-03/" data-title="CMOS" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-03/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-03/" data-title="CMOS" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-03/" data-title="CMOS"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-03/" data-title="CMOS"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-03/" data-title="CMOS" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-03/" data-title="CMOS" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-03/" data-title="CMOS"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-04/" data-title="Combinational Logic" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-04/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-04/" data-title="Combinational Logic" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-04/" data-title="Combinational Logic"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-04/" data-title="Combinational Logic"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-04/" data-title="Combinational Logic" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-04/" data-title="Combinational Logic" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-04/" data-title="Combinational Logic"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -260,8 +296,7 @@ Two switches Inverter Basic usage of CMOS Timing specifications Propagation Dela
         </section>
     </div>
 
-    <div class="post-nav"><a href="/tangsong01/" class="prev" rel="prev" title="唐宋诗词1-上官体"><i class="fas fa-angle-left fa-fw"></i>唐宋诗词1-上官体</a>
-            <a href="/computation-structure-04/" class="next" rel="next" title="Combinational Logic">Combinational Logic<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/computation-structure-03/" class="prev" rel="prev" title="CMOS"><i class="fas fa-angle-left fa-fw"></i>CMOS</a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
