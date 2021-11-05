@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Computation Strcture - Category - RMT&#39;s Blog</title>
+        <link>/categories/computation-strcture/</link>
+        <description>Computation Strcture - Category - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-strcture/" rel="self" type="application/rss+xml" /><item>
+    <title>Sequential Logic</title>
+    <link>/computation-structure-05/</link>
+    <pubDate>Fri, 05 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-05/</guid>
+    <description><![CDATA[Sequential Logic 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer]]></description>
+</item></channel>
+</rss>

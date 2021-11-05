@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 05 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Sequential Logic</title>
+    <link>/computation-structure-05/</link>
+    <pubDate>Fri, 05 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-05/</guid>
+    <description><![CDATA[Sequential Logic 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer]]></description>
+</item><item>
     <title>Combinational Logic</title>
     <link>/computation-structure-04/</link>
     <pubDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</pubDate>
@@ -68,12 +75,5 @@ Two switches Inverter Basic usage of CMOS Timing specifications Propagation Dela
     <author>Author</author>
     <guid>/digital-design-chapter-01/</guid>
     <description><![CDATA[数电设计和计算机结构：从0到1（第一章） 计算机的抽象结构 Application Software: Programs Operating Systems: Device Drivers Architecture: Instructions Registers Microarchitecture: Datapaths Controllers Logic: Adders Memories Digital Circuits: AND Gates/NOT Gates Analog Circuits: Amplifiers Filters Devices: Transistors Diodes Physics: Electrons 二进制 信息量 N种状态需要]]></description>
-</item><item>
-    <title>Linux日常使用 应用推荐</title>
-    <link>/applications-recommand/</link>
-    <pubDate>Tue, 19 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/applications-recommand/</guid>
-    <description><![CDATA[Linux日常使用 应用推荐 阅读+笔记 Masterpdfeditor 全平台的PDF编辑器，日常阅读+标注可以满足需求，完整版需付费。 XMind 思维导图软件，全平台，简单好用。 Zotero 文]]></description>
 </item></channel>
 </rss>
