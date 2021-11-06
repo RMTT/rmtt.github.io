@@ -55,7 +55,7 @@ tags:
 
 3. 处理lenient
 
-   ![](/static/posts/computation-structure/lenient.png)
+   ![](/posts/computation-structure/lenient.png)
 
 ## Mux
 
