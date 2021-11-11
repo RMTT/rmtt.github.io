@@ -4,9 +4,16 @@
         <link>/</link>
         <description>RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 07 Nov 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 11 Nov 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Performance Measures</title>
+    <link>/computation-structure-07/</link>
+    <pubDate>Thu, 11 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-07/</guid>
+    <description><![CDATA[Performance Measures 本章主要是讲pipeline的原理以及如何将一般的逻辑电路转换为pipeline，最后简单提到了一下异步电路和同步电路的区别。 Latency and Throughput Latency: the]]></description>
+</item><item>
     <title>Finite State Machine</title>
     <link>/computation-structure-06/</link>
     <pubDate>Sun, 07 Nov 2021 00:00:00 &#43;0000</pubDate>
@@ -70,12 +77,5 @@ Two switches Inverter Basic usage of CMOS Timing specifications Propagation Dela
     <author>Author</author>
     <guid>/introduction_to_algorithm_chapter12/</guid>
     <description><![CDATA[算法 什么是算法 形式上的定义 Informally, an algorithm is any well-defined computational procedure that takes some value, or set of values, as input and produces some value, or set of values, as output. 个人理解 算法是CS中很多技术的基础，也应该是CS的核心所在]]></description>
-</item><item>
-    <title>MIT 6.824 Lec1 分布式：MapReduce</title>
-    <link>/ds-lec1/</link>
-    <pubDate>Sat, 19 Jun 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/ds-lec1/</guid>
-    <description><![CDATA[Introduction paper url: http://nil.csail.mit.edu/6.824/2020/papers/mapreduce.pdf Why need distributed parallelism fault tolerance physical security or isolated Basic challenges concurrency partial failture performence Map Reduce 个人理解 MapReduce是一个比较直观而且可以分布式的编程框架，主要过程就是将数据（输入）分发]]></description>
 </item></channel>
 </rss>

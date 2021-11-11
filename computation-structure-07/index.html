@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Performance Measures - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Performance Measures" />
+<meta property="og:description" content="Performance Measures 本章主要是讲pipeline的原理以及如何将一般的逻辑电路转换为pipeline，最后简单提到了一下异步电路和同步电路的区别。 Latency and Throughput Latency: the" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-07/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-11-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-11T20:34:40+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Performance Measures"/>
+<meta name="twitter:description" content="Performance Measures 本章主要是讲pipeline的原理以及如何将一般的逻辑电路转换为pipeline，最后简单提到了一下异步电路和同步电路的区别。 Latency and Throughput Latency: the"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-07/" /><link rel="prev" href="/computation-structure-06/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Performance Measures",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-07\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  705 ,
+        "url": "\/computation-structure-07\/","datePublished": "2021-11-11T00:00:00+00:00","dateModified": "2021-11-11T20:34:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Performance Measures</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-11">2021-11-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;705 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#latency-and-throughput">Latency and Throughput</a></li>
+    <li><a href="#pipelined-circuites">Pipelined Circuites</a></li>
+    <li><a href="#pipelining-methodology">Pipelining Methodology</a></li>
+    <li><a href="#circuit-interleaving">Circuit Interleaving</a></li>
+    <li><a href="#异步及同步">异步及同步</a></li>
+    <li><a href="#control-structure">Control Structure</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="performance-measures">Performance Measures</h1>
+<p>本章主要是讲<em>pipeline</em>的原理以及如何将一般的逻辑电路转换为<em>pipeline</em>，最后简单提到了一下异步电路和同步电路的区别。</p>
+<h2 id="latency-and-throughput">Latency and Throughput</h2>
+<p><em>Latency</em>: the delay from when an input is established until the output associated with that input becomes valid.</p>
+<p><em>Throughput</em>: The rate at which inputs or outputs are processed.</p>
+<h2 id="pipelined-circuites">Pipelined Circuites</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/back-to-circuits.png"
+        data-srcset="/posts/computation-structure/back-to-circuits.png, /posts/computation-structure/back-to-circuits.png 1.5x, /posts/computation-structure/back-to-circuits.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/back-to-circuits.png"
+        title="/posts/computation-structure/back-to-circuits.png" /></p>
+<p>如上图所示，在计算$P(X)$时，F和G一直处于空闲状态，那么有没有办法把这段时间利用起来呢？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipelined-circuits.png"
+        data-srcset="/posts/computation-structure/pipelined-circuits.png, /posts/computation-structure/pipelined-circuits.png 1.5x, /posts/computation-structure/pipelined-circuits.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipelined-circuits.png"
+        title="/posts/computation-structure/pipelined-circuits.png" /></p>
+<p>我们可以用寄存器来保持F和G的输出，从而在$P(X)$的工作时间内，可以让F和G去进行其他计算。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipelined-diagrams.png"
+        data-srcset="/posts/computation-structure/pipelined-diagrams.png, /posts/computation-structure/pipelined-diagrams.png 1.5x, /posts/computation-structure/pipelined-diagrams.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipelined-diagrams.png"
+        title="/posts/computation-structure/pipelined-diagrams.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipeline-conventions.png"
+        data-srcset="/posts/computation-structure/pipeline-conventions.png, /posts/computation-structure/pipeline-conventions.png 1.5x, /posts/computation-structure/pipeline-conventions.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipeline-conventions.png"
+        title="/posts/computation-structure/pipeline-conventions.png" /></p>
+<h2 id="pipelining-methodology">Pipelining Methodology</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/a-pipelining-methodology.png"
+        data-srcset="/posts/computation-structure/a-pipelining-methodology.png, /posts/computation-structure/a-pipelining-methodology.png 1.5x, /posts/computation-structure/a-pipelining-methodology.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/a-pipelining-methodology.png"
+        title="/posts/computation-structure/a-pipelining-methodology.png" /></p>
+<p>如上是将一般逻辑电路pipeline化的一般步骤</p>
+<h2 id="circuit-interleaving">Circuit Interleaving</h2>
+<p>Pipeline的瓶颈在于$t_{PD}$最大的那个module, 我们可以用如下的方式将两个相同的module组合在一起，提高throughput.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/circuit-interleaving.png"
+        data-srcset="/posts/computation-structure/circuit-interleaving.png, /posts/computation-structure/circuit-interleaving.png 1.5x, /posts/computation-structure/circuit-interleaving.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/circuit-interleaving.png"
+        title="/posts/computation-structure/circuit-interleaving.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/circuit-interleaving-timing.png"
+        data-srcset="/posts/computation-structure/circuit-interleaving-timing.png, /posts/computation-structure/circuit-interleaving-timing.png 1.5x, /posts/computation-structure/circuit-interleaving-timing.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/circuit-interleaving-timing.png"
+        title="/posts/computation-structure/circuit-interleaving-timing.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/circuit-interleaving-timing-2.png"
+        data-srcset="/posts/computation-structure/circuit-interleaving-timing-2.png, /posts/computation-structure/circuit-interleaving-timing-2.png 1.5x, /posts/computation-structure/circuit-interleaving-timing-2.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/circuit-interleaving-timing-2.png"
+        title="/posts/computation-structure/circuit-interleaving-timing-2.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/combine-techniques.png"
+        data-srcset="/posts/computation-structure/combine-techniques.png, /posts/computation-structure/combine-techniques.png 1.5x, /posts/computation-structure/combine-techniques.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/combine-techniques.png"
+        title="/posts/computation-structure/combine-techniques.png" /></p>
+<h2 id="异步及同步">异步及同步</h2>
+<p>同一个module对于不同的输入，所需要的时间可能也不一样。按之前的CLK驱动来设计电路的话，计算CLK的时候需要用module的最长计算时间，才能保证正确性。但对于一些计算较快的输入，这样做肯定是浪费了时间的。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-structure-alternatives.png"
+        data-srcset="/posts/computation-structure/control-structure-alternatives.png, /posts/computation-structure/control-structure-alternatives.png 1.5x, /posts/computation-structure/control-structure-alternatives.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-structure-alternatives.png"
+        title="/posts/computation-structure/control-structure-alternatives.png" /></p>
+<p>上图展示了用同步和异步两种方式来实现一个简单的握手协议，对于异步电路来说，不再需要全局的CLK，所以效率非常高，但实际设计非常困难；对于同步电路来说，不再需要靠CLK来在module之间传输数据，效率也提高了，虽然还是在CLK上升沿才会有数据输入输出，但CLK不需要用最长计算时间的输入来计算了。</p>
+<p>这个简单的握手协议如下：</p>
+<ul>
+<li>In phase 1, when the upstream stage has a new output and GOT-X is deasserted, it asserts its HERE-IS-X signal and then waits to see the downstream stage’s reply on the GOT-X signal.</li>
+<li>In phase 2, the downstream stage, seeing that HERE-IS-X is asserted, asserts GOT-X when it has consumed the available input.</li>
+<li>In phase 3, the downstream stage waits to see the HERE-IS-X go low, indicating that the upstream stage has successfully received the GOT-X signal.</li>
+<li>In phase 4, once HERE-IS-X is deasserted, the downstream stage deasserts GOT-X and the transfer handshake is ready to begin again. Note that the upstream stage waits until it sees the GOT-X deasserted before starting the next handshake.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/selfed-time-example.png"
+        data-srcset="/posts/computation-structure/selfed-time-example.png, /posts/computation-structure/selfed-time-example.png 1.5x, /posts/computation-structure/selfed-time-example.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/selfed-time-example.png"
+        title="/posts/computation-structure/selfed-time-example.png" /></p>
+<h2 id="control-structure">Control Structure</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-structure-taxonomy.png"
+        data-srcset="/posts/computation-structure/control-structure-taxonomy.png, /posts/computation-structure/control-structure-taxonomy.png 1.5x, /posts/computation-structure/control-structure-taxonomy.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-structure-taxonomy.png"
+        title="/posts/computation-structure/control-structure-taxonomy.png" /></p>
+<blockquote>
+<p>想不到图中 Globally timed + asynchronous 的实例QAQ</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/performance-measures-summary.png"
+        data-srcset="/posts/computation-structure/performance-measures-summary.png, /posts/computation-structure/performance-measures-summary.png 1.5x, /posts/computation-structure/performance-measures-summary.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/performance-measures-summary.png"
+        title="/posts/computation-structure/performance-measures-summary.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-11-11&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/6f99129a2e561d353f0915921884686cdeb50136" target="_blank" title="commit by RMT(d.rong@outlook.com) 6f99129a2e561d353f0915921884686cdeb50136: update computation structure 07">
+                                    <i class="fas fa-hashtag fa-fw"></i>6f99129</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-07/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-07/" data-title="Performance Measures" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-07/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-07/" data-title="Performance Measures" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-07/" data-title="Performance Measures"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-07/" data-title="Performance Measures"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-07/" data-title="Performance Measures" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-07/" data-title="Performance Measures" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-07/" data-title="Performance Measures"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-06/" class="prev" rel="prev" title="Finite State Machine"><i class="fas fa-angle-left fa-fw"></i>Finite State Machine</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
