@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Design Tradeoffs - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Design Tradeoffs" />
+<meta property="og:description" content="Design Tradeoffs 课程地址 本章从CMOS的电能消耗出发，讲如何减少不必要的能量损失，同时也讲了很多时间和空间的tradeoff. Power dissipation 电路优化的几个metr" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-08/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-11-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-16T13:19:33+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Design Tradeoffs"/>
+<meta name="twitter:description" content="Design Tradeoffs 课程地址 本章从CMOS的电能消耗出发，讲如何减少不必要的能量损失，同时也讲了很多时间和空间的tradeoff. Power dissipation 电路优化的几个metr"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-08/" /><link rel="prev" href="/computation-structure-07/" /><link rel="next" href="/computation-structure-09/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Design Tradeoffs",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-08\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  714 ,
+        "url": "\/computation-structure-08\/","datePublished": "2021-11-18T00:00:00+00:00","dateModified": "2021-11-16T13:19:33+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Design Tradeoffs</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-18">2021-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;714 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#power-dissipation">Power dissipation</a>
+      <ul>
+        <li><a href="#电路优化的几个metrics">电路优化的几个metrics</a></li>
+        <li><a href="#cmos能耗">CMOS能耗</a></li>
+        <li><a href="#一个减小能耗的简单例子">一个减小能耗的简单例子</a></li>
+      </ul>
+    </li>
+    <li><a href="#carry-select-adder">Carry-select Adder</a></li>
+    <li><a href="#carry-lookahead-addercla">Carry lookahead Adder(CLA)</a></li>
+    <li><a href="#multiplier">Multiplier</a>
+      <ul>
+        <li><a href="#binary-multiplication">binary multiplication</a></li>
+        <li><a href="#pipelined-multiplier">pipelined multiplier</a></li>
+        <li><a href="#carry-save-multiplier">Carry-save multiplier</a></li>
+        <li><a href="#用时序电路减少面积">用时序电路减少面积</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="design-tradeoffs">Design Tradeoffs</h1>
+<blockquote>
+<p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c8/c8s1/" target="_blank" rel="noopener noreffer">课程地址</a></p>
+</blockquote>
+<p>本章从CMOS的电能消耗出发，讲如何减少不必要的能量损失，同时也讲了很多时间和空间的tradeoff.</p>
+<h2 id="power-dissipation">Power dissipation</h2>
+<h3 id="电路优化的几个metrics">电路优化的几个metrics</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/optimizing-your-design.png"
+        data-srcset="/posts/computation-structure/optimizing-your-design.png, /posts/computation-structure/optimizing-your-design.png 1.5x, /posts/computation-structure/optimizing-your-design.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/optimizing-your-design.png"
+        title="/posts/computation-structure/optimizing-your-design.png" /></p>
+<h3 id="cmos能耗">CMOS能耗</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/cmos-static-power-dissipation.png"
+        data-srcset="/posts/computation-structure/cmos-static-power-dissipation.png, /posts/computation-structure/cmos-static-power-dissipation.png 1.5x, /posts/computation-structure/cmos-static-power-dissipation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/cmos-static-power-dissipation.png"
+        title="/posts/computation-structure/cmos-static-power-dissipation.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/cmos-dynamic-power-dissipation.png"
+        data-srcset="/posts/computation-structure/cmos-dynamic-power-dissipation.png, /posts/computation-structure/cmos-dynamic-power-dissipation.png 1.5x, /posts/computation-structure/cmos-dynamic-power-dissipation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/cmos-dynamic-power-dissipation.png"
+        title="/posts/computation-structure/cmos-dynamic-power-dissipation.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/cmos-dynamic-power-dissipation-2.png"
+        data-srcset="/posts/computation-structure/cmos-dynamic-power-dissipation-2.png, /posts/computation-structure/cmos-dynamic-power-dissipation-2.png 1.5x, /posts/computation-structure/cmos-dynamic-power-dissipation-2.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/cmos-dynamic-power-dissipation-2.png"
+        title="/posts/computation-structure/cmos-dynamic-power-dissipation-2.png" /></p>
+<h3 id="一个减小能耗的简单例子">一个减小能耗的简单例子</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/how-can-we-reduce-power.png"
+        data-srcset="/posts/computation-structure/how-can-we-reduce-power.png, /posts/computation-structure/how-can-we-reduce-power.png 1.5x, /posts/computation-structure/how-can-we-reduce-power.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/how-can-we-reduce-power.png"
+        title="/posts/computation-structure/how-can-we-reduce-power.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/fewer-transitions.png"
+        data-srcset="/posts/computation-structure/fewer-transitions.png, /posts/computation-structure/fewer-transitions.png 1.5x, /posts/computation-structure/fewer-transitions.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/fewer-transitions.png"
+        title="/posts/computation-structure/fewer-transitions.png" /></p>
+<h2 id="carry-select-adder">Carry-select Adder</h2>
+<p>设计一个N位的加法器，最直观的设计就是把N个全加器串联。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/adder-example.png"
+        data-srcset="/posts/computation-structure/adder-example.png, /posts/computation-structure/adder-example.png 1.5x, /posts/computation-structure/adder-example.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/adder-example.png"
+        title="/posts/computation-structure/adder-example.png" /></p>
+<p>但是这样的$t_{PD}$是$\theta(N)$级别的。</p>
+<p>现在将一个32位的加法器分成两个16位的部分分别计算再组合，$t_{PD}$就差不多减小了一半。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/carry-select-adder.png"
+        data-srcset="/posts/computation-structure/carry-select-adder.png, /posts/computation-structure/carry-select-adder.png 1.5x, /posts/computation-structure/carry-select-adder.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/carry-select-adder.png"
+        title="/posts/computation-structure/carry-select-adder.png" /></p>
+<p>按这个思路一直二分下去，$t_{PD}$便能达到$O(\log n)$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/32-bits-carry-select-adder.png"
+        data-srcset="/posts/computation-structure/32-bits-carry-select-adder.png, /posts/computation-structure/32-bits-carry-select-adder.png 1.5x, /posts/computation-structure/32-bits-carry-select-adder.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/32-bits-carry-select-adder.png"
+        title="/posts/computation-structure/32-bits-carry-select-adder.png" /></p>
+<h2 id="carry-lookahead-addercla">Carry lookahead Adder(CLA)</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/faster-carry-logic.png"
+        data-srcset="/posts/computation-structure/faster-carry-logic.png, /posts/computation-structure/faster-carry-logic.png 1.5x, /posts/computation-structure/faster-carry-logic.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/faster-carry-logic.png"
+        title="/posts/computation-structure/faster-carry-logic.png" /></p>
+<p>从$C_{out}$的计算公式中可以看出，一个FA的输入可以转换成3个变量$P$,$G$和$C_{in}$ ，其中只有$C_{in}$需要该位的前一位的$C_{out}$。</p>
+<p>如果知道了两个相邻位置的$P$和$G$，那么可以把这两位当作一个整体，计算出这个整体的$P$和$G$，这时$P$和$G$任然还保留着原来的性质，所以，我们可以用倍增来计算整个电路的$P$和$G$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/carry-lookahead-adder.png"
+        data-srcset="/posts/computation-structure/carry-lookahead-adder.png, /posts/computation-structure/carry-lookahead-adder.png 1.5x, /posts/computation-structure/carry-lookahead-adder.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/carry-lookahead-adder.png"
+        title="/posts/computation-structure/carry-lookahead-adder.png" /></p>
+<p>下图是一个8-bits的CLA的G&amp;P generate的部分：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/8-bit-cla-generate-G&amp;P.png"
+        data-srcset="/posts/computation-structure/8-bit-cla-generate-G&amp;P.png, /posts/computation-structure/8-bit-cla-generate-G&amp;P.png 1.5x, /posts/computation-structure/8-bit-cla-generate-G&amp;P.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/8-bit-cla-generate-G&amp;P.png"
+        title="/posts/computation-structure/8-bit-cla-generate-G&amp;P.png" /></p>
+<p>然后是计算Carry的方法：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/8-bit-cla-carry-generation.png"
+        data-srcset="/posts/computation-structure/8-bit-cla-carry-generation.png, /posts/computation-structure/8-bit-cla-carry-generation.png 1.5x, /posts/computation-structure/8-bit-cla-carry-generation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/8-bit-cla-carry-generation.png"
+        title="/posts/computation-structure/8-bit-cla-carry-generation.png" /></p>
+<p>完整版：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/8-bit-cla-complete.png"
+        data-srcset="/posts/computation-structure/8-bit-cla-complete.png, /posts/computation-structure/8-bit-cla-complete.png 1.5x, /posts/computation-structure/8-bit-cla-complete.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/8-bit-cla-complete.png"
+        title="/posts/computation-structure/8-bit-cla-complete.png" /></p>
+<h2 id="multiplier">Multiplier</h2>
+<h3 id="binary-multiplication">binary multiplication</h3>
+<p>就是普通的竖式乘法，但是要注意如果值是补码，那最高位的全值为$-2^{N-1}$而不是$2^{N-1}$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/binary-multiplication.png"
+        data-srcset="/posts/computation-structure/binary-multiplication.png, /posts/computation-structure/binary-multiplication.png 1.5x, /posts/computation-structure/binary-multiplication.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/binary-multiplication.png"
+        title="/posts/computation-structure/binary-multiplication.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/combinational-multiplier.png"
+        data-srcset="/posts/computation-structure/combinational-multiplier.png, /posts/computation-structure/combinational-multiplier.png 1.5x, /posts/computation-structure/combinational-multiplier.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/combinational-multiplier.png"
+        title="/posts/computation-structure/combinational-multiplier.png" /></p>
+<p>如下是值为补码的情况：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/complement-multiplication.png"
+        data-srcset="/posts/computation-structure/complement-multiplication.png, /posts/computation-structure/complement-multiplication.png 1.5x, /posts/computation-structure/complement-multiplication.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/complement-multiplication.png"
+        title="/posts/computation-structure/complement-multiplication.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/complement-multiplier.png"
+        data-srcset="/posts/computation-structure/complement-multiplier.png, /posts/computation-structure/complement-multiplier.png 1.5x, /posts/computation-structure/complement-multiplier.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/complement-multiplier.png"
+        title="/posts/computation-structure/complement-multiplier.png" /></p>
+<h3 id="pipelined-multiplier">pipelined multiplier</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipelined-multiplier.png"
+        data-srcset="/posts/computation-structure/pipelined-multiplier.png, /posts/computation-structure/pipelined-multiplier.png 1.5x, /posts/computation-structure/pipelined-multiplier.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipelined-multiplier.png"
+        title="/posts/computation-structure/pipelined-multiplier.png" /></p>
+<p>虽然pipeline化了，但每个stage的$t_{PD}$还是$O(N)$的，主要问题在于要按行传递carry。</p>
+<h3 id="carry-save-multiplier">Carry-save multiplier</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/carry-save-multiplier.png"
+        data-srcset="/posts/computation-structure/carry-save-multiplier.png, /posts/computation-structure/carry-save-multiplier.png 1.5x, /posts/computation-structure/carry-save-multiplier.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/carry-save-multiplier.png"
+        title="/posts/computation-structure/carry-save-multiplier.png" /></p>
+<p>讲每行需要传递的carry降到下一行（反正都是加在同一列，所以对结果没影响），这样可以将每个stage的$t_{PD}$优化到$O(1)$，但是需要更多的行，也就是面积增加了。</p>
+<h3 id="用时序电路减少面积">用时序电路减少面积</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/sequential-logic-multiplier.png"
+        data-srcset="/posts/computation-structure/sequential-logic-multiplier.png, /posts/computation-structure/sequential-logic-multiplier.png 1.5x, /posts/computation-structure/sequential-logic-multiplier.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/sequential-logic-multiplier.png"
+        title="/posts/computation-structure/sequential-logic-multiplier.png" /></p>
+<p>求和-&gt;移位-&gt;求和。</p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/design-tradeoff-summary.png"
+        data-srcset="/posts/computation-structure/design-tradeoff-summary.png, /posts/computation-structure/design-tradeoff-summary.png 1.5x, /posts/computation-structure/design-tradeoff-summary.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/design-tradeoff-summary.png"
+        title="/posts/computation-structure/design-tradeoff-summary.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-11-16&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/31f3eafbae1071e8ffe730a754cd8ede25d85a2d" target="_blank" title="commit by RMT(d.rong@outlook.com) 31f3eafbae1071e8ffe730a754cd8ede25d85a2d: update computation structure 08">
+                                    <i class="fas fa-hashtag fa-fw"></i>31f3eaf</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-08/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-08/" data-title="Design Tradeoffs" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-08/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-08/" data-title="Design Tradeoffs" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-08/" data-title="Design Tradeoffs"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-08/" data-title="Design Tradeoffs"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-08/" data-title="Design Tradeoffs" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-08/" data-title="Design Tradeoffs" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-08/" data-title="Design Tradeoffs"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-07/" class="prev" rel="prev" title="Performance Measures"><i class="fas fa-angle-left fa-fw"></i>Performance Measures</a>
+            <a href="/computation-structure-09/" class="next" rel="next" title="Designing an instruction set">Designing an instruction set<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

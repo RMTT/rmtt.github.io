@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Designing an instruction set - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Designing an instruction set" />
+<meta property="og:description" content="Designing an instruction set 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c9/c9s1/ 本章用前8章所学的知识设计了一个简单的通用计算机，采用冯诺伊曼结构，即main memory &#43; CPU，而CPU则主要由datapat" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-09/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-11-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-24T20:16:56+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Designing an instruction set"/>
+<meta name="twitter:description" content="Designing an instruction set 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c9/c9s1/ 本章用前8章所学的知识设计了一个简单的通用计算机，采用冯诺伊曼结构，即main memory &#43; CPU，而CPU则主要由datapat"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-09/" /><link rel="prev" href="/computation-structure-08/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Designing an instruction set",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-09\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  786 ,
+        "url": "\/computation-structure-09\/","datePublished": "2021-11-24T00:00:00+00:00","dateModified": "2021-11-24T20:16:56+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Designing an instruction set</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-strcuture/"><i class="far fa-folder fa-fw"></i>Computation Strcuture</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-24">2021-11-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;786 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#datapaths-and-fsms">Datapaths and FSMs</a></li>
+    <li><a href="#programmable-datapath">Programmable Datapath</a></li>
+    <li><a href="#the-von-neumann-model">The von Neumann Model</a></li>
+    <li><a href="#storage">Storage</a></li>
+    <li><a href="#指令和指令集">指令和指令集</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="designing-an-instruction-set">Designing an instruction set</h1>
+<blockquote>
+<p>课程地址: <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c9/c9s1/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c9/c9s1/</a></p>
+</blockquote>
+<p>本章用前8章所学的知识设计了一个简单的通用计算机，采用冯诺伊曼结构，即<em>main memory</em> + <em>CPU</em>，而CPU则主要由<em>datapath</em>(即以ALU为主的计算电路)和<em>control logic</em>(即用ROM和Register实现的FSM控制电路)。整体内容很简单，但是很好玩！</p>
+<h2 id="datapaths-and-fsms">Datapaths and FSMs</h2>
+<p>Let’s start by designing the logic that implements the desired computations — we call this part of the logic the “<em>datapath</em>”.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/datapath-for-factorial.png"
+        data-srcset="/posts/computation-structure/datapath-for-factorial.png, /posts/computation-structure/datapath-for-factorial.png 1.5x, /posts/computation-structure/datapath-for-factorial.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/datapath-for-factorial.png"
+        title="/posts/computation-structure/datapath-for-factorial.png" /></p>
+<p>上图虽然实现了a和b的计算，但还不能控制其状态，即不能在b为0时结束循环，所以需要一个FSM来控制整个计算电路即datapath的状态。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-fsm-for-factorial.png"
+        data-srcset="/posts/computation-structure/control-fsm-for-factorial.png, /posts/computation-structure/control-fsm-for-factorial.png 1.5x, /posts/computation-structure/control-fsm-for-factorial.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-fsm-for-factorial.png"
+        title="/posts/computation-structure/control-fsm-for-factorial.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-fsm-hardware.png"
+        data-srcset="/posts/computation-structure/control-fsm-hardware.png, /posts/computation-structure/control-fsm-hardware.png 1.5x, /posts/computation-structure/control-fsm-hardware.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-fsm-hardware.png"
+        title="/posts/computation-structure/control-fsm-hardware.png" /></p>
+<h2 id="programmable-datapath">Programmable Datapath</h2>
+<p>第一节中设计了一个可以计算介乘的datapath, 然后配上一个简单的FSM, 就可以完成计算任务。但实际中的计算任务有成千上万种，我们不能为每种任务都设计一个单独的datapath。</p>
+<p>首先每种计算都可以分解为ALU的几个基本计算类型(Arithmetic, Bool, Comparable, Shift)，所以就计算来说，一个ALU就差不多够用了。但有的任务可能需要更多的寄存器来保存中间结果，所以增加寄存器数量是必须的。如下是一个简单的可以进行通用计算的datapath.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/a-simple-programmable-datapath.png"
+        data-srcset="/posts/computation-structure/a-simple-programmable-datapath.png, /posts/computation-structure/a-simple-programmable-datapath.png 1.5x, /posts/computation-structure/a-simple-programmable-datapath.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/a-simple-programmable-datapath.png"
+        title="/posts/computation-structure/a-simple-programmable-datapath.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/a-control-fsm-for-factorial.png"
+        data-srcset="/posts/computation-structure/a-control-fsm-for-factorial.png, /posts/computation-structure/a-control-fsm-for-factorial.png 1.5x, /posts/computation-structure/a-control-fsm-for-factorial.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/a-control-fsm-for-factorial.png"
+        title="/posts/computation-structure/a-control-fsm-for-factorial.png" /></p>
+<h2 id="the-von-neumann-model">The von Neumann Model</h2>
+<p>在上一节的模型的基础上，冯诺伊曼引入了主存和输入/输出设备，从而执行数据量更大的计算任务，而且也可以有各种各样的输入输出设备，如下图所示。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/the-von-neumann-model.png"
+        data-srcset="/posts/computation-structure/the-von-neumann-model.png, /posts/computation-structure/the-von-neumann-model.png 1.5x, /posts/computation-structure/the-von-neumann-model.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/the-von-neumann-model.png"
+        title="/posts/computation-structure/the-von-neumann-model.png" /></p>
+<h2 id="storage">Storage</h2>
+<p>冯诺伊曼模型的要点是用主存来存储指令和数据，主存相对于寄存器来说，最主要的优点就是容量大，所以能存储很多条指令。假如一条指令是32位也就是4bytes的话，那么1KB就能存256条指令，1M就能存256000条！</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/stored-program-computer.png"
+        data-srcset="/posts/computation-structure/stored-program-computer.png, /posts/computation-structure/stored-program-computer.png 1.5x, /posts/computation-structure/stored-program-computer.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/stored-program-computer.png"
+        title="/posts/computation-structure/stored-program-computer.png" /></p>
+<p>在冯诺伊曼结构中，有一个专门的<em>PC</em>寄存器，用来存储<em>下一条</em>指令在主存中的地址。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/anatomy-of-von-neumann-computer.png"
+        data-srcset="/posts/computation-structure/anatomy-of-von-neumann-computer.png, /posts/computation-structure/anatomy-of-von-neumann-computer.png 1.5x, /posts/computation-structure/anatomy-of-von-neumann-computer.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/anatomy-of-von-neumann-computer.png"
+        title="/posts/computation-structure/anatomy-of-von-neumann-computer.png" /></p>
+<h2 id="指令和指令集">指令和指令集</h2>
+<p>指令就是用来告诉<em>control logic</em>该干什么，指令集就是按同一标准设计的一大堆指令，可以控制<em>control logic</em>干各种各样的事。指令集相关内容感觉没有太多需要记录的，所以就不记录啦。</p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/beta-isa-summary.png"
+        data-srcset="/posts/computation-structure/beta-isa-summary.png, /posts/computation-structure/beta-isa-summary.png 1.5x, /posts/computation-structure/beta-isa-summary.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/beta-isa-summary.png"
+        title="/posts/computation-structure/beta-isa-summary.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-11-24&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/9b41a64e20dc3425f03e60a18b245a6894daafaa" target="_blank" title="commit by RMT(d.rong@outlook.com) 9b41a64e20dc3425f03e60a18b245a6894daafaa: update computation structure 09">
+                                    <i class="fas fa-hashtag fa-fw"></i>9b41a64</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-09/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-09/" data-title="Designing an instruction set" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-09/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-09/" data-title="Designing an instruction set" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-09/" data-title="Designing an instruction set"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-09/" data-title="Designing an instruction set"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-09/" data-title="Designing an instruction set" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-09/" data-title="Designing an instruction set" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-09/" data-title="Designing an instruction set"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-08/" class="prev" rel="prev" title="Design Tradeoffs"><i class="fas fa-angle-left fa-fw"></i>Design Tradeoffs</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
