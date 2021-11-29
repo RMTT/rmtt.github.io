@@ -4,7 +4,14 @@
         <link>/categories/computation-structure/</link>
         <description>Computation Structure - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 29 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+    <title>Assembly Language</title>
+    <link>/computation-structure-10/</link>
+    <pubDate>Mon, 29 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-10/</guid>
+    <description><![CDATA[Assembly Language 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/ 汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。 本课程中使用的汇编语言叫USAM]]></description>
+</item><item>
     <title>Design Tradeoffs</title>
     <link>/computation-structure-08/</link>
     <pubDate>Thu, 18 Nov 2021 00:00:00 &#43;0000</pubDate>

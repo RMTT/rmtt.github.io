@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Assembly Language - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Assembly Language" />
+<meta property="og:description" content="Assembly Language 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/ 汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。 本课程中使用的汇编语言叫USAM" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-10/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-11-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-29T19:42:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Assembly Language"/>
+<meta name="twitter:description" content="Assembly Language 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/ 汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。 本课程中使用的汇编语言叫USAM"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-10/" /><link rel="prev" href="/computation-structure-09/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Assembly Language",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-10\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  941 ,
+        "url": "\/computation-structure-10\/","datePublished": "2021-11-29T00:00:00+00:00","dateModified": "2021-11-29T19:42:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Assembly Language</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-11-29">2021-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;941 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#fsm的局限">FSM的局限</a></li>
+    <li><a href="#图灵机">图灵机</a></li>
+    <li><a href="#churchs-thesis">Church&rsquo;s Thesis</a></li>
+    <li><a href="#通用图灵机">通用图灵机</a></li>
+    <li><a href="#uncomputability">Uncomputability</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="assembly-language">Assembly Language</h1>
+<blockquote>
+<p>课程地址: <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/</a></p>
+</blockquote>
+<p>汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/assembly-language.png"
+        data-srcset="/posts/computation-structure/assembly-language.png, /posts/computation-structure/assembly-language.png 1.5x, /posts/computation-structure/assembly-language.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/assembly-language.png"
+        title="/posts/computation-structure/assembly-language.png" /></p>
+<p>本课程中使用的汇编语言叫<em>USAM</em>，课程Lab里面有详细的cookbook, 就不再记录了，下面主要记录图灵机相关的内容。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/assembly-language-summary.png"
+        data-srcset="/posts/computation-structure/assembly-language-summary.png, /posts/computation-structure/assembly-language-summary.png 1.5x, /posts/computation-structure/assembly-language-summary.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/assembly-language-summary.png"
+        title="/posts/computation-structure/assembly-language-summary.png" /></p>
+<h2 id="fsm的局限">FSM的局限</h2>
+<p>FSM是一个很强大的计算模型，前面章节中我们已经用电路实现了通用FSM, 那么FSM是否可以计算所有能用数字设备计算的功能或者说函数呢？</p>
+<p>答案是不能，比如简单的括号匹配。因为FSM要靠状态来记住<code>(</code>和<code>)</code>的个数，当有一个长度无穷大的序列时，FSM便无法构造。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/fsm-limitation.png"
+        data-srcset="/posts/computation-structure/fsm-limitation.png, /posts/computation-structure/fsm-limitation.png 1.5x, /posts/computation-structure/fsm-limitation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/fsm-limitation.png"
+        title="/posts/computation-structure/fsm-limitation.png" /></p>
+<p>为了解决这个问题，Alan turing提出了<code>图灵机</code>的模型。</p>
+<h2 id="图灵机">图灵机</h2>
+<p>图灵机的核心还是FSM, 不过现在多了一条无限长的纸带，FSM可以通过存储在纸带上的符号来记录额外的信息，从而避免了状态数过多而无法构造FSM的问题。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/turing-machine.png"
+        data-srcset="/posts/computation-structure/turing-machine.png, /posts/computation-structure/turing-machine.png 1.5x, /posts/computation-structure/turing-machine.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/turing-machine.png"
+        title="/posts/computation-structure/turing-machine.png" /></p>
+<p>因为一段纸带上的符号可以被编码为一个整数，所以图灵机就是一个整数函数$y = TM_I(x)$。</p>
+<p>其中$I$是用来标识特定功能即有特定FSM的图灵机，我们可以将FSM的真值表编码成数字来表示$I$。</p>
+<h2 id="churchs-thesis">Church&rsquo;s Thesis</h2>
+<p>$f(x) computable &lt;=&gt; for some k, all x f(x) = T_k[x]$</p>
+<p>该定理由图灵的老师Church提出，但目前并没有证明，不过已经被普遍接受（可能是还没找到反例吧）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/computability.png"
+        data-srcset="/posts/computation-structure/computability.png, /posts/computation-structure/computability.png 1.5x, /posts/computation-structure/computability.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/computability.png"
+        title="/posts/computation-structure/computability.png" /></p>
+<h2 id="通用图灵机">通用图灵机</h2>
+<p>对于不同的计算任务，其构造的FSM不同，所构造的图灵机便也不同，那么为了各种计算任务，就需要构造各种各样的图灵机（实际上只有FSM不同）。那么存在一种或者一个图灵机，能够计算所有图灵机能计算的函数吗？</p>
+<p>从21世纪的结果来看，当然是存在的！</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/the-universal-function.png"
+        data-srcset="/posts/computation-structure/the-universal-function.png, /posts/computation-structure/the-universal-function.png 1.5x, /posts/computation-structure/the-universal-function.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/the-universal-function.png"
+        title="/posts/computation-structure/the-universal-function.png" /></p>
+<p>如上图所示，$U(k, j) = T_k[j]$是一个Universal Function, 实现这个函数的图灵机便是通用图灵机。</p>
+<p>实际上，这里的关键在于$k$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/universality.png"
+        data-srcset="/posts/computation-structure/universality.png, /posts/computation-structure/universality.png 1.5x, /posts/computation-structure/universality.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/universality.png"
+        title="/posts/computation-structure/universality.png" /></p>
+<p>$k$在这里是表示<code>program</code>，理论上讲就是对FSM的编码，比如用FSM的真值表来编码，而从上层计算机的角度来讲的话，$k$就是可执行的二进制程序，而PC本身就是一个通用图灵机！通用图灵机的计算便是对$k$的interpret，实际上就是把$k$本身的计算步骤走一遍。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/coded-algorithms.png"
+        data-srcset="/posts/computation-structure/coded-algorithms.png, /posts/computation-structure/coded-algorithms.png 1.5x, /posts/computation-structure/coded-algorithms.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/coded-algorithms.png"
+        title="/posts/computation-structure/coded-algorithms.png" /></p>
+<p>现在的各种编码算法，实际上就是把一个FSM编码成整数从而输入给通用图灵机。</p>
+<p>不过由于内存的空间是有限的，所以实际中的计算机还是只能计算数据量不超过内存大小的任务。</p>
+<h2 id="uncomputability">Uncomputability</h2>
+<p>如下是一个不可计算函数的例子，也就是所谓的图灵停机问题。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/uncomputability.png"
+        data-srcset="/posts/computation-structure/uncomputability.png, /posts/computation-structure/uncomputability.png 1.5x, /posts/computation-structure/uncomputability.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/uncomputability.png"
+        title="/posts/computation-structure/uncomputability.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/why-fh-is-uncomputable.png"
+        data-srcset="/posts/computation-structure/why-fh-is-uncomputable.png, /posts/computation-structure/why-fh-is-uncomputable.png 1.5x, /posts/computation-structure/why-fh-is-uncomputable.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/why-fh-is-uncomputable.png"
+        title="/posts/computation-structure/why-fh-is-uncomputable.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-11-29&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/152ba7460cd4a4b285d867422879ae9dd3dd46bb" target="_blank" title="commit by RMT(d.rong@outlook.com) 152ba7460cd4a4b285d867422879ae9dd3dd46bb: add computation structure 10">
+                                    <i class="fas fa-hashtag fa-fw"></i>152ba74</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-10/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-10/" data-title="Assembly Language" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-10/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-10/" data-title="Assembly Language" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-10/" data-title="Assembly Language"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-10/" data-title="Assembly Language"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-10/" data-title="Assembly Language" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-10/" data-title="Assembly Language" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-10/" data-title="Assembly Language"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-09/" class="prev" rel="prev" title="Designing an instruction set"><i class="fas fa-angle-left fa-fw"></i>Designing an instruction set</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
