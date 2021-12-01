@@ -4,7 +4,21 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 29 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Compilers</title>
+    <link>/computation-structure-11/</link>
+    <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-11/</guid>
+    <description><![CDATA[Compilers 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer-]]></description>
+</item><item>
+    <title>Procedures and Stacks</title>
+    <link>/computation-structure-12/</link>
+    <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-12/</guid>
+    <description><![CDATA[Procedures and Stacks 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-compute]]></description>
+</item><item>
     <title>Assembly Language</title>
     <link>/computation-structure-10/</link>
     <pubDate>Mon, 29 Nov 2021 00:00:00 &#43;0000</pubDate>
@@ -61,19 +75,5 @@
     <guid>/computation-structure-03/</guid>
     <description><![CDATA[CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
 Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary ]]></description>
-</item><item>
-    <title>唐宋诗词1-上官体</title>
-    <link>/tangsong01/</link>
-    <pubDate>Sat, 09 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/tangsong01/</guid>
-    <description><![CDATA[上官体 上官仪 背景 上官仪是初唐文学的重要人物，开创了上官体，特点是绮错婉媚，上承虞世南，下启沈佺期和宋之问。不过后来被杨炯批评为有风韵，但无风]]></description>
-</item><item>
-    <title>The Digital Abstraction</title>
-    <link>/computation-structure-02/</link>
-    <pubDate>Thu, 30 Sep 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-02/</guid>
-    <description><![CDATA[The Digital Abstraction 信息编码 信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据]]></description>
 </item></channel>
 </rss>
