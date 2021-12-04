@@ -4,7 +4,14 @@
         <link>/posts/</link>
         <description>All Posts | RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Building the Beta</title>
+    <link>/computation-structure-13/</link>
+    <pubDate>Sat, 04 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-13/</guid>
+    <description><![CDATA[Building the Beta 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-compute]]></description>
+</item><item>
     <title>Compilers</title>
     <link>/computation-structure-11/</link>
     <pubDate>Wed, 01 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,13 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-04/</guid>
     <description><![CDATA[Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表]]></description>
-</item><item>
-    <title>CMOS</title>
-    <link>/computation-structure-03/</link>
-    <pubDate>Mon, 25 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-03/</guid>
-    <description><![CDATA[CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
-Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary ]]></description>
 </item></channel>
 </rss>
