@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Caches and the Memory Hierarchy - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Caches and the Memory Hierarchy" />
+<meta property="og:description" content="Caches and the Memory Hierarchy 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-compu" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-14/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-12-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-07T19:42:19+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Caches and the Memory Hierarchy"/>
+<meta name="twitter:description" content="Caches and the Memory Hierarchy 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-compu"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-14/" /><link rel="prev" href="/computation-structure-13/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Caches and the Memory Hierarchy",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-14\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  743 ,
+        "url": "\/computation-structure-14\/","datePublished": "2021-12-07T00:00:00+00:00","dateModified": "2021-12-07T19:42:19+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Caches and the Memory Hierarchy</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-07">2021-12-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;743 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#存储设备">存储设备</a>
+      <ul>
+        <li><a href="#sram">SRAM</a></li>
+        <li><a href="#dram">DRAM</a></li>
+        <li><a href="#flash">Flash</a></li>
+        <li><a href="#hard-disk">Hard Disk</a></li>
+      </ul>
+    </li>
+    <li><a href="#内存系统">内存系统</a></li>
+    <li><a href="#cache策略">Cache策略</a>
+      <ul>
+        <li><a href="#前提">前提</a></li>
+        <li><a href="#direct-mapped">Direct-Mapped</a></li>
+        <li><a href="#full-associative">Full-Associative</a></li>
+        <li><a href="#set-associative">Set-Associative</a></li>
+      </ul>
+    </li>
+    <li><a href="#policies">Policies</a>
+      <ul>
+        <li><a href="#replacement-policies">Replacement Policies</a></li>
+        <li><a href="#write-policy">Write Policy</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="caches-and-the-memory-hierarchy">Caches and the Memory Hierarchy</h1>
+<blockquote>
+<p>课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c14/c14s1/</p>
+</blockquote>
+<p>本章主要讲了<em>SRAM</em>、<em>DRAM</em>、Flash、HDD的原理和现代CPU的缓存架构。</p>
+<h2 id="存储设备">存储设备</h2>
+<p>PS: 片上的存储设备一般都有bitline和wordline, wordline用来激活指定的存储单元，bitline用来读/写数据。</p>
+<h3 id="sram">SRAM</h3>
+<p>SRAM跟寄存器比较像，都是用正反馈是保持电压。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/static-ram.png"
+        data-srcset="/posts/computation-structure/static-ram.png, /posts/computation-structure/static-ram.png 1.5x, /posts/computation-structure/static-ram.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/static-ram.png"
+        title="/posts/computation-structure/static-ram.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/sram-cell.png"
+        data-srcset="/posts/computation-structure/sram-cell.png, /posts/computation-structure/sram-cell.png 1.5x, /posts/computation-structure/sram-cell.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/sram-cell.png"
+        title="/posts/computation-structure/sram-cell.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/sram-read.png"
+        data-srcset="/posts/computation-structure/sram-read.png, /posts/computation-structure/sram-read.png 1.5x, /posts/computation-structure/sram-read.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/sram-read.png"
+        title="/posts/computation-structure/sram-read.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/sram-write.png"
+        data-srcset="/posts/computation-structure/sram-write.png, /posts/computation-structure/sram-write.png 1.5x, /posts/computation-structure/sram-write.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/sram-write.png"
+        title="sram-write" /></p>
+<h3 id="dram">DRAM</h3>
+<p>DRAM是使用电容来保持电压，体积更小，所以容量更大，但访问速度比SRAM慢，而且需要定时刷新存储的数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/dram-cell.png"
+        data-srcset="/posts/computation-structure/dram-cell.png, /posts/computation-structure/dram-cell.png 1.5x, /posts/computation-structure/dram-cell.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/dram-cell.png"
+        title="/posts/computation-structure/dram-cell.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/dram-write-and-read.png"
+        data-srcset="/posts/computation-structure/dram-write-and-read.png, /posts/computation-structure/dram-write-and-read.png 1.5x, /posts/computation-structure/dram-write-and-read.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/dram-write-and-read.png"
+        title="/posts/computation-structure/dram-write-and-read.png" /></p>
+<h3 id="flash">Flash</h3>
+<p>Flash是使用MOSFET来存储数据，在栅极下加了一层绝缘体，讲电子导入绝缘体，然后根据绝缘体的带电大小来决定数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/flash.png"
+        data-srcset="/posts/computation-structure/flash.png, /posts/computation-structure/flash.png 1.5x, /posts/computation-structure/flash.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/flash.png"
+        title="/posts/computation-structure/flash.png" /></p>
+<h3 id="hard-disk">Hard Disk</h3>
+<p>硬盘（这里指机械硬盘）是用磁化来存储数据。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/hard-disk.png"
+        data-srcset="/posts/computation-structure/hard-disk.png, /posts/computation-structure/hard-disk.png 1.5x, /posts/computation-structure/hard-disk.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/hard-disk.png"
+        title="/posts/computation-structure/hard-disk.png" /></p>
+<h2 id="内存系统">内存系统</h2>
+<p>在现代CPU的架构中，主存一般是速度相对较慢但是体积更小的DRAM组成。不过CPU不会直接跟主存交换数据，在中间可能会有其他几层SRAM来充当缓存，以降低内存的平均访问时间。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/the-memory-hierarchy.png"
+        data-srcset="/posts/computation-structure/the-memory-hierarchy.png, /posts/computation-structure/the-memory-hierarchy.png 1.5x, /posts/computation-structure/the-memory-hierarchy.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/the-memory-hierarchy.png"
+        title="/posts/computation-structure/the-memory-hierarchy.png" /></p>
+<p>但从编程的角度看，有这样两种选择。一是完全隐藏缓存的细节，这样写程序时便可以把内存当成一个单独的设备使用；二是公开缓存细节，由programmer去决定哪些数据放在缓存，哪些放在主存。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/memory-hierarchy-interface.png"
+        data-srcset="/posts/computation-structure/memory-hierarchy-interface.png, /posts/computation-structure/memory-hierarchy-interface.png 1.5x, /posts/computation-structure/memory-hierarchy-interface.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/memory-hierarchy-interface.png"
+        title="/posts/computation-structure/memory-hierarchy-interface.png" /></p>
+<p>现在除了超算，基本都是选择隐藏缓存的细节。</p>
+<h2 id="cache策略">Cache策略</h2>
+<p>既然要隐藏缓存的细节，那么需要用硬件或者软件来自动控制哪些数据应该放在缓存，当缓存命中时，直接返回给CPU，未命中时，缓存应当自主去主存读数据然后缓存起来并返回给CPU. 下面来讨论一下具体的缓存策略.</p>
+<h3 id="前提">前提</h3>
+<p>在模拟测试中, 可以发现这样一个事实:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/the-locality-property.png"
+        data-srcset="/posts/computation-structure/the-locality-property.png, /posts/computation-structure/the-locality-property.png 1.5x, /posts/computation-structure/the-locality-property.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/the-locality-property.png"
+        title="/posts/computation-structure/the-locality-property.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/memory-reference-patterns.png"
+        data-srcset="/posts/computation-structure/memory-reference-patterns.png, /posts/computation-structure/memory-reference-patterns.png 1.5x, /posts/computation-structure/memory-reference-patterns.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/memory-reference-patterns.png"
+        title="/posts/computation-structure/memory-reference-patterns.png" /></p>
+<h3 id="direct-mapped">Direct-Mapped</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/direct-mapped.png"
+        data-srcset="/posts/computation-structure/direct-mapped.png, /posts/computation-structure/direct-mapped.png 1.5x, /posts/computation-structure/direct-mapped.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/direct-mapped.png"
+        title="/posts/computation-structure/direct-mapped.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/block-size.png"
+        data-srcset="/posts/computation-structure/block-size.png, /posts/computation-structure/block-size.png 1.5x, /posts/computation-structure/block-size.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/block-size.png"
+        title="/posts/computation-structure/block-size.png" /></p>
+<h3 id="full-associative">Full-Associative</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/full-associative-cache.png"
+        data-srcset="/posts/computation-structure/full-associative-cache.png, /posts/computation-structure/full-associative-cache.png 1.5x, /posts/computation-structure/full-associative-cache.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/full-associative-cache.png"
+        title="/posts/computation-structure/full-associative-cache.png" /></p>
+<h3 id="set-associative">Set-Associative</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/n-way-associative-cache.png"
+        data-srcset="/posts/computation-structure/n-way-associative-cache.png, /posts/computation-structure/n-way-associative-cache.png 1.5x, /posts/computation-structure/n-way-associative-cache.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/n-way-associative-cache.png"
+        title="/posts/computation-structure/n-way-associative-cache.png" /></p>
+<h2 id="policies">Policies</h2>
+<h3 id="replacement-policies">Replacement Policies</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/replacement-policies.png"
+        data-srcset="/posts/computation-structure/replacement-policies.png, /posts/computation-structure/replacement-policies.png 1.5x, /posts/computation-structure/replacement-policies.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/replacement-policies.png"
+        title="/posts/computation-structure/replacement-policies.png" /></p>
+<h3 id="write-policy">Write Policy</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/write-policy.png"
+        data-srcset="/posts/computation-structure/write-policy.png, /posts/computation-structure/write-policy.png 1.5x, /posts/computation-structure/write-policy.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/write-policy.png"
+        title="/posts/computation-structure/write-policy.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/write-back.png"
+        data-srcset="/posts/computation-structure/write-back.png, /posts/computation-structure/write-back.png 1.5x, /posts/computation-structure/write-back.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/write-back.png"
+        title="/posts/computation-structure/write-back.png" /></p>
+<h2 id="summary">Summary</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/cache-summary.png"
+        data-srcset="/posts/computation-structure/cache-summary.png, /posts/computation-structure/cache-summary.png 1.5x, /posts/computation-structure/cache-summary.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/cache-summary.png"
+        title="/posts/computation-structure/cache-summary.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-12-07&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/f0b2af1b5d940644ae87aa2e362657ee1d6497d7" target="_blank" title="commit by RMT(d.rong@outlook.com) f0b2af1b5d940644ae87aa2e362657ee1d6497d7: update computation structure 14">
+                                    <i class="fas fa-hashtag fa-fw"></i>f0b2af1</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-14/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-14/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-14/" data-title="Caches and the Memory Hierarchy"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-13/" class="prev" rel="prev" title="Building the Beta"><i class="fas fa-angle-left fa-fw"></i>Building the Beta</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
