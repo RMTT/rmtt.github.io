@@ -4,7 +4,14 @@
         <link>/categories/computation-structure/</link>
         <description>Computation Structure - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+    <title>Pipelining the Beta</title>
+    <link>/computation-structure-15/</link>
+    <pubDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-15/</guid>
+    <description><![CDATA[Pipelining the Beta 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/ 本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等. PS: 这章内容是真多]]></description>
+</item><item>
     <title>Caches and the Memory Hierarchy</title>
     <link>/computation-structure-14/</link>
     <pubDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -68,12 +75,5 @@
     <guid>/computation-structure-03/</guid>
     <description><![CDATA[CMOS MOSFET Overview Characters Two Flavors CMOS CMOS is Complementary Metal Oxide Semiconductor
 Two switches Inverter Basic usage of CMOS Timing specifications Propagation Delay Contamination Delay Summary ]]></description>
-</item><item>
-    <title>The Digital Abstraction</title>
-    <link>/computation-structure-02/</link>
-    <pubDate>Thu, 30 Sep 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-02/</guid>
-    <description><![CDATA[The Digital Abstraction 信息编码 信息的种类有各种各样，我们需要找到一种方式来表示这些信息。比如，生物的基因信息是通过DNA来记录和表达，在计算机中，所有的数据]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Pipelining the Beta - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Pipelining the Beta" />
+<meta property="og:description" content="Pipelining the Beta 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/ 本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等. PS: 这章内容是真多" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/computation-structure-15/" />
+<meta property="og:image" content="/logo.png"/>
+<meta property="article:published_time" content="2021-12-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-11T10:32:30+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Pipelining the Beta"/>
+<meta name="twitter:description" content="Pipelining the Beta 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/ 本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等. PS: 这章内容是真多"/>
+<meta name="application-name" content="RMT&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-15/" /><link rel="prev" href="/computation-structure-14/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Pipelining the Beta",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/computation-structure-15\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  411 ,
+        "url": "\/computation-structure-15\/","datePublished": "2021-12-10T00:00:00+00:00","dateModified": "2021-12-11T10:32:30+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "RMT"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/links/"> Links </a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="RMT&#39;s Blog"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/links/" title="">Links</a><a class="menu-item" href="https://github.com/RMTT" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Pipelining the Beta</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-10">2021-12-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;411 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#流水线化">流水线化</a></li>
+    <li><a href="#冲突">冲突</a>
+      <ul>
+        <li><a href="#数据冲突">数据冲突</a>
+          <ul>
+            <li><a href="#strategy-1---stall">Strategy 1 - Stall</a></li>
+            <li><a href="#strategy-2---bypass">Strategy 2 - Bypass</a></li>
+          </ul>
+        </li>
+        <li><a href="#控制逻辑冲突">控制逻辑冲突</a>
+          <ul>
+            <li><a href="#分支预测">分支预测</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#exception-and-interruption">Exception and Interruption</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="pipelining-the-beta">Pipelining the Beta</h1>
+<blockquote>
+<p>课程地址: <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/</a></p>
+</blockquote>
+<p>本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等.</p>
+<p>PS: 这章内容是真多 (</p>
+<h2 id="流水线化">流水线化</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipelined-implementation.png"
+        data-srcset="/posts/computation-structure/pipelined-implementation.png, /posts/computation-structure/pipelined-implementation.png 1.5x, /posts/computation-structure/pipelined-implementation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipelined-implementation.png"
+        title="/posts/computation-structure/pipelined-implementation.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/too-long-course.png"
+        data-srcset="/posts/computation-structure/too-long-course.png, /posts/computation-structure/too-long-course.png 1.5x, /posts/computation-structure/too-long-course.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/too-long-course.png"
+        title="/posts/computation-structure/too-long-course.png" /></p>
+<h2 id="冲突">冲突</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/pipeline-hazards.png"
+        data-srcset="/posts/computation-structure/pipeline-hazards.png, /posts/computation-structure/pipeline-hazards.png 1.5x, /posts/computation-structure/pipeline-hazards.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/pipeline-hazards.png"
+        title="/posts/computation-structure/pipeline-hazards.png" /></p>
+<p>常见的冲突有两种,即数据冲突和控制逻辑冲突. 数据冲突是指当前指令需要的数据暂时还没有写回寄存器或者内存, 控制逻辑冲突是指当要跳转的指令的地址还没计算出来时, 下一个指令的地址应该是多少.</p>
+<h3 id="数据冲突">数据冲突</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/data-hazards.png"
+        data-srcset="/posts/computation-structure/data-hazards.png, /posts/computation-structure/data-hazards.png 1.5x, /posts/computation-structure/data-hazards.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/data-hazards.png"
+        title="/posts/computation-structure/data-hazards.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/resolving-data-hazards.png"
+        data-srcset="/posts/computation-structure/resolving-data-hazards.png, /posts/computation-structure/resolving-data-hazards.png 1.5x, /posts/computation-structure/resolving-data-hazards.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/resolving-data-hazards.png"
+        title="/posts/computation-structure/resolving-data-hazards.png" /></p>
+<h4 id="strategy-1---stall">Strategy 1 - Stall</h4>
+<p>Stall就是当指令运行到流水线的某一个阶段时, 如果检测到需要的数据还没有写回寄存器或者内存, 就在这个阶段阻塞住, 而且前面阶段的指令也要同时阻塞住,  阻塞的同时给下一阶段的IR寄存器输出NOP.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/resolving-data-hazard-1.png"
+        data-srcset="/posts/computation-structure/resolving-data-hazard-1.png, /posts/computation-structure/resolving-data-hazard-1.png 1.5x, /posts/computation-structure/resolving-data-hazard-1.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/resolving-data-hazard-1.png"
+        title="/posts/computation-structure/resolving-data-hazard-1.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/stall-logic.png"
+        data-srcset="/posts/computation-structure/stall-logic.png, /posts/computation-structure/stall-logic.png 1.5x, /posts/computation-structure/stall-logic.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/stall-logic.png"
+        title="/posts/computation-structure/stall-logic.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/resolving-data-hazard-2.png"
+        data-srcset="/posts/computation-structure/resolving-data-hazard-2.png, /posts/computation-structure/resolving-data-hazard-2.png 1.5x, /posts/computation-structure/resolving-data-hazard-2.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/resolving-data-hazard-2.png"
+        title="/posts/computation-structure/resolving-data-hazard-2.png" /></p>
+<h4 id="strategy-2---bypass">Strategy 2 - Bypass</h4>
+<p>虽然每个指令只有在最后的Write Back阶段才会把数据写回寄存器或者内存, 但相关的值在前面的阶段就已经计算出来了, 所以可以直接把这些值bypass到可能需要的地方.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/bypass-logic.png"
+        data-srcset="/posts/computation-structure/bypass-logic.png, /posts/computation-structure/bypass-logic.png 1.5x, /posts/computation-structure/bypass-logic.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/bypass-logic.png"
+        title="/posts/computation-structure/bypass-logic.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/fully-bypassed-pipeline.png"
+        data-srcset="/posts/computation-structure/fully-bypassed-pipeline.png, /posts/computation-structure/fully-bypassed-pipeline.png 1.5x, /posts/computation-structure/fully-bypassed-pipeline.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/fully-bypassed-pipeline.png"
+        title="/posts/computation-structure/fully-bypassed-pipeline.png" /></p>
+<h3 id="控制逻辑冲突">控制逻辑冲突</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-hazard-1.png"
+        data-srcset="/posts/computation-structure/control-hazard-1.png, /posts/computation-structure/control-hazard-1.png 1.5x, /posts/computation-structure/control-hazard-1.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-hazard-1.png"
+        title="/posts/computation-structure/control-hazard-1.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/control-hazard-2.png"
+        data-srcset="/posts/computation-structure/control-hazard-2.png, /posts/computation-structure/control-hazard-2.png 1.5x, /posts/computation-structure/control-hazard-2.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/control-hazard-2.png"
+        title="/posts/computation-structure/control-hazard-2.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/resolving-control-hazards.png"
+        data-srcset="/posts/computation-structure/resolving-control-hazards.png, /posts/computation-structure/resolving-control-hazards.png 1.5x, /posts/computation-structure/resolving-control-hazards.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/resolving-control-hazards.png"
+        title="/posts/computation-structure/resolving-control-hazards.png" /></p>
+<p>Stratege 1和2跟前面数据冲突的处理一样, 这里只记录一下第三个做法, 也就是分支预测.</p>
+<h4 id="分支预测">分支预测</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/resolving-hazards-with-speculation.png"
+        data-srcset="/posts/computation-structure/resolving-hazards-with-speculation.png, /posts/computation-structure/resolving-hazards-with-speculation.png 1.5x, /posts/computation-structure/resolving-hazards-with-speculation.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/resolving-hazards-with-speculation.png"
+        title="/posts/computation-structure/resolving-hazards-with-speculation.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/branch-prediction.png"
+        data-srcset="/posts/computation-structure/branch-prediction.png, /posts/computation-structure/branch-prediction.png 1.5x, /posts/computation-structure/branch-prediction.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/branch-prediction.png"
+        title="/posts/computation-structure/branch-prediction.png" /></p>
+<h2 id="exception-and-interruption">Exception and Interruption</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/computation-structure/exception-and-interrupt-logic.png"
+        data-srcset="/posts/computation-structure/exception-and-interrupt-logic.png, /posts/computation-structure/exception-and-interrupt-logic.png 1.5x, /posts/computation-structure/exception-and-interrupt-logic.png 2x"
+        data-sizes="auto"
+        alt="/posts/computation-structure/exception-and-interrupt-logic.png"
+        title="/posts/computation-structure/exception-and-interrupt-logic.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-12-11&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/b8531e27db46b2b8dd11a8b6595917e7cd8808dd" target="_blank" title="commit by RMT(d.rong@outlook.com) b8531e27db46b2b8dd11a8b6595917e7cd8808dd: update computation structure 15">
+                                    <i class="fas fa-hashtag fa-fw"></i>b8531e2</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/computation-structure-15/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-15/" data-title="Pipelining the Beta" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-15/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-15/" data-title="Pipelining the Beta" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-15/" data-title="Pipelining the Beta"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-15/" data-title="Pipelining the Beta"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-15/" data-title="Pipelining the Beta" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-15/" data-title="Pipelining the Beta" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-15/" data-title="Pipelining the Beta"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mit-course/">MIT Course</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/computation-structure-14/" class="prev" rel="prev" title="Caches and the Memory Hierarchy"><i class="fas fa-angle-left fa-fw"></i>Caches and the Memory Hierarchy</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/RMTT" target="_blank">RMT</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://rmtt-github-io.disqus.com/embed.js" defer></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"RMT's Blog","id-2":"RMT's Blog"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

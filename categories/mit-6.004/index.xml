@@ -4,7 +4,14 @@
         <link>/categories/mit-6.004/</link>
         <description>MIT 6.004 - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/mit-6.004/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/mit-6.004/" rel="self" type="application/rss+xml" /><item>
+    <title>Pipelining the Beta</title>
+    <link>/computation-structure-15/</link>
+    <pubDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-15/</guid>
+    <description><![CDATA[Pipelining the Beta 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/ 本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等. PS: 这章内容是真多]]></description>
+</item><item>
     <title>Caches and the Memory Hierarchy</title>
     <link>/computation-structure-14/</link>
     <pubDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-05/</guid>
     <description><![CDATA[Sequential Logic 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer]]></description>
-</item><item>
-    <title>Combinational Logic</title>
-    <link>/computation-structure-04/</link>
-    <pubDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-04/</guid>
-    <description><![CDATA[Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表]]></description>
 </item></channel>
 </rss>

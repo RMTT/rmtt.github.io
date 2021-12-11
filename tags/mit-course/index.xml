@@ -4,7 +4,14 @@
         <link>/tags/mit-course/</link>
         <description>MIT Course - Tag - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+    <title>Pipelining the Beta</title>
+    <link>/computation-structure-15/</link>
+    <pubDate>Fri, 10 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-15/</guid>
+    <description><![CDATA[Pipelining the Beta 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c15/c15s1/ 本章主要是讲如何讲前面做的Beta cpu流水线化, 以及如何解决流水线中会遇到的数据冲突/控制逻辑冲突等等. PS: 这章内容是真多]]></description>
+</item><item>
     <title>Caches and the Memory Hierarchy</title>
     <link>/computation-structure-14/</link>
     <pubDate>Tue, 07 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-06/</guid>
     <description><![CDATA[Finite State Machine 有穷自动机本身是一个比较简单的概念，不过这里的主要难点是考虑将异步信号转换为同步 课程地址: Finate State Machine 本课程中自动机的表示图 异步时钟 当电路中]]></description>
-</item><item>
-    <title>Sequential Logic</title>
-    <link>/computation-structure-05/</link>
-    <pubDate>Fri, 05 Nov 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-05/</guid>
-    <description><![CDATA[Sequential Logic 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-computer]]></description>
 </item></channel>
 </rss>
