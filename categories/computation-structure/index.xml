@@ -4,7 +4,14 @@
         <link>/categories/computation-structure/</link>
         <description>Computation Structure - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 13 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+    <title>Virtualizing the Processor</title>
+    <link>/computation-structure-17/</link>
+    <pubDate>Mon, 13 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-17/</guid>
+    <description><![CDATA[Virtualizing the Processor 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c17/c17s1/ 本章讲了CPU的&quot;虚拟化&quot;, 不过这里的&quot;虚拟化&quot;是指在同一个CPU上执行多个程序,]]></description>
+</item><item>
     <title>Virtual Memory</title>
     <link>/computation-structure-16/</link>
     <pubDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-06/</guid>
     <description><![CDATA[Finite State Machine 有穷自动机本身是一个比较简单的概念，不过这里的主要难点是考虑将异步信号转换为同步 课程地址: Finate State Machine 本课程中自动机的表示图 异步时钟 当电路中]]></description>
-</item><item>
-    <title>Combinational Logic</title>
-    <link>/computation-structure-04/</link>
-    <pubDate>Sun, 31 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-04/</guid>
-    <description><![CDATA[Combinational Logic 如何描述电子元件的功能 真值表 逻辑表达式 在输入变量比较多的时候，真值表就很难读/写了，所以逻辑表达式更加通用。 设计数字电路的步骤 写出真值表]]></description>
 </item></channel>
 </rss>

@@ -4,7 +4,14 @@
         <link>/tags/mit-course/</link>
         <description>MIT Course - Tag - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 13 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+    <title>Virtualizing the Processor</title>
+    <link>/computation-structure-17/</link>
+    <pubDate>Mon, 13 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-17/</guid>
+    <description><![CDATA[Virtualizing the Processor 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c17/c17s1/ 本章讲了CPU的&quot;虚拟化&quot;, 不过这里的&quot;虚拟化&quot;是指在同一个CPU上执行多个程序,]]></description>
+</item><item>
     <title>Virtual Memory</title>
     <link>/computation-structure-16/</link>
     <pubDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-08/</guid>
     <description><![CDATA[Design Tradeoffs 课程地址 本章从CMOS的电能消耗出发，讲如何减少不必要的能量损失，同时也讲了很多时间和空间的tradeoff. Power dissipation 电路优化的几个metr]]></description>
-</item><item>
-    <title>Performance Measures</title>
-    <link>/computation-structure-07/</link>
-    <pubDate>Thu, 11 Nov 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-07/</guid>
-    <description><![CDATA[Performance Measures 本章主要是讲pipeline的原理以及如何将一般的逻辑电路转换为pipeline，最后简单提到了一下异步电路和同步电路的区别。 Latency and Throughput Latency: the]]></description>
 </item></channel>
 </rss>
