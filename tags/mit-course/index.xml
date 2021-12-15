@@ -4,7 +4,14 @@
         <link>/tags/mit-course/</link>
         <description>MIT Course - Tag - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 14 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 15 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/tags/mit-course/" rel="self" type="application/rss+xml" /><item>
+    <title>Concurrency and Synchronization</title>
+    <link>/computation-structure-19/</link>
+    <pubDate>Wed, 15 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-19/</guid>
+    <description><![CDATA[Concurrency and Synchronization 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c19/c19s1/ 本章主要是讲进程间通信(IPC), 不过是从硬件的角度来看. IPC里面常用的信号量, 其实也只是在共享内存中存入了一个数字, 而]]></description>
+</item><item>
     <title>Devices and Interrupts</title>
     <link>/computation-structure-18/</link>
     <pubDate>Tue, 14 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-10/</guid>
     <description><![CDATA[Assembly Language 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/ 汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。 本课程中使用的汇编语言叫USAM]]></description>
-</item><item>
-    <title>Designing an instruction set</title>
-    <link>/computation-structure-09/</link>
-    <pubDate>Wed, 24 Nov 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-09/</guid>
-    <description><![CDATA[Designing an instruction set 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c9/c9s1/ 本章用前8章所学的知识设计了一个简单的通用计算机，采用冯诺伊曼结构，即main memory + CPU，而CPU则主要由datapat]]></description>
 </item></channel>
 </rss>
