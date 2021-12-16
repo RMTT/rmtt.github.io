@@ -4,7 +4,21 @@
         <link>/categories/computation-structure/</link>
         <description>Computation Structure - Category - RMT&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
-            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 15 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 16 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/computation-structure/" rel="self" type="application/rss+xml" /><item>
+    <title>Parallel Processing</title>
+    <link>/computation-structure-21/</link>
+    <pubDate>Thu, 16 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-21/</guid>
+    <description><![CDATA[Parallel Processing 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c21/c21s1/ 本章讲的是各种并行方案. 并行 并行大体上有如下3种: 指令级并行(ILP) 数据级并行(DLP) 线程级并行(TLP) 指令级并行 指令]]></description>
+</item><item>
+    <title>System-level Communication</title>
+    <link>/computation-structure-20/</link>
+    <pubDate>Thu, 16 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/computation-structure-20/</guid>
+    <description><![CDATA[System-level Communication 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c20/c20s1/ 本章主要讲的是系统间通信, 按现在来讲就是总线(BUS). 前面讲了很多硬核的物理知识, 证明了单一总线因为传输线反射的问题, 无法]]></description>
+</item><item>
     <title>Concurrency and Synchronization</title>
     <link>/computation-structure-19/</link>
     <pubDate>Wed, 15 Dec 2021 00:00:00 &#43;0000</pubDate>
@@ -60,19 +74,5 @@
     <author>Author</author>
     <guid>/computation-structure-12/</guid>
     <description><![CDATA[Procedures and Stacks 课程地址：https://ocw.mit.edu/courses/electrical-engineering-and-compute]]></description>
-</item><item>
-    <title>Assembly Language</title>
-    <link>/computation-structure-10/</link>
-    <pubDate>Mon, 29 Nov 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-10/</guid>
-    <description><![CDATA[Assembly Language 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c10/c10s1/ 汇编语言是对指令集的抽象，用一些单词的缩写来替代指令集的opcode, 从而更容易记忆和理解。 本课程中使用的汇编语言叫USAM]]></description>
-</item><item>
-    <title>Design Tradeoffs</title>
-    <link>/computation-structure-08/</link>
-    <pubDate>Thu, 18 Nov 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>/computation-structure-08/</guid>
-    <description><![CDATA[Design Tradeoffs 课程地址 本章从CMOS的电能消耗出发，讲如何减少不必要的能量损失，同时也讲了很多时间和空间的tradeoff. Power dissipation 电路优化的几个metr]]></description>
 </item></channel>
 </rss>

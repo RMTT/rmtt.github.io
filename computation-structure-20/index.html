@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Concurrency and Synchronization - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="Concurrency and Synchronization" />
-<meta property="og:description" content="Concurrency and Synchronization 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c19/c19s1/ 本章主要是讲进程间通信(IPC), 不过是从硬件的角度来看. IPC里面常用的信号量, 其实也只是在共享内存中存入了一个数字, 而" />
+        <title>System-level Communication - RMT&#39;s Blog</title><meta name="Description" content="RMT&#39;s Blog"><meta property="og:title" content="System-level Communication" />
+<meta property="og:description" content="System-level Communication 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c20/c20s1/ 本章主要讲的是系统间通信, 按现在来讲就是总线(BUS). 前面讲了很多硬核的物理知识, 证明了单一总线因为传输线反射的问题, 无法" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/computation-structure-19/" />
+<meta property="og:url" content="/computation-structure-20/" />
 <meta property="og:image" content="/logo.png"/>
-<meta property="article:published_time" content="2021-12-15T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-12-15T22:52:13+08:00" />
+<meta property="article:published_time" content="2021-12-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-16T22:56:16+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="/logo.png"/>
 
-<meta name="twitter:title" content="Concurrency and Synchronization"/>
-<meta name="twitter:description" content="Concurrency and Synchronization 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c19/c19s1/ 本章主要是讲进程间通信(IPC), 不过是从硬件的角度来看. IPC里面常用的信号量, 其实也只是在共享内存中存入了一个数字, 而"/>
+<meta name="twitter:title" content="System-level Communication"/>
+<meta name="twitter:description" content="System-level Communication 课程地址: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c20/c20s1/ 本章主要讲的是系统间通信, 按现在来讲就是总线(BUS). 前面讲了很多硬核的物理知识, 证明了单一总线因为传输线反射的问题, 无法"/>
 <meta name="application-name" content="RMT&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="RMT&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-19/" /><link rel="prev" href="/computation-structure-18/" /><link rel="next" href="/computation-structure-20/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/computation-structure-20/" /><link rel="prev" href="/computation-structure-19/" /><link rel="next" href="/computation-structure-21/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Concurrency and Synchronization",
+        "headline": "System-level Communication",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/computation-structure-19\/"
-        },"genre": "posts","keywords": "MIT Course","wordcount":  326 ,
-        "url": "\/computation-structure-19\/","datePublished": "2021-12-15T00:00:00+00:00","dateModified": "2021-12-15T22:52:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@id": "\/computation-structure-20\/"
+        },"genre": "posts","keywords": "MIT Course","wordcount":  175 ,
+        "url": "\/computation-structure-20\/","datePublished": "2021-12-16T00:00:00+00:00","dateModified": "2021-12-16T22:56:16+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx"},"author": {
                 "@type": "Person",
@@ -104,9 +104,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Concurrency and Synchronization</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">System-level Communication</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://github.com/RMTT" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>RMT</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mit-6.004/"><i class="far fa-folder fa-fw"></i>MIT 6.004</a>&nbsp;<a href="/categories/computation-structure/"><i class="far fa-folder fa-fw"></i>Computation Structure</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-15">2021-12-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;326 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-16">2021-12-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;175 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -114,63 +114,37 @@
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-            </div><div class="content" id="content"><h1 id="concurrency-and-synchronization">Concurrency and Synchronization</h1>
+            </div><div class="content" id="content"><h1 id="system-level-communication">System-level Communication</h1>
 <blockquote>
-<p>课程地址: <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c19/c19s1/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c19/c19s1/</a></p>
+<p>课程地址: <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c20/c20s1/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/c20/c20s1/</a></p>
 </blockquote>
-<p>本章主要是讲进程间通信(IPC), 不过是从硬件的角度来看.</p>
-<p>IPC里面常用的信号量, 其实也只是在共享内存中存入了一个数字, 而所谓的lock, 也只是数量为1的semaphore.</p>
-<p>但是如果不同core上的进程同时对同一个内存地址进行写操作的话, 会产生冲突吗? 这个貌似是内存或者总线去解决的, 目前还没找到具体实现, 先mark一下.</p>
+<p>本章主要讲的是系统间通信, 按现在来讲就是总线(BUS).</p>
+<p>前面讲了很多硬核的物理知识, 证明了单一总线因为传输线反射的问题, 无法做到高频.</p>
+<p>后面介绍了PCIe, 原来PCIe是受Network的启发, 也搞了一套点对点的通信协议, 跟网络一样分了几层, 数据也是包装成packet发出去.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/posts/computation-structure/hardware-support-semaphore.png"
-        data-srcset="/posts/computation-structure/hardware-support-semaphore.png, /posts/computation-structure/hardware-support-semaphore.png 1.5x, /posts/computation-structure/hardware-support-semaphore.png 2x"
+        data-src="/posts/computation-structure/pcie.png"
+        data-srcset="/posts/computation-structure/pcie.png, /posts/computation-structure/pcie.png 1.5x, /posts/computation-structure/pcie.png 2x"
         data-sizes="auto"
-        alt="/posts/computation-structure/hardware-support-semaphore.png"
-        title="/posts/computation-structure/hardware-support-semaphore.png" /></p>
-<p>IPC的一个重要问题是deadlock, 比如进程A和进程B:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 进程A
-wait(x)
-wait(y)
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 进程B
-wait(y)
-wait(x)
-</code></pre></td></tr></table>
-</div>
-</div><p>当进程A执行完<code>wait(x)</code>后, 进程B被调度, 而且执行了<code>wait(y)</code>, 显然这两个进程永远都无法结束.</p>
-<p>一个比较直观而且简单的方案是对IPC中需要用到的信号量进行排序, 在进程<code>wait</code>时, 总是先<code>wait</code>顺序在前的信号量.</p>
+        alt="/posts/computation-structure/pcie.png"
+        title="/posts/computation-structure/pcie.png" /></p>
+<p>跟网络一样, PCIe也可以有多种top, 比如环形, 树形等等.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-12-15&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/b105fd481d48648cd86cf270f8479830db5f052e" target="_blank" title="commit by RMT(d.rong@outlook.com) b105fd481d48648cd86cf270f8479830db5f052e: update computation structrue 19">
-                                    <i class="fas fa-hashtag fa-fw"></i>b105fd4</a></span>
+                <span>Updated on 2021-12-16&nbsp;<a class="git-hash" href="https://github.com/RMTT/rmtt.github.io/commit/d4743d8241182593eb3b787cbc07b1a5f56f5335" target="_blank" title="commit by RMT(d.rong@outlook.com) d4743d8241182593eb3b787cbc07b1a5f56f5335: update computation structure 20 &amp; 21">
+                                    <i class="fas fa-hashtag fa-fw"></i>d4743d8</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/computation-structure-19/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/computation-structure-20/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-19/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-19/" data-title="Concurrency and Synchronization"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/computation-structure-20/" data-title="System-level Communication" data-hashtags="MIT Course"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/computation-structure-20/" data-hashtag="MIT Course"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="/computation-structure-20/" data-title="System-level Communication" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/computation-structure-20/" data-title="System-level Communication"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/computation-structure-20/" data-title="System-level Communication"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="/computation-structure-20/" data-title="System-level Communication" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/myspace.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="/computation-structure-20/" data-title="System-level Communication" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="/computation-structure-20/" data-title="System-level Communication"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -182,8 +156,8 @@ wait(x)
         </section>
     </div>
 
-    <div class="post-nav"><a href="/computation-structure-18/" class="prev" rel="prev" title="Devices and Interrupts"><i class="fas fa-angle-left fa-fw"></i>Devices and Interrupts</a>
-            <a href="/computation-structure-20/" class="next" rel="next" title="System-level Communication">System-level Communication<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/computation-structure-19/" class="prev" rel="prev" title="Concurrency and Synchronization"><i class="fas fa-angle-left fa-fw"></i>Concurrency and Synchronization</a>
+            <a href="/computation-structure-21/" class="next" rel="next" title="Parallel Processing">Parallel Processing<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
