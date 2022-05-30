@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>desktop - Category - RMT&#39;s Blog</title>
+        <link>/categories/desktop/</link>
+        <description>desktop - Category - RMT&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>d.rong@outlook.com (RMT)</managingEditor>
+            <webMaster>d.rong@outlook.com (RMT)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="/categories/desktop/" rel="self" type="application/rss+xml" /><item>
+    <title>Arch Linux 桌面配置</title>
+    <link>/linux_desktop_config/</link>
+    <pubDate>Sun, 30 May 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>/linux_desktop_config/</guid>
+    <description><![CDATA[My Archlinux desktop configuratoins Basic setup Desktop Environment KDE Bismuth Fonts Apple Developer fonts Wenquanyi Sarasa FiraCode Nerd mono App icons Tela Dotfiles Apply dotfiles from my own repo Softwares for daily use qView: image viewer thunar: graphical file manager ranger: console file manager Typora: writing articles Thunderbird: mail and rss client Yesplaymusic: music player Zotero: PDF/paper read and management]]></description>
+</item></channel>
+</rss>
