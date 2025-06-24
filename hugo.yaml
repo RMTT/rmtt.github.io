@@ -5,16 +5,15 @@ theme: ["PaperMod"]
 
 enableRobotsTXT: true
 enableEmoji: true
-
+pygmentsUseClasses: true
 
 languages:
   en:
     languageName: "English"
     weight: 1
-    taxonomies:
-      category: categories
-      tag: tags
-      series: series
+  zh:
+    languageName: "中文"
+    weight: 2
 
 menu:
   main:
@@ -42,6 +41,16 @@ params:
   env: production
   title: mt's blog
   comments: true
+  displayFullLangName: true
+  ShowShareButtons: true
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowAllPagesInArchive: true
+  ShowPageNums: true
+  ShowToc: true
 
   homeInfoParams:
     Title: "Brief"
