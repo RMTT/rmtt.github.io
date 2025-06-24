@@ -1,0 +1,55 @@
+baseURL: https://rmtt.github.io/
+languageCode: en-us
+title: MT's blog
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+enableEmoji: true
+
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+
+menu:
+  main:
+    - name: Posts
+      url: posts/
+      weight: 1
+    - name: Tags
+      url: tags/
+      weight: 9
+    - name: Search
+      url: search/
+      weight: 10
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production
+  title: mt's blog
+  comments: true
+
+  homeInfoParams:
+    Title: "Brief"
+    Content: >
+      This website is recording something about my life and technical things.
+      I love computer science and programming~
+
+  socialIcons:
+    - name: Github
+      title: Github profile
+      url: "https://github.com/rmtt"
+
+services:
+  disqus:
+    shortname: mts-blog
