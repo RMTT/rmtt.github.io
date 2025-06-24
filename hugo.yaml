@@ -28,6 +28,10 @@ menu:
       url: search/
       weight: 10
 
+caches:
+  images:
+    dir: :cacheDir/images
+
 outputs:
   home:
     - HTML
