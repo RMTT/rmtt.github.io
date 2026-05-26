@@ -2,7 +2,7 @@
 title: 我的 RSS 与书签工作流
 categories:
 - chores
-date: "2026-5-26"
+date: "2026-05-26"
 tags:
 - RSS
 - bookmark

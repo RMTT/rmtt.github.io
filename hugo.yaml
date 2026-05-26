@@ -1,5 +1,5 @@
 baseURL: https://rmtt.github.io/
-languageCode: en-us
+locale: en-us
 title: MT's blog
 theme: ["PaperMod"]
 
@@ -9,10 +9,10 @@ pygmentsUseClasses: true
 
 languages:
   en:
-    languageName: "English"
+    label: "English"
     weight: 1
   zh:
-    languageName: "中文"
+    label: "中文"
     weight: 2
 
 menu:

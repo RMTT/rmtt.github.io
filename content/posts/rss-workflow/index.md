@@ -2,7 +2,7 @@
 title: My RSS and Bookmarks Workflow
 categories:
 - chores
-date: "2026-5-26"
+date: "2026-05-26"
 tags:
 - RSS
 - bookmark
