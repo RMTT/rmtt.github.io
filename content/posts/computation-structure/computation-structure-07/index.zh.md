@@ -20,21 +20,21 @@ tags:
 
 ## Pipelined Circuites
 
-![](assets/back-to-circuits.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/back-to-circuits.png)
 
 如上图所示，在计算$P(X)$时，F和G一直处于空闲状态，那么有没有办法把这段时间利用起来呢？
 
-![](assets/pipelined-circuits.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/pipelined-circuits.png)
 
 我们可以用寄存器来保持F和G的输出，从而在$P(X)$的工作时间内，可以让F和G去进行其他计算。
 
-![](assets/pipelined-diagrams.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/pipelined-diagrams.png)
 
-![](assets/pipeline-conventions.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/pipeline-conventions.png)
 
 ## Pipelining Methodology
 
-![](assets/a-pipelining-methodology.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/a-pipelining-methodology.png)
 
 如上是将一般逻辑电路pipeline化的一般步骤
 
@@ -42,19 +42,19 @@ tags:
 
 Pipeline的瓶颈在于$t_{PD}$最大的那个module, 我们可以用如下的方式将两个相同的module组合在一起，提高throughput.
 
-![](assets/circuit-interleaving.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/circuit-interleaving.png)
 
-![](assets/circuit-interleaving-timing.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/circuit-interleaving-timing.png)
 
-![](assets/circuit-interleaving-timing-2.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/circuit-interleaving-timing-2.png)
 
-![](assets/combine-techniques.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/combine-techniques.png)
 
 ## 异步及同步
 
 同一个module对于不同的输入，所需要的时间可能也不一样。按之前的CLK驱动来设计电路的话，计算CLK的时候需要用module的最长计算时间，才能保证正确性。但对于一些计算较快的输入，这样做肯定是浪费了时间的。
 
-![](assets/control-structure-alternatives.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/control-structure-alternatives.png)
 
 上图展示了用同步和异步两种方式来实现一个简单的握手协议，对于异步电路来说，不再需要全局的CLK，所以效率非常高，但实际设计非常困难；对于同步电路来说，不再需要靠CLK来在module之间传输数据，效率也提高了，虽然还是在CLK上升沿才会有数据输入输出，但CLK不需要用最长计算时间的输入来计算了。
 
@@ -65,14 +65,14 @@ Pipeline的瓶颈在于$t_{PD}$最大的那个module, 我们可以用如下的�
 + In phase 3, the downstream stage waits to see the HERE-IS-X go low, indicating that the upstream stage has successfully received the GOT-X signal.
 + In phase 4, once HERE-IS-X is deasserted, the downstream stage deasserts GOT-X and the transfer handshake is ready to begin again. Note that the upstream stage waits until it sees the GOT-X deasserted before starting the next handshake.
 
-![](assets/selfed-time-example.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/selfed-time-example.png)
 
 ## Control Structure
 
-![](assets/control-structure-taxonomy.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/control-structure-taxonomy.png)
 
 > 想不到图中 Globally timed + asynchronous 的实例QAQ
 
 ## Summary
 
-![](assets/performance-measures-summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-07/performance-measures-summary.png)

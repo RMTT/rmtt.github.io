@@ -18,6 +18,6 @@ tags:
 
 后面介绍了PCIe, 原来PCIe是受Network的启发, 也搞了一套点对点的通信协议, 跟网络一样分了几层, 数据也是包装成packet发出去.
 
-![](assets/pcie.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-20/pcie.png)
 
 跟网络一样, PCIe也可以有多种top, 比如环形, 树形等等.

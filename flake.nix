@@ -16,11 +16,14 @@
           buildInputs = with pkgs; [
             hugo
             git
+            python3
+            python3Packages.cloudflare
           ];
 
           shellHook = ''
             echo "Hugo development environment loaded."
             echo "Hugo version: $(hugo version)"
+            echo "Python environment loaded (with latest cloudflare SDK from PyPI)."
           '';
         };
       }

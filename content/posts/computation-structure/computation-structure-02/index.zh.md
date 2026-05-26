@@ -22,7 +22,7 @@ tags:
 
 VTC(voltage transfer characteristics)是用来表示一个电子原件的输入和输出电压关系的图，如下是一个*Buffer*的VTC：
 
-![img](assets/Slide17.png)
+![img](https://blog-img.rmtt.fun/posts/computation-structure-02/Slide17.png)
 
 其中$V_{IL},V_{IH},V_{OL},V_{OH}$是一个电子元件最重要的参数，解释如下（这里假设最高电压为1）：
 
@@ -35,4 +35,4 @@ VTC(voltage transfer characteristics)是用来表示一个电子原件的输入�
 
 ## Summary
 
-![img](assets/Slide20.png)
+![img](https://blog-img.rmtt.fun/posts/computation-structure-02/Slide20.png)

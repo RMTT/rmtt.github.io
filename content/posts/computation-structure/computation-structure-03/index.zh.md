@@ -14,15 +14,15 @@ date: 2021-10-25
 
 ### Overview
 
-![N-channel MOSFET](assets/nchannel-mosfet.png)
+![N-channel MOSFET](https://blog-img.rmtt.fun/posts/computation-structure-03/nchannel-mosfet.png)
 
 ### Characters
 
-![](assets/nchannel-mosfet-characters.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/nchannel-mosfet-characters.png)
 
 ### Two Flavors
 
-![](assets/nchannel-two-flavors.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/nchannel-two-flavors.png)
 
 ## CMOS 
 
@@ -30,28 +30,28 @@ CMOS is *Complementary Metal Oxide Semiconductor*
 
 ### Two switches
 
-![](assets/cmos-two-switches.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/cmos-two-switches.png)
 
 ### Inverter
 
-![](assets/cmos-inverter-vtc.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/cmos-inverter-vtc.png)
 
 ### Basic usage of CMOS
 
-![](assets/basic-usage-of-cmos.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/basic-usage-of-cmos.png)
 
 ### Timing specifications
 
-![](assets/cmos-timing-specifications.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/cmos-timing-specifications.png)
 
 #### Propagation Delay
 
-![](assets/cmos-propagation-delay.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/cmos-propagation-delay.png)
 
 #### Contamination Delay
 
-![](assets/contamination-delay.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/contamination-delay.png)
 
 ## Summary
 
-![](assets/cmos-summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-03/cmos-summary.png)

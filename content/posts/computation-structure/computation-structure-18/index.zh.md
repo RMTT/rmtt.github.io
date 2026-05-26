@@ -18,11 +18,11 @@ tags:
 
 当IO请求没有收到回复时, OS在调度到该进程时还是会继续执行等待IO的指令.
 
-![](assets/readkey-svc-3.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-18/readkey-svc-3.png)
 
 虽然每次调度到正在等待IO的进程也花不了多少条指令, 但还是要切换上下文啥的, 为了提高轮询的效率, 我们可以想办法让这些等待IO的进程不会被调度.
 
-![](assets/readkey-svc-4.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-18/readkey-svc-4.png)
 
 我们可以将进程分为不同的状态, 只有状态为0的进程可以被正常调度. 
 

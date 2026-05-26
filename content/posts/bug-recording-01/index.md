@@ -22,7 +22,7 @@ Result: cannot ping each other
 
 Let's read kernel code and find how pocket flows with ipsec(via xfrm framework) and srv6.
 
-![packet_flow](assets/packet_flow.png)
+![packet_flow](https://blog-img.rmtt.fun/posts/bug-recording-01/packet_flow.png)
 
 First, we need clarify the code path of target packets. Because we use ipsec tunnel, so every actual payload packet will be packed into a UDP via ESP protocol and the inner packet it's a ipv6 packet with srv6 end.dx4 action which means the structure of entire packet is:
 
@@ -84,6 +84,6 @@ struct sk_buff {
 
 After the inner most ipv4 packet passed to `ip_local_deliver`, the `cb` field of original skb will be used as `inet_skb_param`. So, some verifications will failed because they will get a wrong value from `skb->cb`.
 
-![image-20251113014607922](assets/image-20251113014607922.png)
+![image-20251113014607922](https://blog-img.rmtt.fun/posts/bug-recording-01/image-20251113014607922.png)
 
-![image-20251113014641426](assets/image-20251113014641426.png)
+![image-20251113014641426](https://blog-img.rmtt.fun/posts/bug-recording-01/image-20251113014641426.png)

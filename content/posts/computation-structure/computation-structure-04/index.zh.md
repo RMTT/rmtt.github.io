@@ -31,46 +31,46 @@ tags:
 
 在功能不变的情况下，为了减少逻辑门的数量，也就是减小$t_{pd}$和$t_{cd}$，就需要将逻辑表达式中的项数最小化。
 
-![](assets/sum-of-products-implementation.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/sum-of-products-implementation.png)
 
-![](assets/boolean-identities.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/boolean-identities.png)
 
-![](assets/boolean-minimization.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/boolean-minimization.png)
 
 ###  卡诺图
 
-![Karnaugh-map](assets/karnaugh-map.png)
+![Karnaugh-map](https://blog-img.rmtt.fun/posts/computation-structure-04/karnaugh-map.png)
 
 #### 卡诺图化简步骤
 
 1. 找出Implicants
 
-   ![](assets/finding-implicants.png)
+   ![](https://blog-img.rmtt.fun/posts/computation-structure-04/finding-implicants.png)
 
-   ![](assets/finding-prime-implicants.png)
+   ![](https://blog-img.rmtt.fun/posts/computation-structure-04/finding-prime-implicants.png)
 
 2. 合并
 
-   ![](assets/writing-down-equation.png)
+   ![](https://blog-img.rmtt.fun/posts/computation-structure-04/writing-down-equation.png)
 
 3. 处理lenient
 
-   ![](assets/lenient.png)
+   ![](https://blog-img.rmtt.fun/posts/computation-structure-04/lenient.png)
 
 ## Mux
 
-![](assets/mux.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/mux.png)
 
 ## Decoder
 
-![](assets/decoder.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/decoder.png)
 
 ## ROM
 
-![](assets/ROM1.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/ROM1.png)
 
-![](assets/ROM2.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/ROM2.png)
 
 ## Summary
 
-![](assets/summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-04/summary.png)

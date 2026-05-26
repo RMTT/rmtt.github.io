@@ -16,48 +16,48 @@ tags:
 
 ## Extending the memory hierarchy
 
-![](assets/extending-the-memory-hierarchy.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/extending-the-memory-hierarchy.png)
 
-![](assets/impact-of-enormous-miss-penalty.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/impact-of-enormous-miss-penalty.png)
 
 ## Virtual Memory
 
-![](assets/virtual-memory.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/virtual-memory.png)
 
-![](assets/paging.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/paging.png)
 
-![](assets/demand-paging.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/demand-paging.png)
 
 ### Page Map
 
-![](assets/simple-page-map-design.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/simple-page-map-design.png)
 
-![](assets/example-vtop.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/example-vtop.png)
 
-![](assets/page-fault.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/page-fault.png)
 
-![](assets/example-page-fault.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/example-page-fault.png)
 
 ### Translation look-aside buffer (TLB)
 
-![](assets/tlb.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/tlb.png)
 
-![](assets/mmu-address-translation.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/mmu-address-translation.png)
 
-![](assets/mmu-with-tlb.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/mmu-with-tlb.png)
 
 ### Context
 
-![](assets/contexts.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/contexts.png)
 
-![](assets/memory-management-and-protection.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/memory-management-and-protection.png)
 
-![](assets/multi-level-maps.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/multi-level-maps.png)
 
-![](assets/rapid-context.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/rapid-context.png)
 
-![](assets/best-of-both-worlds.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/best-of-both-worlds.png)
 
 ## Summary
 
-![](assets/virtual-memory-summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-16/virtual-memory-summary.png)

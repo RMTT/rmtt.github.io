@@ -18,7 +18,7 @@ IPC里面常用的信号量, 其实也只是在共享内存中存入了一个数
 
 但是如果不同core上的进程同时对同一个内存地址进行写操作的话, 会产生冲突吗? 这个貌似是内存或者总线去解决的, 目前还没找到具体实现, 先mark一下.
 
-![](assets/hardware-support-semaphore.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-19/hardware-support-semaphore.png)
 
 IPC的一个重要问题是deadlock, 比如进程A和进程B:
 

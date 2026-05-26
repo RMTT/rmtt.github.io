@@ -45,7 +45,7 @@ N种状态需要$ log_2{N} $个Bit
 
 #### 逻辑门的输入输出电压
 
-![逻辑门的输入输出](assets/1.png)
+![逻辑门的输入输出](https://blog-img.rmtt.fun/posts/digital-design-chapter-01/1.png)
 
 逻辑门的输入输出中，所用的高电平和低电平的范围可能会不相同。对于输出，高电平一般是在$V_{OH} - V_{DD}$之间，而低电平是在$GND - V_{OL}$之间。而当门电路读取输入时，低电平一般是在$GND-V_{IL}$之间，高电平是在$V_{IH} - V_{DD}$之间，这样的话，在一套逻辑电路内，必须要有:
 
@@ -61,7 +61,7 @@ $$ V_{OH} \leq V_{IH} $$
 
 但在实际中，电压是连续变化的，如下图所示（该图是一个NOT逻辑门的电压变化图，V(A)是输入，V(Y)是输出）：
 
-![NOT的输入电压与输入电压](assets/1.png)
+![NOT的输入电压与输入电压](https://blog-img.rmtt.fun/posts/digital-design-chapter-01/1.png)
 
 一种选择是将斜率为1和-1的点选为临界点，这些点被成为Unity Gain Points。对于在$V_{IL}$和$V_{IH}$之间的区域，被称为禁止区，如果输入的电压在禁止区内，那门电路的行为是无法判断的。
 

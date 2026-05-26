@@ -28,8 +28,8 @@ GPU接受的数据应该是一系列的Vertex(保存坐标信息)和Attributes(�
 
 ## GPU基础架构
 
-![GPU基础架构](assets/architecture.jpg)
+![GPU基础架构](https://blog-img.rmtt.fun/posts/gpu-basic/architecture.jpg)
 
 从架构图可以比较容易看出，基本的工作方式就是通过BUS传输数据，然后GPU中一些shader讲计算任务分发给各个TPC。至于其中各个组件的作用，见下面的MindMap。
 
-![MindMap](assets/mindmap.png)
+![MindMap](https://blog-img.rmtt.fun/posts/gpu-basic/mindmap.png)

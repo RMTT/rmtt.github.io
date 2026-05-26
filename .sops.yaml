@@ -1,0 +1,6 @@
+keys:
+  - &admin BD15904159AF89DEB3A61039DFAFB71F7972D48D
+
+
+creation_rules:
+  - pgp: *admin # default

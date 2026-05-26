@@ -84,4 +84,4 @@ Hamming distance H等于两个二进制编码中，不同的位数。
 
 ## Summary
 
-![img](assets/Slide28.png)
+![img](https://blog-img.rmtt.fun/posts/computation-structure-01/Slide28.png)

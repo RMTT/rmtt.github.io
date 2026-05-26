@@ -16,4 +16,4 @@ tags:
 
 > 控制流图(CFG)是常用的IR
 
-![](assets/modern-compilers.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-11/modern-compilers.png)

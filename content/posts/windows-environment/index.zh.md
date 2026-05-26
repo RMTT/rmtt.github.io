@@ -55,7 +55,7 @@ Windows Terminal是微软官方发布的一款terminator，目前还在preview�
 
 第一步当然是要先换字体和配色，字体很简单，用`fontFace`配置就行了，然后配色，刚好自带了[Solarized](https://ethanschoonover.com/solarized/)(目前最喜欢的配色)，不过如果是Powershell最好换用其他颜色，因为PS的语法亮尚会和Solarized冲突。(感谢这些愿意无私奉献的艺术家们)
 
-![Solarized](assets/solarized-yinyang.png)
+![Solarized](https://blog-img.rmtt.fun/posts/windows-environment/solarized-yinyang.png)
 
 接下来就是配置ssh登录Arch，因为Default Switch的IP range是dynamic的(为什么不用Static IP?因为之前试过几次都不稳定，不是突然变了就是突然连不了Internet了)，所以需要动态获取Arch的IP，好在Powershell提供了很多操作命令，实现起来很简单：
 
@@ -89,7 +89,7 @@ function    arch {
 
 同时需要手动在Arch中设置`DISPLAY`，然后就可以转发X了，Windows10用的是VCXSRV。
 
-![配置完成的windows terminal](assets/wt.png)
+![配置完成的windows terminal](https://blog-img.rmtt.fun/posts/windows-environment/wt.png)
 
 #### 共享文件夹
 
@@ -139,7 +139,7 @@ ipconfig.exe /flushdns
 
 之后就可以在任何地方直接用Arch来代替ip 了。
 
-![CLION的remote配置](assets/clion.png)
+![CLION的remote配置](https://blog-img.rmtt.fun/posts/windows-environment/clion.png)
 
 #### 在Arch中获取Windows的IP
 

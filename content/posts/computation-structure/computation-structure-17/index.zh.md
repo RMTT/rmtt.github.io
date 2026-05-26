@@ -16,11 +16,11 @@ tags:
 
 现代CPU都在硬件上实现了内核态和用户态, 所以无法单纯靠软件来实现内核态和用户态的切换, 而是要靠CPU的中断来实现.
 
-![](assets/timer-interrupts.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-17/timer-interrupts.png)
 
 当Timer发起一个中断时, 我们调用OS的schedule程序来切换用户程序的上下文, 那么具体需要切换哪些内容呢? 常见的就是所有寄存器的内容, MMU的Context和Page Directory/Page Map的base pointer, 还有其他各种外设的状态等等, 比如该用户程序的输入应该在哪个tty.
 
-![](assets/simple-timesharing-scheduler.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-17/simple-timesharing-scheduler.png)
 
 这种代码+上下文+所有相关资源的集合便是一个进程(Process).
 
@@ -28,4 +28,4 @@ tags:
 
 现代的CPU都运行设置部分中断和异常的Handler, 当用户态程序有中断或异常产生时, 便会跳转到相应的Handler去执行, 而且会无视用户态/内核态的区别. 所以, OS可以指定自己的异常处理Handler, 对于每一个系统调用, 都分配一个illegal-opcode就可以啦!
 
-![](assets/illop-handler.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-17/illop-handler.png)

@@ -16,7 +16,7 @@ $$\frac{1}{1},\frac{1}{2},\frac{2}{1},\frac{3}{1},\frac{1}{3},\frac{1}{4},\frac{
 
 或许从这里还看不出这个序列已经包含了所有大于0的有理数，那么可以看如下的规律：
 
-![正有理数的可数性](assets/1.png)
+![正有理数的可数性](https://blog-img.rmtt.fun/posts/rational-number-denumerable/1.png)
 
 对于$p=1,2,3,4,\dots$，其分母都包括了所有的自然数。对于负有理数，vice versa.
 

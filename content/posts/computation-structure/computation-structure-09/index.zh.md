@@ -18,13 +18,13 @@ tags:
 
 Let’s start by designing the logic that implements the desired computations — we call this part of the logic the “*datapath*”.
 
-![](assets/datapath-for-factorial.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/datapath-for-factorial.png)
 
 上图虽然实现了a和b的计算，但还不能控制其状态，即不能在b为0时结束循环，所以需要一个FSM来控制整个计算电路即datapath的状态。
 
-![](assets/control-fsm-for-factorial.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/control-fsm-for-factorial.png)
 
-![](assets/control-fsm-hardware.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/control-fsm-hardware.png)
 
 ## Programmable Datapath
 
@@ -32,25 +32,25 @@ Let’s start by designing the logic that implements the desired computations �
 
 首先每种计算都可以分解为ALU的几个基本计算类型(Arithmetic, Bool, Comparable, Shift)，所以就计算来说，一个ALU就差不多够用了。但有的任务可能需要更多的寄存器来保存中间结果，所以增加寄存器数量是必须的。如下是一个简单的可以进行通用计算的datapath.
 
-![](assets/a-simple-programmable-datapath.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/a-simple-programmable-datapath.png)
 
-![](assets/a-control-fsm-for-factorial.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/a-control-fsm-for-factorial.png)
 
 ## The von Neumann Model
 
 在上一节的模型的基础上，冯诺伊曼引入了主存和输入/输出设备，从而执行数据量更大的计算任务，而且也可以有各种各样的输入输出设备，如下图所示。
 
-![](assets/the-von-neumann-model.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/the-von-neumann-model.png)
 
 ## Storage
 
 冯诺伊曼模型的要点是用主存来存储指令和数据，主存相对于寄存器来说，最主要的优点就是容量大，所以能存储很多条指令。假如一条指令是32位也就是4bytes的话，那么1KB就能存256条指令，1M就能存256000条！
 
-![](assets/stored-program-computer.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/stored-program-computer.png)
 
 在冯诺伊曼结构中，有一个专门的*PC*寄存器，用来存储*下一条*指令在主存中的地址。
 
-![](assets/anatomy-of-von-neumann-computer.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/anatomy-of-von-neumann-computer.png)
 
 ## 指令和指令集
 
@@ -58,4 +58,4 @@ Let’s start by designing the logic that implements the desired computations �
 
 ## Summary
 
-![](assets/beta-isa-summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-09/beta-isa-summary.png)

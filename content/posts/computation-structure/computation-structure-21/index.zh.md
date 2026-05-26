@@ -26,29 +26,29 @@ tags:
 
 指令级并行是让流行线的每个阶段尽可能同时执行多条指令.
 
-![](assets/superscalar-processor.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-21/superscalar-processor.png)
 
 ### 数据级并行
 
 数据级并行主要是指像向量加法这种计算, 天生就能拆开运算的! 只需要提供多个ALU就行了, 目前主要是由GPU来做.
 
-![](assets/data-level-parallelism.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-21/data-level-parallelism.png)
 
 ### 线程级并行
 
 首先介绍一下阿姆达尔定律:
 
-![](assets/amdahl-law.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-21/amdahl-law.png)
 
 一个线程就是在一个core上执行的计算任务.
 
 > Using multiple independent cores to execute a parallel task is called thread-level parallelism (TLP), where each core executes a separate computation “thread”.
 
-![](assets/thread-level-parallelism.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-21/thread-level-parallelism.png)
 
 不同的Core之间是通过同一个main memory来交换数据(还有更高效的MPI), 而且每个core都有自己的cache.
 
-![](assets/multi-core-caches.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-21/multi-core-caches.png)
 
 为了保证数据的一致性, 在cache和内存之间也有一条bus来监测cache的变化和同步.
 

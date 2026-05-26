@@ -38,7 +38,7 @@ js基础的语法和C/C++等众多语言类似，有8种基本类型：
 
 在js中，除了几个基本类型，其他基本都可以当成是Object。而Object这个对象就是JS中最基本的Object, 除了使用`Object.create(null)`创建的对象，其他对象都会默认使用`Object.prototype`作为自己的`[[Prototype]]`。如下是JS中几种主要Object的导图：
 
-![JS Object](assets/object.png)
+![JS Object](https://blog-img.rmtt.fun/posts/js-study/object.png)
 
 ### Function
 

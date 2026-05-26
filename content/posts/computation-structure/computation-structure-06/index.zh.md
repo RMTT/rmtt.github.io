@@ -16,7 +16,7 @@ tags:
 
 ## 本课程中自动机的表示图
 
-![](assets/valid-state-fsm.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/valid-state-fsm.png)
 
 ## 异步时钟
 
@@ -24,23 +24,23 @@ tags:
 
 ### The bounded-time Synchronizer
 
-![](assets/the-bounded-time-synchronizer.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/the-bounded-time-synchronizer.png)
 
 当`IN`和`CLK`的上升沿到来时间$t_{IN}$和$t_{CLK}$相差大于$t_{E}$时，Synchronizer将输出至少持续$t_{D}$时长的0或1。但如果`IN`和`CLK`的上升时间沿到来时间之差小于$t_E$时，就无法确定Synchronizer的输出。为什么无法确定？个人理解是因为上升沿实际是要一段时间才能完成的，如果两者上升沿到来时间相差太短，当`CLK`达到1时，`IN`可能还在中间。
 
 那么该如何用逻辑电路来实现这个Synchronizer，当然要靠*D-Register*啦！
 
-![](assets/d-register-synchronizer.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/d-register-synchronizer.png)
 
 上图是用*D-Register*实现的Synchronizer, 用$t_{setup}$和$t_{hold}$来充当$t_{E}$，看起来很美好，但还没有解决`IN`和`CLK`的上升沿同时到来的问题！
 
 当`IN`和`CLK`的上升沿同时到来时，可能会让D-latch进入metastable状态：
 
-![](assets/synchronizer-metastable-state.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/synchronizer-metastable-state.png)
 
-![](assets/metastable-properties.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/metastable-properties.png)
 
 解决办法：加D-Register!
 
-![](assets/declay-increases-reliability.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-06/declay-increases-reliability.png)
 

@@ -23,43 +23,43 @@ PS: 片上的存储设备一般都有bitline和wordline, wordline用来激活指
 
 SRAM跟寄存器比较像，都是用正反馈是保持电压。
 
-![](assets/static-ram.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/static-ram.png)
 
-![](assets/sram-cell.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/sram-cell.png)
 
-![](assets/sram-read.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/sram-read.png)
 
-![sram-write](assets/sram-write.png)
+![sram-write](https://blog-img.rmtt.fun/posts/computation-structure-14/sram-write.png)
 
 ### DRAM
 
 DRAM是使用电容来保持电压，体积更小，所以容量更大，但访问速度比SRAM慢，而且需要定时刷新存储的数据。
 
-![](assets/dram-cell.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/dram-cell.png)
 
-![](assets/dram-write-and-read.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/dram-write-and-read.png)
 
 ### Flash
 
 Flash是使用MOSFET来存储数据，在栅极下加了一层绝缘体，讲电子导入绝缘体，然后根据绝缘体的带电大小来决定数据。
 
-![](assets/flash.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/flash.png)
 
 ### Hard Disk
 
 硬盘（这里指机械硬盘）是用磁化来存储数据。
 
-![](assets/hard-disk.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/hard-disk.png)
 
 ## 内存系统
 
 在现代CPU的架构中，主存一般是速度相对较慢但是体积更小的DRAM组成。不过CPU不会直接跟主存交换数据，在中间可能会有其他几层SRAM来充当缓存，以降低内存的平均访问时间。
 
-![](assets/the-memory-hierarchy.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/the-memory-hierarchy.png)
 
 但从编程的角度看，有这样两种选择。一是完全隐藏缓存的细节，这样写程序时便可以把内存当成一个单独的设备使用；二是公开缓存细节，由programmer去决定哪些数据放在缓存，哪些放在主存。
 
-![](assets/memory-hierarchy-interface.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/memory-hierarchy-interface.png)
 
 现在除了超算，基本都是选择隐藏缓存的细节。
 
@@ -71,36 +71,36 @@ Flash是使用MOSFET来存储数据，在栅极下加了一层绝缘体，讲电
 
 在模拟测试中, 可以发现这样一个事实:
 
-![](assets/the-locality-property.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/the-locality-property.png)
 
-![](assets/memory-reference-patterns.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/memory-reference-patterns.png)
 
 ### Direct-Mapped
 
-![](assets/direct-mapped.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/direct-mapped.png)
 
-![](assets/block-size.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/block-size.png)
 
 ### Full-Associative
 
-![](assets/full-associative-cache.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/full-associative-cache.png)
 
 ### Set-Associative
 
-![](assets/n-way-associative-cache.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/n-way-associative-cache.png)
 
 ## Policies
 
 ### Replacement Policies
 
-![](assets/replacement-policies.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/replacement-policies.png)
 
 ### Write Policy
 
-![](assets/write-policy.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/write-policy.png)
 
-![](assets/write-back.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/write-back.png)
 
 ## Summary
 
-![](assets/cache-summary.png)
+![](https://blog-img.rmtt.fun/posts/computation-structure-14/cache-summary.png)
