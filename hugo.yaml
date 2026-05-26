@@ -51,6 +51,7 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
+  math: true
 
   homeInfoParams:
     Title: "Brief"
@@ -66,3 +67,20 @@ params:
 services:
   disqus:
     shortname: mts-blog
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+          - - '\['
+            - '\]'
+          - - '$$'
+            - '$$'
+          inline:
+          - - '\('
+            - '\)'
+          - - '$'
+            - '$'
